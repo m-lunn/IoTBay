@@ -1,0 +1,20 @@
+{
+    "actionButtons": {
+    "reloadButton": null,
+    "commands": [
+        {
+            "name": "$(rocket)$(rocket)$(rocket)",
+            "singleInstance": true,
+            "color": "pink",
+            "useVsCodeApi": true,
+            "command": "code-runner.runCustomCommand",
+        },
+        {
+            "name": "$(stop)",
+            "singleInstance": true,
+            "color": "white",
+            "command": "./utils/shutdown.sh",
+        }
+    ]
+}
+}
