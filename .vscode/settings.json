@@ -6,8 +6,8 @@
             "name": "$(rocket)$(rocket)$(rocket)",
             "singleInstance": true,
             "color": "pink",
-            "useVsCodeApi": true,
-            "command": "code-runner.runCustomCommand",
+            // "useVsCodeApi": true,
+            "command": "./utils/bar.sh",
         },
         {
             "name": "$(stop)",
