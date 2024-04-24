@@ -10,7 +10,10 @@
 --     customer_state varchar (3),
 --     customer_postcode int,
 -- 	primary key (customer_id));
-    
+
+create database iotbay;
+use iotbay;    
+
 create table product (
 product_id int not null auto_increment,
 product_name varchar(50),
