@@ -2,9 +2,6 @@
 html {
     margin: 0;
     padding: 0; 
-    min-height:100%;
-    margin-top: 0;
-    margin-bottom: 0;
     overflow-y: scroll;
 }
 
@@ -12,15 +9,12 @@ body {
     position: relative;
     margin:0;
     padding:0;
-    min-height: 100vh;
 }
 
 
 .backdrop{
     background-image: linear-gradient(to right top, #190b2b, #1c1035, #1e1440, #1f184c, #1e1c58, #1f1e5f, #212066, #22226d, #292170, #302073, #371e76, #3e1c78);
     position:relative;
-    height: 100%;
-    width: 100vw;
     margin:0;
     padding:0;
     min-height: 100vh;
