@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -65,12 +66,27 @@ public class RegisterServlet extends HttpServlet {
             String fname = request.getParameter("fname");
             String surname = request.getParameter("surname");
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users(user_email, user_password, user_fname, user_surname) VALUES (?, ?, ?, ?)");
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ps.setString(3, fname);
-            ps.setString(4, surname);
-            ps.executeUpdate();
+            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(user_email, user_password, user_fname, user_surname) VALUES (?, ?, ?, ?)");
+            createUser.setString(1, email);
+            createUser.setString(2, password);
+            createUser.setString(3, fname);
+            createUser.setString(4, surname);
+            createUser.executeUpdate();
+
+            PreparedStatement findUser = con.prepareStatement("SELECT user_id FROM Users WHERE user_email = ?");
+            findUser.setString(1, email);
+
+            ResultSet rs = findUser.executeQuery();
+
+            int userId = -1;
+
+            if(rs.next()) {
+                userId = rs.getInt("user_id");
+            }
+
+            PreparedStatement logStatement = con.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Account Created\")");
+            logStatement.setInt(1, userId);
+            logStatement.executeUpdate();
             
             response.sendRedirect("login.jsp");
         }

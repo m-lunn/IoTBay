@@ -1,10 +1,3 @@
-<%-- 
-    Document   : landing
-    Created on : 14 Apr 2024, 12:20:15 am
-    Author     : michaellunn
---%>
-<%@page import="com.uts.iotbay.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +5,20 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay</title>
+	<title>IoTBay | Edit Details</title>
 
 </head>
-	<%
-		User user = (User)request.getSession().getAttribute("user");
-		String fname = user.getFname();
-		String email = user.getEmail();
-	%>
+
 	<body>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="index.jsp"><span class="active-page">Home</span></a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="index.jsp">Home</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
-					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.html"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
+                    <li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.html"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
 			<br>
@@ -39,25 +28,34 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Welcome Back <%= fname%>!</h1>
+				<h1 class="heading-text">Manage Account</h1>
 			</div>
-            <br>
-            <div>
-                <h2 class="subheading-text">You are logged in as: </h2>
-                
-                <h2 class="email-text"><%= email%></h2>
-                <br>
-                <button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
-                <br><br><br><br>
-            </div>
 
-	</div>
-     
+			<br><br><br>
+
+            <div class="buttons">
+				<ul class="logins-btns">
+					<li>
+						<div class="login-container">
+							<button class="login-btn" id="edit-details"><a href="editdetails.html" class="login-text">Edit Details</a></button>
+						</div>
+					</li>
+					<li>
+						<div class="login-container">
+							<button class="login-btn" id="view-access-logs"><a href="accesslogs.html" class="login-text">Access Logs</a></button>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+              <br><br><br>
+		</div>
 
         <div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="index.jsp"><span class="active-page">Home</span></a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="index.jsp">Home</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>

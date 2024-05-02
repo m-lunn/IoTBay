@@ -15,17 +15,12 @@
 	<title>IoTBay</title>
 
 </head>
-
+	<%
+		User user = (User)request.getSession().getAttribute("user");
+		String fname = user.getFname();
+		String email = user.getEmail();
+	%>
 	<body>
-            
-            <%
-                User user = (User)request.getSession().getAttribute("user");
-                String fname = user.getFname();
-                String email = user.getEmail();
-            %>
-            
-            
-            
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -34,6 +29,7 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.html"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
 			<br>

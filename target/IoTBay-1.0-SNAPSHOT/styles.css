@@ -85,7 +85,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover {
+.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover {
     transform: scale(1.03);
 }
 
@@ -165,6 +165,64 @@ p {
 }
 
 
+#mng-acc-pic {
+    width: 60%;
+}
+
+a {
+    display: block;
+}
+
+#mng-acc-btn {
+    position: fixed;
+    right: -3vh;
+    top: 2vh;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    display: block;
+    border: none;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    transition: .2s; 
+    width: 7vw;
+    height: 5vw;
+    border-radius: 25px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+}
+
+#edit-details {
+    font-size: 70%;
+}
+
+#view-access-logs {
+    font-size: 70%;
+}
+
+#edit-details-btn {
+    font-family: "Space Mono";
+    width: 40%;
+    height: 8vh;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: .2s; 
+}
+
+#delete-account-btn {
+    font-family: "Space Mono";
+    width: 40%;
+    height: 8vh;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: absolute;
+    transition: .2s;
+}
+
+
+
 
 
 #logo {
@@ -216,14 +274,13 @@ p {
     font-size: max(1vw, 20pt);
 }
 
-.login-text {
+.login-text, .edit-details-btn-text {
     text-decoration: none;
     color: white;
     display: block;
     font-size: 200%;
     font-family: "Space Mono";
     font-weight: bold;
-    line-height: 5vw;
     width: 100%;
     position: relative;
 }
@@ -267,7 +324,6 @@ label {
 }
   
 input[type="text"], input[type="password"] {
-    width: 100%;
     padding: 10px;
     background-color: #34495e;
     border: 1px solid #566573; 
@@ -295,6 +351,20 @@ input[type="text"], input[type="password"] {
     position: relative;
     bottom: 8%;
     transition: .2s; 
+}
+
+.btn-row {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+#delete-btn {
+    width: 20%;
+    position: relative;
+    margin: auto;
+    bottom: none;
+    background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
 }
 
 .submit-btn2 {
