@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
                 session.setAttribute("duplicateErr", "");
             }
             if (!Utils.validateEmail(email)) {
-                session.setAttribute("emailErr", "Invalid first email! Please enter a valid email.");
+                session.setAttribute("emailErr", "Invalid email! Please enter a valid email.");
                 valid = false;   
             }
             else {
