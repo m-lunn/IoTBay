@@ -11,7 +11,7 @@ public class Utils {
     public Utils(){}       
 
 
-    public static boolean validate(String pattern, String input){       
+    private static boolean validate(String pattern, String input){       
        Pattern regEx = Pattern.compile(pattern);       
        Matcher match = regEx.matcher(input);       
        return match.matches(); 
