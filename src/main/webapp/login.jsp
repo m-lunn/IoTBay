@@ -4,7 +4,7 @@
     Author     : michaellunn
 --%>
 
-<%@page import="com.uts.iotbay.User"%>
+<%@page import="com.uts.iotbay.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,14 @@
 </head>
 
 	<body>
-                
+        <%
+        String existErr = (String) session.getAttribute("existErr");
+        session.setAttribute("emailErr", "Enter email");
+		session.setAttribute("passwordErr", "Enter password");
+        session.setAttribute("fnameErr", "Enter first name");
+        session.setAttribute("surnameErr", "Enter surname");
+        session.setAttribute("duplicateErr", "");
+        %>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -40,15 +47,16 @@
 			</div>
 
 			<br><br><br>
+            <h3 class="error-text"><%= (existErr != null ? existErr : "")%></h3>
             <div class="form-container">
                 <form action="login", method="post">
                     <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="email" name="email" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
                     </div>
                     <br><br><br>
                     <button type="submit" class="submit-btn2">Login</button>

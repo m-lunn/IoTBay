@@ -1,5 +1,9 @@
-/Users/michaellunn/IoTBay/src/main/java/com/uts/iotbay/User.java
-/Users/michaellunn/IoTBay/src/main/java/com/uts/iotbay/resources/JakartaEE10Resource.java
-/Users/michaellunn/IoTBay/src/main/java/com/uts/iotbay/RegisterServlet.java
-/Users/michaellunn/IoTBay/src/main/java/com/uts/iotbay/JakartaRestConfiguration.java
-/Users/michaellunn/IoTBay/src/main/java/com/uts/iotbay/LoginServlet.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\controller\LoginServlet.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\model\User.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\resources\JakartaEE10Resource.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\model\dao\DBConnector.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\model\dao\DBManager.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\controller\ConnServlet.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\controller\RegisterServlet.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\controller\Utils.java
+c:\Users\alex\Documents\GitHub\IoTBay\src\main\java\com\uts\iotbay\JakartaRestConfiguration.java

@@ -10,8 +10,17 @@
         </cookie-config>
     </session-config>
     <servlet>
+        <servlet-name>ConnServlet</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ConnServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnServlet</servlet-name>
+        <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>com.uts.iotbay.LoginServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -19,7 +28,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Register</servlet-name>
-        <servlet-class>com.uts.iotbay.RegisterServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>

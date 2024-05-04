@@ -24,7 +24,7 @@ create table users (
     user_password varchar(50),
     user_fname varchar(50),
 	user_surname varchar(50),
-    primary key (user_email));
+    primary key (user_id));
     
 insert into users (user_email, user_password, user_fname, user_surname) values
 ("m.lunn54@gmail.com","123", "Michael", "Lunn"),

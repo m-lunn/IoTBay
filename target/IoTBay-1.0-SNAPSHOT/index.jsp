@@ -17,6 +17,15 @@
 </head>
 
 	<body>
+		<jsp:include page="/ConnServlet" flush="true"/>
+		<%
+		session.setAttribute("emailErr", "Enter email");
+		session.setAttribute("passwordErr", "Enter password");
+        session.setAttribute("existErr", "");
+        session.setAttribute("fnameErr", "Enter first name");
+        session.setAttribute("surnameErr", "Enter surname");
+        session.setAttribute("duplicateErr", "");
+		%>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
