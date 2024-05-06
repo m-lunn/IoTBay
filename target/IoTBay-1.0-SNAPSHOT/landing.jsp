@@ -4,6 +4,7 @@
     Author     : michaellunn
 --%>
 <%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,16 +47,27 @@
 				<h1 class="heading-text">Welcome Back <%= fname%>!</h1>
 			</div>
             <br>
+			<% if (user instanceof Customer) { %>
             <div>
-                <h2 class="subheading-text">You are logged in as: </h2>
+                <h2 class="subheading-text">You are logged in as customer: </h2>
                 
                 <h2 class="email-text"><%= email%></h2>
                 <br>
                 <button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
                 <br><br><br><br>
             </div>
+			<% } else { %>
+			<div>
+				<h2 class="subheading-text">You are logged in as staff: </h2>
+				
+				<h2 class="email-text"><%= email%></h2>
+				<br>
+				<button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
+				<br><br><br><br>
+			</div>
+			<% } %>
 
-	</div>
+		</div>
      
 
         <div class="footer">

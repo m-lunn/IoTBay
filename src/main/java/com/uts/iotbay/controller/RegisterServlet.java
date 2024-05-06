@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             Boolean valid = true;
-            if (manager.checkCustomer(email, password)) {
+            if (manager.checkCustomer(email, password) || manager.checkStaff(email, password)) {
                 session.setAttribute("duplicateErr", "User is already registered with this email and password!");
                 valid = false;   
             }
@@ -76,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
                 session.setAttribute("passwordErr", "Enter password");
             }
             if (valid) {
-                manager.addUser(email, password, fname, surname);
+                manager.addCustomer(email, password, fname, surname);
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
             else {

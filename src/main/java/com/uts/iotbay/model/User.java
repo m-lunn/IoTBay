@@ -17,7 +17,7 @@ public class User implements Serializable {
     String surname;
     String email;
 
-    public User(String fname, String surname, String email) {
+    /*public User(String fname, String surname, String email) {
         this.fname = fname;
         this.surname = surname;
         this.email = email;
@@ -27,7 +27,7 @@ public class User implements Serializable {
         this.fname = "";
         this.surname = "";
         this.email = email;
-    }
+    }*/
 
     public String getEmail() {
         return email;

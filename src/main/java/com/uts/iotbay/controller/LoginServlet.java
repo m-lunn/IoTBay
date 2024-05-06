@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+//import com.uts.iotbay.model.Customer;
+//import com.uts.iotbay.model.Staff;
 import com.uts.iotbay.model.User;
 import com.uts.iotbay.model.dao.DBManager;
 
@@ -45,20 +47,24 @@ public class LoginServlet extends HttpServlet {
         User user = null;    
         
         try {       
-            user = manager.findUser(email, password);
+            user = manager.findCustomer(email, password);
+            if (user == null) {
+                user = manager.findStaff(email, password);
+            }
         } 
         catch (SQLException ex) {           
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
         } 
 
-        if (user != null) {                     
-             session.setAttribute("user", user);
-             request.getRequestDispatcher("landing.jsp").include(request, response);
-        } 
-        else {                        
-             session.setAttribute("existErr", "Email or password is incorrect!");   
-             request.getRequestDispatcher("login.jsp").include(request, response);
+        if (user == null) {                        
+            session.setAttribute("existErr", "Email or password is incorrect!");   
+            request.getRequestDispatcher("login.jsp").include(request, response);
         }
+        else {                     
+            session.setAttribute("user", user);
+            request.getRequestDispatcher("landing.jsp").include(request, response);
+        }
+        
     }
 
     @Override
