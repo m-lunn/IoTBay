@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay</title>
+	<title>IoTBay | Landing</title>
 
 </head>
 
@@ -74,7 +74,7 @@
 				</div>
 		  
 		  		<div class="admin-content">
-					<button class="admin-btn"><a href="underconstruction.html" class="login-text">View Users</a></button>
+					<button class="admin-btn"><a href="sysadmin.jsp" class="login-text">View Users</a></button>
 				</div>
 				<br><br><br><br>
 				<button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
