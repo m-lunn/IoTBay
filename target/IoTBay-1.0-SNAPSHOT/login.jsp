@@ -20,11 +20,7 @@
 	<body>
         <%
         String existErr = (String) session.getAttribute("existErr");
-        session.setAttribute("emailErr", "Enter email");
-		session.setAttribute("passwordErr", "Enter password");
-        session.setAttribute("fnameErr", "Enter first name");
-        session.setAttribute("surnameErr", "Enter surname");
-        session.setAttribute("duplicateErr", "");
+        session.setAttribute("existErr", "");
         %>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>

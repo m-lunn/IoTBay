@@ -23,7 +23,11 @@
             String fnameErr = (String) session.getAttribute("fnameErr");
             String surnameErr = (String) session.getAttribute("surnameErr");
             String passwordErr = (String) session.getAttribute("passwordErr");
-            session.setAttribute("existErr", "");
+            session.setAttribute("emailErr", "Enter email");
+            session.setAttribute("passwordErr", "Enter password");
+            session.setAttribute("fnameErr", "Enter first name");
+            session.setAttribute("surnameErr", "Enter surname");
+            session.setAttribute("duplicateErr", "");
         %>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
