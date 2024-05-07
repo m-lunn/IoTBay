@@ -7,3 +7,5 @@ The DBManager class contains SQL queries that can be used throughout the entire 
 * The login and register jsp + servlet files have been modified to handle bad inputs during registration and login, introducing a new Utils class in the controller subfolder. Utils contains Regex pattern matching for this purpose.
 
 * Customer and Staff subclasses of User have been added to the model. The database schema SQL file and relevant jsp files have been modified to account for customer/staff. Landing page now checks if the user is customer or staff and displays content accordingly. 
+
+* Added the ability to log in as a system admin (email: "root", password: "iotbay").
