@@ -16,18 +16,18 @@ public class User implements Serializable {
     String fname;
     String surname;
     String email;
-
-    /*public User(String fname, String surname, String email) {
+    
+    public User(String fname, String surname, String email) {
         this.fname = fname;
         this.surname = surname;
         this.email = email;
     }
-    
+
     public User(String email) {
-        this.fname = "";
+        this.fname = email;
         this.surname = "";
         this.email = email;
-    }*/
+    }
 
     public String getEmail() {
         return email;

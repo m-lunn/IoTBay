@@ -5,6 +5,7 @@
 --%>
 <%@page import="com.uts.iotbay.model.User"%>
 <%@page import="com.uts.iotbay.model.Customer"%>
+<%@page import="com.uts.iotbay.model.Staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,7 @@
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="index.jsp"><span class="active-page">Home</span></a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp"><span class="active-page">Home</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
@@ -56,7 +57,7 @@
                 <button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
                 <br><br><br><br>
             </div>
-			<% } else { %>
+			<% } else if (user instanceof Staff) { %>
 			<div>
 				<h2 class="subheading-text">You are logged in as staff: </h2>
 				
@@ -65,15 +66,23 @@
 				<button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
 				<br><br><br><br>
 			</div>
+			<% } else { %>
+			<div>
+				<h2 class="subheading-text">You are logged in as system admin: </h2>
+				
+				<h2 class="email-text"><%= email%></h2>
+				<br>
+				<button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
+				<br><br><br><br>
+			</div>
 			<% } %>
-
 		</div>
      
 
         <div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="index.jsp"><span class="active-page">Home</span></a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp"><span class="active-page">Home</span></a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>
