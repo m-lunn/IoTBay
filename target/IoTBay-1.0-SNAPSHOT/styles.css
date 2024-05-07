@@ -84,7 +84,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover {
+.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, .admin-btn:hover {
     transform: scale(1.03);
 }
 
@@ -333,3 +333,22 @@ input[type="text"], input[type="password"] {
     color: #bdc3c7;
 }
 
+.admin-content {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 50px;
+}
+
+.admin-btn {
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    display: block;
+    border: none;
+    margin: auto;
+    transition: .2s; 
+    width: 45%;
+    height: 5vw;
+    border-radius: 25px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    min-width: 200px;
+    min-height: 100px;
+}

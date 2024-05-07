@@ -68,10 +68,15 @@
 			</div>
 			<% } else { %>
 			<div>
-				<h2 class="subheading-text">You are logged in as system admin: </h2>
-				
-				<h2 class="email-text"><%= email%></h2>
-				<br>
+				<div>
+					<h2 class="subheading-text">You are logged in as system admin: </h2>
+					<br><br><br><br>
+				</div>
+		  
+		  		<div class="admin-content">
+					<button class="admin-btn"><a href="underconstruction.html" class="login-text">View Users</a></button>
+				</div>
+				<br><br><br><br>
 				<button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
 				<br><br><br><br>
 			</div>
