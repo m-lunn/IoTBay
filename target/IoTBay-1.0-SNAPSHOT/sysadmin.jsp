@@ -27,53 +27,59 @@
             <!-- Logo created using DreamStudio by stability.ai -->
             <br><br><br>
         </div>
+        <form action="login", method="post" class="admin-search">
+            <input type="text" id="email" name="email" placeholder="Filter by email...">
+            <input type="text" id="phoneNo" name="phoneNo" placeholder="Filter by phone number...">
+            <td><button class="logout-btn"><a href="homedirect.jsp" class="login-text">Search</a></button></td>
+          </form>
+        <br><br>
         <table class="admin-table">
             <tr>
               <th></th>
+              <th>ID</th>
               <th>Email</th>
-              <th>Password</th>
               <th>Phone Number</th>
               <th>User Type</th>
               <th></th>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-              <td>Germany</td>
+              <td>1</td>
+              <td>name1@mail.com</td>
+              <td>04123456</td>
+              <td>Customer</td>
               <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-              <td>Germany</td>
+              <td>2</td>
+              <td>name2@mail.com</td>
+              <td>04123456</td>
+              <td>Staff</td>
               <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-              <td>Germany</td>
+              <td>6</td>
+              <td>name3@mail.com</td>
+              <td>04123456</td>
+              <td>Customer</td>
               <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-              <td>Germany</td>
+              <td>3</td>
+              <td>name4@mail.com</td>
+              <td>04123456</td>
+              <td>Customer</td>
               <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-              <td>Germany</td>
+              <td>4</td>
+              <td>name5@mail.com</td>
+              <td>04123456</td>
+              <td>Customer</td>
               <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
             </tr>
             <tr>

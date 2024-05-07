@@ -417,3 +417,11 @@ input[type="text"], input[type="password"] {
     border: 1px solid #990099;
     background-color: #741AB7;
   }
+
+  .admin-search {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 50px;
+    margin-inline: 100px;
+  }
