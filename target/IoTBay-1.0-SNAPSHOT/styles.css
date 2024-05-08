@@ -395,3 +395,10 @@ input[type="text"], input[type="password"] {
     bottom: 6%;
     color: #bdc3c7;
 }
+
+.error-msg {
+    font-family: "Space Mono";
+    text-align: center;
+    color: red;
+    font-size: larger;
+}
