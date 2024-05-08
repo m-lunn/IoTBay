@@ -1,10 +1,7 @@
-<%-- 
-    Document   : register
-    Created on : 14 Apr 2024, 12:20:29 am
-    Author     : michaellunn
---%>
 
+<%@page import="com.uts.iotbay.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +14,28 @@
 </head>
 
 	<body>
+
+        <%
+            String fname="";
+            String surname="";
+            String email="";
+            String password="";
+
+            String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+
+            User user = (User)request.getSession().getAttribute("user");
+            if(user != null) {
+                fname = user.getFname();
+                surname = user.getSurname();
+                email = user.getEmail();
+                password = user.getPassword();
+            }
+            else {
+                response.sendRedirect("homedirect.jsp");
+            }
+        %>
+
+
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -34,34 +53,49 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Sign Up</h1>
+				<h1 class="heading-text">Edit Details</h1>
 			</div>
 
-			<br><br><br>
+            <h2 class="subheading-text">You are logged in as: </h2>
+                
+            <h2 class="email-text"><%= email%></h2>
+
+            <p class="error-msg"><%=errorMsg%></p>
+
+			<br><br>
             <div class="form-container">
-                <form action="register" method="post">
+                <form action="editdetails" method="post" id="editdetails">
                     <div class="form-group">
-                        <label for="first name">First Name:</label>
-                        <input type="text" id="first name" name="fname" required>
+                        <label for="fname">First Name:</label>
+                        <input value="<%=fname%>" type="text" id="fname" name="fname" required>
                     </div>
                     <div class="form-group">
                         <label for="surname">Surname:</label>
-                        <input type="text" id="surname" name="surname" required>
+                        <input value="<%=surname%>" type="text" id="surname" name="surname" required>
                     </div>
                     <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                        <label for="password">Password:</label>
+                        <input value="<%=password%>" type="password" id="password" name="password" required>
                     </div>
                     <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+
                     </div>
-                    <br><br><br><br>
-                    <button type="submit" class="submit-btn">Create New Account</button>
-                    <a href="login.jsp" class="login-redirects">Already have an account?</a>
+                    <br><br><br>
+                    <button type="submit" form="editdetails" class="submit-btn">Update Details</button>
+
                 </form>
-              </div> 
-              <br><br><br>
+
+            </div> 
+            <br><br>
+
+            <div class="btn-row">
+                <form action="editdetails" method="get" id="delete">
+                    <button class="submit-btn" id="delete-btn" type="submit">Delete Account</button>
+                </form>
+            </div>
+            <br><br>
 		</div>
 
         <div class="footer">
