@@ -34,6 +34,19 @@ public class DBManager {
         return new Users(users);
     }
 
+    public ArrayList<Integer> getIds() throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ResultSet rs = st.executeQuery(String.format("SELECT customer_id FROM Customers"));
+        while (rs.next()) {
+            ids.add(rs.getInt(1));
+        }
+        rs = st.executeQuery(String.format("SELECT staff_id FROM Staff"));
+        while (rs.next()) {
+            ids.add(rs.getInt(1));
+        }
+        return ids;
+    }
+
     public User findCustomer(int id) throws SQLException {
         ResultSet rs = st.executeQuery(String.format("SELECT * FROM Customers WHERE customer_id='%s'", id));
 

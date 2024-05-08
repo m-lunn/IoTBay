@@ -1,6 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.uts.iotbay.model.Users"%>
+<%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Customer"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.io.IOException"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +18,7 @@
 <body>
     <%
       Users users = (Users)request.getSession().getAttribute("users");
+      ArrayList<Integer> ids = (ArrayList<Integer>)request.getSession().getAttribute("ids");
     %>
     <div class="backdrop">
         <div class="button-wrapper"></div>
@@ -47,57 +51,31 @@
               <th>User Type</th>
               <th></th>
             </tr>
+            <% 
+              int i = 0;
+              for (User user : users.getUsers()) {
+                int id = ids.get(i);
+                String email = user.getEmail();
+                String phoneNo = user.getPhoneNo();
+                String type = "";
+                if (user instanceof Customer) {
+                  type = "Customer";
+                }
+                else {
+                  type = "Staff";
+                }
+            %>
             <tr>
               <td><button class="x-btn">x</button></td>
-              <td>1</td>
-              <td>m.lunn54@gmail.com</td>
-              <td>04123456</td>
-              <td>Customer</td>
-              <form action="view-user", method="post">
-                <td><button class="submit-btn2" type="submit">View</button></td>
-              </form>
-            </tr>
-
-            <tr>
-              <td><button class="x-btn">x</button></td>
-              <td>2</td>
-              <td>name2@mail.com</td>
-              <td>04123456</td>
-              <td>Staff</td>
-              <form action="view-user", method="post">
-                <td><button class="submit-btn2" onclick="">View</button></td>
-              </form>
-            </tr>
-            <tr>
-              <td><button class="x-btn">x</button></td>
-              <td>6</td>
-              <td>name3@mail.com</td>
-              <td>04123456</td>
-              <td>Customer</td>
+              <td><%= id%></td>
+              <td><%= email%></td>
+              <td><%= phoneNo%></td>
+              <td><%= type%></td>
               <form action="view-user", method="post">
                 <td><button class="submit-btn2" onclick="">View</button></td>
               </form>
             </tr>
-            <tr>
-              <td><button class="x-btn">x</button></td>
-              <td>3</td>
-              <td>name4@mail.com</td>
-              <td>04123456</td>
-              <td>Customer</td>
-              <form action="view-user", method="post">
-                <td><button class="submit-btn2" onclick="">View</button></td>
-              </form>
-            </tr>
-            <tr>
-              <td><button class="x-btn">x</button></td>
-              <td>4</td>
-              <td>name5@mail.com</td>
-              <td>04123456</td>
-              <td>Customer</td>
-              <form action="view-user", method="post">
-                <td><button class="submit-btn2" onclick="">View</button></td>
-              </form>
-            </tr>
+            <% i++; }%>
             <tr>
                 <td></td>
                 <td></td>
