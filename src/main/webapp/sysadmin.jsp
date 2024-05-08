@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.uts.iotbay.model.Users"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +13,9 @@
 </head>
 
 <body>
+    <%
+      Users users = (Users)request.getSession().getAttribute("users");
+    %>
     <div class="backdrop">
         <div class="button-wrapper"></div>
         <div class="buttons">
@@ -23,15 +28,15 @@
         </div>
         <br>
         <div class="logo">
-            <img src="./assets/logo.png" id="logo" alt="logo">
-            <!-- Logo created using DreamStudio by stability.ai -->
-            <br><br><br>
+          <img src="./assets/logo.png" id="logo" alt="logo">
+          <!-- Logo created using DreamStudio by stability.ai -->
+          <br><br><br>
         </div>
         <form action="login", method="post" class="admin-search">
-            <input type="text" id="email" name="email" placeholder="Filter by email...">
-            <input type="text" id="phoneNo" name="phoneNo" placeholder="Filter by phone number...">
-            <td><button class="logout-btn"><a href="homedirect.jsp" class="login-text">Search</a></button></td>
-          </form>
+          <input type="text" id="email" name="email" placeholder="Filter by email...">
+          <input type="text" id="phoneNo" name="phoneNo" placeholder="Filter by phone number...">
+          <td><button class="logout-btn"><a href="homedirect.jsp" class="login-text">Search</a></button></td>
+        </form>
         <br><br>
         <table class="admin-table">
             <tr>
@@ -45,18 +50,23 @@
             <tr>
               <td><button class="x-btn">x</button></td>
               <td>1</td>
-              <td>name1@mail.com</td>
+              <td>m.lunn54@gmail.com</td>
               <td>04123456</td>
               <td>Customer</td>
-              <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
+              <form action="view-user", method="post">
+                <td><button class="submit-btn2" type="submit">View</button></td>
+              </form>
             </tr>
+
             <tr>
               <td><button class="x-btn">x</button></td>
               <td>2</td>
               <td>name2@mail.com</td>
               <td>04123456</td>
               <td>Staff</td>
-              <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
+              <form action="view-user", method="post">
+                <td><button class="submit-btn2" onclick="">View</button></td>
+              </form>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
@@ -64,7 +74,9 @@
               <td>name3@mail.com</td>
               <td>04123456</td>
               <td>Customer</td>
-              <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
+              <form action="view-user", method="post">
+                <td><button class="submit-btn2" onclick="">View</button></td>
+              </form>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
@@ -72,7 +84,9 @@
               <td>name4@mail.com</td>
               <td>04123456</td>
               <td>Customer</td>
-              <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
+              <form action="view-user", method="post">
+                <td><button class="submit-btn2" onclick="">View</button></td>
+              </form>
             </tr>
             <tr>
               <td><button class="x-btn">x</button></td>
@@ -80,7 +94,9 @@
               <td>name5@mail.com</td>
               <td>04123456</td>
               <td>Customer</td>
-              <td><a href="logout.jsp"></a><button class="submit-btn2">View</button></a></td>
+              <form action="view-user", method="post">
+                <td><button class="submit-btn2" onclick="">View</button></td>
+              </form>
             </tr>
             <tr>
                 <td></td>
@@ -88,7 +104,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><a href="logout.jsp"></a><button class="submit-btn2">Add</button></a></td>
+                <td><button class="submit-btn2">Add</button></td>
               </tr>
         </table>
         <br><br><br><br>

@@ -35,6 +35,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String fname = request.getParameter("fname");
         String surname = request.getParameter("surname");
+        String phoneNo = request.getParameter("phoneNo");
         DBManager manager = (DBManager) session.getAttribute("manager");
 
         try {
@@ -44,38 +45,45 @@ public class RegisterServlet extends HttpServlet {
                 valid = false;   
             }
             else {
-                session.setAttribute("duplicateErr", "");
+                //session.setAttribute("duplicateErr", "");
             }
             if (!Utils.validateEmail(email)) {
                 session.setAttribute("emailErr", "Invalid email! Please enter a valid email.");
                 valid = false;   
             }
             else {
-                session.setAttribute("emailErr", "Enter email");
+                //session.setAttribute("emailErr", "Enter email");
             }
             if (!Utils.validateName(fname)) {
                 session.setAttribute("fnameErr", "Invalid first name! Please enter a valid first name.");
                 valid = false;   
             }
             else {
-                session.setAttribute("fnameErr", "Enter first name");
+                //session.setAttribute("fnameErr", "Enter first name");
             }
             if (!Utils.validateName(surname)) {
                 session.setAttribute("surnameErr", "Invalid surname! Please enter a valid surname.");
                 valid = false;   
             }
             else {
-                session.setAttribute("surnameErr", "Enter surname");
+                //session.setAttribute("surnameErr", "Enter surname");
+            }
+            if (!Utils.validatePhoneNo(phoneNo)) {
+                session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid phone number.");
+                valid = false;
+            }
+            else {
+                //session.setAttribute("phoneErr", "Enter phone number");
             }
             if (!Utils.validatePassword(password)) {
                 session.setAttribute("passwordErr", "Invalid password! Please enter at least 4 characters.");
                 valid = false;   
             }
             else {
-                session.setAttribute("passwordErr", "Enter password");
+                //session.setAttribute("passwordErr", "Enter password");
             }
             if (valid) {
-                manager.addCustomer(email, password, fname, surname);
+                manager.addCustomer(email, password, fname, surname, phoneNo);
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
             else {

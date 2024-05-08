@@ -73,9 +73,9 @@
 					<br><br><br><br>
 				</div>
 		  
-		  		<div class="admin-content">
-					<button class="admin-btn"><a href="sysadmin.jsp" class="login-text">View Users</a></button>
-				</div>
+		  		<form class="admin-content" action="sysadmin", method="post">
+					<button type="submit" class="admin-btn">View Users</button>
+				</form>
 				<br><br><br><br>
 				<button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
 				<br><br><br><br>

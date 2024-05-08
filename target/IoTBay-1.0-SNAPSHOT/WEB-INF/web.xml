@@ -34,6 +34,22 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>View-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ViewUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>View-User</servlet-name>
+        <url-pattern>/view-user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SysAdmin</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.SysAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SysAdmin</servlet-name>
+        <url-pattern>/sysadmin</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

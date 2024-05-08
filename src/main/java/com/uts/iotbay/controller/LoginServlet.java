@@ -15,8 +15,6 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-//import com.uts.iotbay.model.Customer;
-//import com.uts.iotbay.model.Staff;
 import com.uts.iotbay.model.User;
 import com.uts.iotbay.model.dao.DBManager;
 

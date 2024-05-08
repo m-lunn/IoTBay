@@ -351,6 +351,11 @@ input[type="text"], input[type="password"] {
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
     min-width: 200px;
     min-height: 100px;
+    color: white;
+    font-size: 200%;
+    font-family: "Space Mono";
+    font-weight: bold;
+    line-height: 5vw;
 }
 
 .admin-table {
@@ -378,17 +383,8 @@ input[type="text"], input[type="password"] {
     padding: 8px;
   }
   
-  .admin-table>thead>tr:not(:last-child)>th,
-  .admin-table>thead>tr:not(:last-child)>td,
-  .admin-table>tbody>tr:not(:last-child)>th,
-  .admin-table>tbody>tr:not(:last-child)>td,
-  .admin-table>tfoot>tr:not(:last-child)>th,
-  .admin-table>tfoot>tr:not(:last-child)>td,
-  .admin-table>tr:not(:last-child)>td,
-  .admin-table>tr:not(:last-child)>th,
-  .admin-table>thead:not(:last-child),
-  .admin-table>tbody:not(:last-child),
-  .admin-table>tfoot:not(:last-child) {
+  .admin-table tr:not(:last-child)>td,
+  .admin-table tr:not(:last-child)>th {
    border-bottom: var(--border);
   }
   

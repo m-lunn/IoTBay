@@ -37,10 +37,11 @@ create table Staff (
     staff_password varchar(50),
     staff_fname varchar(50),
 	staff_surname varchar(50),
+    staff_phoneNo varchar(8),
     primary key (staff_id));
 
-insert into Staff (staff_email, staff_password, staff_fname, staff_surname) values
-("staff@gmail.com","staff", "StaffFName", "StaffSurname");
+insert into Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo) values
+("staff@gmail.com","staff", "StaffFName", "StaffSurname", "04854123");
 
 create table Customers (
     customer_id int NOT NULL auto_increment,
@@ -48,10 +49,11 @@ create table Customers (
     customer_password varchar(50),
     customer_fname varchar(50),
 	customer_surname varchar(50),
+    customer_phoneNo varchar(8),
     primary key (customer_id));
 
-insert into customers (customer_email, customer_password, customer_fname, customer_surname) values
-("m.lunn54@gmail.com","123", "Michael", "Lunn"),
-("mickeymouse@gmail.com","123", "Mickey", "Mouse"),
-("donaldduck@gmail.com","123", "Donald", "Duck");
+insert into customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo) values
+("m.lunn54@gmail.com","123", "Michael", "Lunn", "04123456"),
+("mickeymouse@gmail.com","123", "Mickey", "Mouse", "04241212"),
+("donaldduck@gmail.com","123", "Donald", "Duck", "04215542");
 

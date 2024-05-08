@@ -6,7 +6,8 @@ import java.util.regex.Pattern;
 public class Utils {
     private static String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
     private static String namePattern = "[A-Z][a-z]*";       
-    private static String passwordPattern = "[a-zA-Z0-9]{4,}";       
+    private static String passwordPattern = "[a-zA-Z0-9]{4,}";  
+    private static String phonePattern = "04[0-9]{8}$";     
               
     public Utils(){}       
 
@@ -27,5 +28,9 @@ public class Utils {
 
     public static boolean validatePassword(String password){
        return validate(passwordPattern,password); 
+    }
+
+    public static boolean validatePhoneNo(String phoneNo) {
+      return validate(phonePattern, phoneNo);
     }
 }

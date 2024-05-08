@@ -23,10 +23,12 @@
             String fnameErr = (String) session.getAttribute("fnameErr");
             String surnameErr = (String) session.getAttribute("surnameErr");
             String passwordErr = (String) session.getAttribute("passwordErr");
+            String phoneErr = (String) session.getAttribute("phoneErr");
             session.setAttribute("emailErr", "Enter email");
             session.setAttribute("passwordErr", "Enter password");
             session.setAttribute("fnameErr", "Enter first name");
             session.setAttribute("surnameErr", "Enter surname");
+            session.setAttribute("phoneErr", "Enter phone number");
             session.setAttribute("duplicateErr", "");
         %>
 		<div class="backdrop">
@@ -62,12 +64,16 @@
                         <input type="text" id="surname" name="surname" placeholder="<%=(surnameErr != null ? surnameErr : "Enter surname")%>" required>
                     </div>
                     <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" placeholder="<%=(emailErr != null ? emailErr : "Enter email")%>" required>
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" placeholder="<%=(emailErr != null ? emailErr : "Enter email")%>" required>
                     </div>
                     <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Enter password")%>" required>
+                        <label for="phoneNo">Phone Number:</label>
+                        <input type="text" id="phoneNo" name="phoneNo" placeholder="<%=(phoneErr != null ? phoneErr : "Enter phone number")%>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Enter password")%>" required>
                     </div>
                     <br><br><br><br>
                     <button type="submit" class="submit-btn">Create New Account</button>

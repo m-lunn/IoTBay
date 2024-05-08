@@ -16,17 +16,20 @@ public class User implements Serializable {
     String fname;
     String surname;
     String email;
+    String phoneNo;
     
-    public User(String fname, String surname, String email) {
+    public User(String fname, String surname, String email, String phoneNo) {
         this.fname = fname;
         this.surname = surname;
         this.email = email;
+        this.phoneNo = phoneNo;
     }
 
     public User(String email) {
         this.fname = email;
         this.surname = "";
         this.email = email;
+        this.phoneNo = "";
     }
 
     public String getEmail() {
@@ -49,6 +52,12 @@ public class User implements Serializable {
         this.surname = surname;
     }
     
-    
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
     
 }
