@@ -9,3 +9,5 @@ The DBManager class contains SQL queries that can be used throughout the entire 
 * Customer and Staff subclasses of User have been added to the model. The database schema SQL file and relevant jsp files have been modified to account for customer/staff. Landing page now checks if the user is customer or staff and displays content accordingly. 
 
 * Added the ability to log in as a system admin (email: "root", password: "iotbay").
+
+* System admin can view all users registered in the database of both customer and staff types in a table format. The table includes filtering options by email/phone number (not implemented), the option to delete table entries (not implemented), the option to view users in more detail (not implemented) and the option to add users (not implemented).
