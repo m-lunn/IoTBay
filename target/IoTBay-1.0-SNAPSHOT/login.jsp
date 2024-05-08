@@ -48,9 +48,11 @@
 				<h1 class="heading-text">Welcome Back!</h1>
 			</div>
 
-            <p class="error-msg"> <%= errorMsg%> </p>
+            
 
-			<br><br><br>
+			<br><br>
+            <p class="error-msg"> <%= errorMsg%> </p>
+            <br>
             <div class="form-container">
                 <form action="login", method="post">
                     <div class="form-group">
