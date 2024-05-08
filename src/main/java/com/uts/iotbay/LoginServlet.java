@@ -78,6 +78,7 @@ public class LoginServlet extends HttpServlet {
                 String dbPassword = rs.getString("user_password");
 
                 if(!password.equals(dbPassword)) {
+                    request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
                     String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
                     PreparedStatement logStatement = con.prepareStatement(sqlInsert);
                     logStatement.setInt(1, userId);
@@ -90,17 +91,18 @@ public class LoginServlet extends HttpServlet {
                     PreparedStatement logStatement = con.prepareStatement(sqlInsert);
                     logStatement.setInt(1, userId);
                     logStatement.executeUpdate();
-
+                    request.getSession().setAttribute("errorMsg", "");
                     String fname = rs.getString("user_fname");
                     String surname = rs.getString("user_surname");
                     email = rs.getString("user_email");
-                    User user = new User(fname, surname, email);
+                    User user = new User(fname, surname, email, password);
                     request.getSession().setAttribute("user", user);
                     RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
                     rd.forward(request, response);
                 }
             }
             else {
+                request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 rd.forward(request, response);
             }
