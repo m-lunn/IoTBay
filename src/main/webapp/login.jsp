@@ -53,7 +53,7 @@
 			<br><br>
             <p class="error-msg"> <%= errorMsg%> </p>
             <br>
-            <div class="form-container">
+            <div class="form-container" id="login-form-container">
                 <form action="login", method="post">
                     <div class="form-group">
                     <label for="email">Email:</label>

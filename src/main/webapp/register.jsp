@@ -53,6 +53,10 @@
                     <input type="text" id="email" name="email" required>
                     </div>
                     <div class="form-group">
+                        <label for="phone">Mobile Number (Optional):</label>
+                        <input type="text" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                     </div>

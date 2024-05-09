@@ -47,7 +47,9 @@
                 
                 <h2 class="email-text"><%= email%></h2>
                 <br>
-                <button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
+				<form action="logout" method="post" id="logout">
+                <button class="logout-btn" type="submit"><p class="login-text">Logout</p></button>
+				</form>
                 <br><br><br><br>
             </div>
 
