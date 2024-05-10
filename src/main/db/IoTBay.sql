@@ -38,10 +38,11 @@ create table Staff (
     staff_fname varchar(50),
 	staff_surname varchar(50),
     staff_phoneNo varchar(8),
+    staff_isactive BOOLEAN,
     primary key (staff_id));
 
-insert into Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo) values
-("staff@gmail.com","staff", "StaffFName", "StaffSurname", "0485412321");
+insert into Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo, staff_isactive) values
+("staff@gmail.com","staff", "StaffFName", "StaffSurname", "0485412321", 1);
 
 create table Customers (
     customer_id int NOT NULL auto_increment,
@@ -50,10 +51,11 @@ create table Customers (
     customer_fname varchar(50),
 	customer_surname varchar(50),
     customer_phoneNo varchar(8),
+    customer_isactive BOOLEAN,
     primary key (customer_id));
 
-insert into customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo) values
-("m.lunn54@gmail.com","123", "Michael", "Lunn", "0412345645"),
-("mickeymouse@gmail.com","123", "Mickey", "Mouse", "0424121232"),
-("donaldduck@gmail.com","123", "Donald", "Duck", "0421554266");
+insert into customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo, customer_isactive) values
+("m.lunn54@gmail.com","123", "Michael", "Lunn", "0412345645", 1),
+("mickeymouse@gmail.com","123", "Mickey", "Mouse", "0424121232", 1),
+("donaldduck@gmail.com","123", "Donald", "Duck", "0421554266", 1);
 

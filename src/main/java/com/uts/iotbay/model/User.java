@@ -17,6 +17,7 @@ public class User implements Serializable {
     String surname;
     String email;
     String phoneNo;
+    boolean isActive = true;
     
     public User(String fname, String surname, String email, String phoneNo) {
         this.fname = fname;
@@ -59,5 +60,4 @@ public class User implements Serializable {
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
-    
 }

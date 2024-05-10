@@ -2,7 +2,6 @@ package com.uts.iotbay.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import com.uts.iotbay.model.User;
 
 public class Users implements Serializable {
     ArrayList<User> users;
