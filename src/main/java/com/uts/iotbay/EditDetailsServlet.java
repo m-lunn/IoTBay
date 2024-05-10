@@ -58,7 +58,7 @@ public class EditDetailsServlet extends HttpServlet {
             
             User deleteUser = (User)request.getSession().getAttribute("user");
             String email = deleteUser.getEmail();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM Users WHERE user_email = ?");
+            PreparedStatement ps = con.prepareStatement("UPDATE USERS SET user_active = 0 WHERE user_email = ?");
             ps.setString(1, email);
             ps.executeUpdate();
 

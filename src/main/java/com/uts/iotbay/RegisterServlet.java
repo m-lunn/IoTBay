@@ -70,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
             String surname = request.getParameter("surname");
             String phone = request.getParameter("phone");
 
-            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(user_email, user_password, user_fname, user_surname, user_type, user_phone) VALUES (?, ?, ?, ?, \"C\",?)");
+            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(user_email, user_password, user_fname, user_surname, user_type, user_phone, user_active) VALUES (?, ?, ?, ?, \"C\",?,1)");
             createUser.setString(1, email);
             createUser.setString(2, password);
             createUser.setString(3, fname);

@@ -401,3 +401,18 @@ input[type="text"], input[type="password"] {
     color: red;
     font-size: larger;
 }
+
+#login-form-container {
+    width: 450px;
+    min-width: 450px;
+}
+
+#register-form-container {
+    width: 700px;
+    min-width: 700px;
+}
+
+#editdetails-form-container {
+    width: 500px;
+    min-width: 500px;
+}

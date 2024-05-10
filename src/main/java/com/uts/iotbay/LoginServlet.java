@@ -76,8 +76,9 @@ public class LoginServlet extends HttpServlet {
 
                 int userId = rs.getInt("user_id");
                 String dbPassword = rs.getString("user_password");
+                int activeUser = rs.getInt("user_active");
 
-                if(!password.equals(dbPassword)) {
+                if(!password.equals(dbPassword) || activeUser != 1) {
                     request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
                     String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
                     PreparedStatement logStatement = con.prepareStatement(sqlInsert);

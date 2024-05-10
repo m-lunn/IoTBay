@@ -293,18 +293,13 @@ a {
     display: flex;
     justify-content: center;
     background-image: linear-gradient(to right top, #40404d, #414050, #434153, #454156, #474159, #473f59, #463e59, #463c59, #433957, #403555, #3e3252, #3b2f50);
-    width: 700px;
+    width: 30%;
     border-radius: 30px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
     margin-left: auto;
     margin-right: auto;
     min-width: 700px;
     min-height: 100%;
-}
-
-#login-form-container {
-    width:500px;
-    min-width: 500px;
 }
 
 
@@ -405,4 +400,19 @@ input[type="text"], input[type="password"] {
     text-align: center;
     color: red;
     font-size: larger;
+}
+
+#login-form-container {
+    width: 450px;
+    min-width: 450px;
+}
+
+#register-form-container {
+    width: 700px;
+    min-width: 700px;
+}
+
+#editdetails-form-container {
+    width: 500px;
+    min-width: 500px;
 }

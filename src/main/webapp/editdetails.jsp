@@ -63,7 +63,7 @@
             <p class="error-msg"><%=errorMsg%></p>
 
 			<br><br>
-            <div class="form-container">
+            <div class="form-container" id="editdetails-form-container">
                 <form action="editdetails" method="post" id="editdetails">
                     <div class="form-group">
                         <label for="fname">First Name:</label>
