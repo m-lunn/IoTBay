@@ -73,7 +73,7 @@
 					<br><br><br><br>
 				</div>
 		  
-		  		<form class="admin-content" action="sysadmin", method="post">
+		  		<form class="admin-content" action="view-users", method="post">
 					<button type="submit" class="admin-btn">View Users</button>
 				</form>
 				<br><br><br><br>

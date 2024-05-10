@@ -113,6 +113,15 @@ public class DBManager {
         st.executeUpdate(String.format("UPDATE Staff SET staff_email='%s', staff_password='%s', staff_fname='%s', staff_surname='%s', staff_phoneNo='%s' WHERE staff_email='%s' AMD staff_password='%s')", email, password, fName, surname, phoneNo, email, password));
     } 
 
+    public void deleteUser(int id, String type) throws SQLException{       
+        if (type.equals("Customer")) {
+            st.executeUpdate(String.format("DELETE FROM Customers WHERE customer_id='%s'", id));
+        }
+        else {
+            st.executeUpdate(String.format("DELETE FROM Staff WHERE staff_id='%s'", id));
+        }
+    }
+
     public void deleteCustomer(String email, String password) throws SQLException{       
         st.executeUpdate(String.format("DELETE FROM Customers WHERE customer_email='%s' AND customer_password='%s'", email, password));
     }

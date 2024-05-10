@@ -43,12 +43,20 @@
         <url-pattern>/view-user</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>SysAdmin</servlet-name>
-        <servlet-class>com.uts.iotbay.controller.SysAdminServlet</servlet-class>
+        <servlet-name>View-Users</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ViewUsersServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SysAdmin</servlet-name>
-        <url-pattern>/sysadmin</url-pattern>
+        <servlet-name>View-Users</servlet-name>
+        <url-pattern>/view-users</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Delete-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Delete-User</servlet-name>
+        <url-pattern>/delete-user</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
