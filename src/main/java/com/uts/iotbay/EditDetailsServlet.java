@@ -8,9 +8,7 @@ package com.uts.iotbay;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +16,6 @@ import jakarta.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 /**
  *
@@ -58,7 +55,7 @@ public class EditDetailsServlet extends HttpServlet {
             
             User deleteUser = (User)request.getSession().getAttribute("user");
             String email = deleteUser.getEmail();
-            PreparedStatement ps = con.prepareStatement("UPDATE USERS SET user_active = 0 WHERE user_email = ?");
+            PreparedStatement ps = con.prepareStatement("UPDATE Users SET user_active = 0 WHERE user_email = ?");
             ps.setString(1, email);
             ps.executeUpdate();
 

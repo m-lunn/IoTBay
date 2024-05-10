@@ -85,7 +85,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover {
+.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover {
     transform: scale(1.03);
 }
 
@@ -220,9 +220,6 @@ a {
     position: absolute;
     transition: .2s;
 }
-
-
-
 
 
 #logo {
@@ -415,4 +412,44 @@ input[type="text"], input[type="password"] {
 #editdetails-form-container {
     width: 500px;
     min-width: 500px;
+}
+
+.access-log {
+    font-family: "Space Mono";
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+}
+
+.access-logs-container {
+    text-align: center;
+}
+
+.date-range {
+    text-align: center;
+}
+
+.date-range-form-input {
+    display: inline;
+    margin: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.date-range-form-label {
+    display:inline;
+    margin: 10px;
+    font-size: 28px;
+}
+
+#date-range-submit {
+    font-family: "Space Mono";
+    padding: 10px;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
 }
