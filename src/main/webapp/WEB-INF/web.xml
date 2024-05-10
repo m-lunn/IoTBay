@@ -44,6 +44,15 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccessLogs</servlet-name>
+        <servlet-class>com.uts.iotbay.AccessLogsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccessLogs</servlet-name>
+        <url-pattern>/accesslogs</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>homedirect.jsp</welcome-file>
     </welcome-file-list>
