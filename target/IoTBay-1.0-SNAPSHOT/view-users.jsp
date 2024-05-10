@@ -54,6 +54,7 @@
               <th>Email</th>
               <th>Phone Number</th>
               <th>User Type</th>
+              <th>Status</th>
               <th></th>
             </tr>
             <% 
@@ -63,11 +64,18 @@
                 String email = user.getEmail();
                 String phoneNo = user.getPhoneNo();
                 String type = "";
+                String status = "";
                 if (user instanceof Customer) {
                   type = "Customer";
                 }
                 else {
                   type = "Staff";
+                }
+                if (user.isActive()) {
+                  status = "Active";
+                }
+                else {
+                  status = "Inactive";
                 }
             %>
             <tr>
@@ -80,6 +88,7 @@
               <td><%= email%></td>
               <td><%= phoneNo%></td>
               <td><%= type%></td>
+              <td><%= status%></td>
               <form action="view-user", method="post">
                 <input type="hidden" name="id" value="<%= id%>">
                 <input type="hidden" name="type" value="<%= type%>">
@@ -88,6 +97,7 @@
             </tr>
             <% i++; }%>
             <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

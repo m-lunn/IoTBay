@@ -106,10 +106,17 @@
 						<tr>
 							<td><label for="status">User Status:</label></td>
 							<td>
+								<% if (user.isActive()) { %>
 								<select name="status" id="status">
-									<option value="true">Active</option>
+									<option selected value="true">Active</option>
 									<option value="false">Inactive</option>
 								</select>
+								<% } else {%>
+								<select name="status" id="status">
+									<option value="true">Active</option>
+									<option selected value="false">Inactive</option>
+								</select>
+								<% }%>
 							</td>
 					  	</tr>
 						<tr>

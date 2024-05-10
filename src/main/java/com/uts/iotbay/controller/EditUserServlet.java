@@ -25,6 +25,7 @@ public class EditUserServlet extends HttpServlet {
         String fname = request.getParameter("fname");
         String surname = request.getParameter("surname");
         String phoneNo = request.getParameter("phoneNo");
+        int isActive = Boolean.parseBoolean(request.getParameter("status"))? 1 : 0;
         DBManager manager = (DBManager) session.getAttribute("manager");
 
         try {
@@ -50,7 +51,7 @@ public class EditUserServlet extends HttpServlet {
                 valid = false;   
             }
             if (valid) {
-                manager.updateUser(id, type, email, password, fname, surname, phoneNo);
+                manager.updateUser(id, type, email, password, fname, surname, phoneNo, isActive);
                 request.getRequestDispatcher("view-users").include(request, response);
             }
             else {

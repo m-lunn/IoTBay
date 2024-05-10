@@ -17,13 +17,22 @@ public class User implements Serializable {
     String surname;
     String email;
     String phoneNo;
-    boolean isActive = true;
+    boolean isActive;
     
+    public User(String fname, String surname, String email, String phoneNo, Boolean isActive) {
+        this.fname = fname;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNo = phoneNo;
+        this.isActive = isActive;
+    }
+
     public User(String fname, String surname, String email, String phoneNo) {
         this.fname = fname;
         this.surname = surname;
         this.email = email;
         this.phoneNo = phoneNo;
+        isActive = true;
     }
 
     public User(String email) {
@@ -31,6 +40,7 @@ public class User implements Serializable {
         this.surname = "";
         this.email = email;
         this.phoneNo = "";
+        isActive = true;
     }
 
     public String getEmail() {
@@ -59,5 +69,9 @@ public class User implements Serializable {
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
+    }
+
+    public Boolean isActive() {
+        return isActive;
     }
 }
