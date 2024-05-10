@@ -16,5 +16,6 @@
             "command": "./utils/shutdown.sh",
         }
     ]
-}
+},
+"java.configuration.updateBuildConfiguration": "automatic"
 }

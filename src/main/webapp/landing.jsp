@@ -15,25 +15,21 @@
 	<title>IoTBay</title>
 
 </head>
-
+	<%
+		User user = (User)request.getSession().getAttribute("user");
+		String fname = user.getFname();
+		String email = user.getEmail();
+	%>
 	<body>
-            
-            <%
-                User user = (User)request.getSession().getAttribute("user");
-                String fname = user.getFname();
-                String email = user.getEmail();
-            %>
-            
-            
-            
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="index.jsp"><span class="active-page">Home</span></a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Home</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.html"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
 			<br>
@@ -51,7 +47,9 @@
                 
                 <h2 class="email-text"><%= email%></h2>
                 <br>
-                <button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
+				<form action="logout" method="post" id="logout">
+                <button class="logout-btn" type="submit"><p class="login-text">Logout</p></button>
+				</form>
                 <br><br><br><br>
             </div>
 
@@ -61,7 +59,7 @@
         <div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="index.jsp"><span class="active-page">Home</span></a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="#"><span class="active-page">Home</span></a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>

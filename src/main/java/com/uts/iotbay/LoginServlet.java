@@ -68,17 +68,43 @@ public class LoginServlet extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            PreparedStatement ps = con.prepareStatement("select * from users where user_email=? and user_password=?");
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                String fname = rs.getString("user_fname");
-                String surname = rs.getString("user_surname");
-                email = rs.getString("user_email");
-                User user = new User(fname, surname, email);
-                request.getSession().setAttribute("user", user);
-                RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
+            PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
+            findUser.setString(1, email);
+            ResultSet rs = findUser.executeQuery();
+
+            if(rs.next()) {
+
+                int userId = rs.getInt("user_id");
+                String dbPassword = rs.getString("user_password");
+                int activeUser = rs.getInt("user_active");
+
+                if(!password.equals(dbPassword) || activeUser != 1) {
+                    request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
+                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
+                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
+                    logStatement.setInt(1, userId);
+                    logStatement.executeUpdate();
+                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                    rd.forward(request, response);
+                }
+                else {
+                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
+                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
+                    logStatement.setInt(1, userId);
+                    logStatement.executeUpdate();
+                    request.getSession().setAttribute("errorMsg", "");
+                    String fname = rs.getString("user_fname");
+                    String surname = rs.getString("user_surname");
+                    email = rs.getString("user_email");
+                    User user = new User(fname, surname, email, password);
+                    request.getSession().setAttribute("user", user);
+                    RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
+                    rd.forward(request, response);
+                }
+            }
+            else {
+                request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 rd.forward(request, response);
             }
         }
