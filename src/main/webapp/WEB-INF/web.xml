@@ -58,6 +58,14 @@
         <servlet-name>Delete-User</servlet-name>
         <url-pattern>/delete-user</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Edit-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit-User</servlet-name>
+        <url-pattern>/edit-user</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

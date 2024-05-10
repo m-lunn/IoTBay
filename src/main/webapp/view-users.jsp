@@ -19,6 +19,11 @@
     <%
       Users users = (Users)request.getSession().getAttribute("users");
       ArrayList<Integer> ids = (ArrayList<Integer>)request.getSession().getAttribute("ids");
+      session.setAttribute("emailErr", "");
+      session.setAttribute("passwordErr", "");
+      session.setAttribute("fnameErr", "");
+      session.setAttribute("surnameErr", "");
+      session.setAttribute("phoneErr", "");
     %>
     <div class="backdrop">
         <div class="button-wrapper"></div>

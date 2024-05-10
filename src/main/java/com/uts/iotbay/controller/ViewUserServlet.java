@@ -38,6 +38,8 @@ public class ViewUserServlet extends HttpServlet {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
 
+        session.setAttribute("id", String.valueOf(id));
+        session.setAttribute("type", type);
         session.setAttribute("target-user", user);
         request.getRequestDispatcher("view-user.jsp").include(request, response);
     }

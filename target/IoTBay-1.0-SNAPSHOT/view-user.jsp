@@ -17,9 +17,23 @@
             
             <%
                 User user = (User)request.getSession().getAttribute("target-user");
+				String id = (String)request.getSession().getAttribute("id");
+				String type = (String)request.getSession().getAttribute("type");
                 String fname = user.getFname();
                 String surname = user.getSurname();
                 String email = user.getEmail();
+				String phoneNo = user.getPhoneNo();
+
+				String emailErr = (String) session.getAttribute("emailErr");
+				String fnameErr = (String) session.getAttribute("fnameErr");
+				String surnameErr = (String) session.getAttribute("surnameErr");
+				String passwordErr = (String) session.getAttribute("passwordErr");
+				String phoneErr = (String) session.getAttribute("phoneErr");
+				session.setAttribute("emailErr", "");
+				session.setAttribute("passwordErr", "");
+				session.setAttribute("fnameErr", "");
+				session.setAttribute("surnameErr", "");
+				session.setAttribute("phoneErr", "");
             %>
             
             
@@ -41,18 +55,83 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">You are viewing the account of: <%= fname%> <%= surname%>!</h1>
+				<h1 class="heading-text">Viewing user: <%= fname%> <%= surname%></h1>
 			</div>
             <br>
-            <div>
-                <h2 class="subheading-text">Email: </h2>
-                <h2 class="email-text"><%= email%></h2>
-                <br>
-                <button class="logout-btn"><a href="logout.jsp" class="login-text">Logout</a></button>
-                <br><br><br><br>
-            </div>
+
+			<form action="edit-user" method="post">
+				<div class="details">
+					<h2 class="heading-text">Details</h2>
+					<table>
+						<tr>
+							<td><label>ID:</label></td>
+							<td><label><%= id%></label></td>
+						</tr>
+						<tr>
+							<td><label>User type:</label></td>
+							<td><label><%= type%></label></td>
+						</tr>
+						<tr>
+							<td><label for="email">Email:</label></td>
+							<td><input type="text" name="email" value="<%= email%>" required></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><div class="error-text"><%= emailErr%></div></td>
+						</tr>
+							<tr>
+								<td><label for="fname">First name:</label></td>
+								<td><input type="text" name="fname" value="<%= fname%>" required></td>
+							</tr>
+						<tr>
+							<td></td>
+							<td><div class="error-text"><%= fnameErr%></div></td>
+						</tr>
+							<tr>
+								<td><label for="surname">Surname:</label></td>
+								<td><input type="text" id="surname" name="surname" value="<%= surname%>" required></td>
+							</tr>
+						<tr>
+							<td></td>
+							<td><div class="error-text"><%= surnameErr%></div></td>
+						</tr>
+						<tr>
+							<td><label for="phoneNo">Phone Number:</label></td>
+							<td><input type="text" id="phoneNo" name="phoneNo" value="<%= phoneNo%>" required></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><div class="error-text"><%= phoneErr%></div></td>
+						</tr>
+						<tr>
+							<td><label for="status">User Status:</label></td>
+							<td>
+								<select name="status" id="status">
+									<option value="true">Active</option>
+									<option value="false">Inactive</option>
+								</select>
+							</td>
+					  	</tr>
+						<tr>
+							<td><label for="password">Reset Password (optional):</label></td>
+							<td><input type="password" id="password" name="password" placeholder="Enter new password"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><div class="error-text"><%= passwordErr%></div></td>
+						</tr>
+					</table>
+				</div>
+				<br><br><br><br>
+				<div class="page-btns">
+					<form action="view-users" method="post"></form>
+						<button class="logout-btn"><div class="login-text">Back</div></button>
+					</form>
+					<button type="submit" class="logout-btn"><div class="login-text">Apply</div></button>
+				</div>
+			</form>
+			<br><br><br><br>
 		</div>
-     
 
         <div class="footer">
             <br>

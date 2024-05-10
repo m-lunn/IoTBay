@@ -44,43 +44,25 @@ public class RegisterServlet extends HttpServlet {
                 session.setAttribute("duplicateErr", "User is already registered with this email and password!");
                 valid = false;   
             }
-            else {
-                //session.setAttribute("duplicateErr", "");
-            }
             if (!Utils.validateEmail(email)) {
                 session.setAttribute("emailErr", "Invalid email! Please enter a valid email.");
                 valid = false;   
-            }
-            else {
-                //session.setAttribute("emailErr", "Enter email");
             }
             if (!Utils.validateName(fname)) {
                 session.setAttribute("fnameErr", "Invalid first name! Please enter a valid first name.");
                 valid = false;   
             }
-            else {
-                //session.setAttribute("fnameErr", "Enter first name");
-            }
             if (!Utils.validateName(surname)) {
                 session.setAttribute("surnameErr", "Invalid surname! Please enter a valid surname.");
                 valid = false;   
-            }
-            else {
-                //session.setAttribute("surnameErr", "Enter surname");
             }
             if (!Utils.validatePhoneNo(phoneNo)) {
                 session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid phone number.");
                 valid = false;
             }
-            else {
-                //session.setAttribute("phoneErr", "Enter phone number");
-            }
             if (!Utils.validatePassword(password)) {
                 session.setAttribute("passwordErr", "Invalid password! Please enter at least 4 characters.");
                 valid = false;   
-            }
-            else {
-                //session.setAttribute("passwordErr", "Enter password");
             }
             if (valid) {
                 manager.addCustomer(email, password, fname, surname, phoneNo);

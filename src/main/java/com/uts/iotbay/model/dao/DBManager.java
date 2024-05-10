@@ -18,18 +18,18 @@ public class DBManager {
         ResultSet rs = st.executeQuery(String.format("SELECT * FROM Customers"));
         while (rs.next()) {
             String email = rs.getString("customer_email");
-            String fName = rs.getString("customer_fname");
+            String fname = rs.getString("customer_fname");
             String surname = rs.getString("customer_surname");
             String phoneNo = rs.getString("customer_phoneNo");
-            users.add(new Customer(fName, surname, email, phoneNo));
+            users.add(new Customer(fname, surname, email, phoneNo));
         }
         rs = st.executeQuery(String.format("SELECT * FROM Staff"));
         while (rs.next()) {
             String email = rs.getString("staff_email");
-            String fName = rs.getString("staff_fname");
+            String fname = rs.getString("staff_fname");
             String surname = rs.getString("staff_surname");
             String phoneNo = rs.getString("staff_phoneNo");
-            users.add(new Staff(fName, surname, email, phoneNo));
+            users.add(new Staff(fname, surname, email, phoneNo));
         }
         return new Users(users);
     }
@@ -52,10 +52,10 @@ public class DBManager {
 
         if (rs.next()) {
             String email = rs.getString("customer_email");
-            String fName = rs.getString("customer_fname");
+            String fname = rs.getString("customer_fname");
             String surname = rs.getString("customer_surname");
             String phoneNo = rs.getString("customer_phoneNo");
-            return new Customer(fName, surname, email, phoneNo);
+            return new Customer(fname, surname, email, phoneNo);
         }
         return null;
     }
@@ -64,10 +64,10 @@ public class DBManager {
         ResultSet rs = st.executeQuery(String.format("SELECT * FROM Customers WHERE customer_email='%s' AND customer_password='%s'", email, password));
         
         if (rs.next()) {
-            String customerFName = rs.getString("customer_fname");
+            String customerFname = rs.getString("customer_fname");
             String customerSurname = rs.getString("customer_surname");
             String phoneNo = rs.getString("customer_phoneNo");
-            return new Customer(customerFName, customerSurname, email, phoneNo);
+            return new Customer(customerFname, customerSurname, email, phoneNo);
         }
         return null;
     }
@@ -77,10 +77,10 @@ public class DBManager {
         
         if (rs.next()) {
             String email = rs.getString("staff_email");
-            String fName = rs.getString("staff_fname");
+            String fname = rs.getString("staff_fname");
             String surname = rs.getString("staff_surname");
             String phoneNo = rs.getString("staff_phoneNo");
-            return new Staff(fName, surname, email, phoneNo);
+            return new Staff(fname, surname, email, phoneNo);
         }
         return null;
     }
@@ -97,20 +97,39 @@ public class DBManager {
         return null;
     }
 
-    public void addCustomer(String email, String password, String fName, String surname, String phoneNo) throws SQLException {    
-        st.executeUpdate(String.format("INSERT INTO Customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo) VALUES ('%s', '%s', '%s', '%s', '%s')", email, password, fName, surname, phoneNo));   
+    public void addCustomer(String email, String password, String fname, String surname, String phoneNo) throws SQLException {    
+        st.executeUpdate(String.format("INSERT INTO Customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo) VALUES ('%s', '%s', '%s', '%s', '%s')", email, password, fname, surname, phoneNo));   
     }
 
-    public void addStaff(String email, String password, String fName, String surname, String phoneNo) throws SQLException {    
-        st.executeUpdate(String.format("INSERT INTO Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo) VALUES ('%s', '%s', '%s', '%s', '%s')", email, password, fName, surname, phoneNo));   
+    public void addStaff(String email, String password, String fname, String surname, String phoneNo) throws SQLException {    
+        st.executeUpdate(String.format("INSERT INTO Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo) VALUES ('%s', '%s', '%s', '%s', '%s')", email, password, fname, surname, phoneNo));   
     }
  
-    public void updateCustomer(String email, String password, String fName, String surname, String phoneNo) throws SQLException {       
-        st.executeUpdate(String.format("UPDATE Customers SET customer_email='%s', customer_password='%s', customer_fname='%s', customer_surname='%s', customer_phoneNo='%s' WHERE customer_email='%s', customer_password='%s')", email, password, fName, surname, phoneNo, email, password));
+    public void updateUser(int id, String type, String email, String password, String fname, String surname, String phoneNo) throws SQLException {
+        if (type.equals("Customer")) {
+            if (!password.equals("")) {
+                st.executeUpdate(String.format("UPDATE Customers SET customer_email='%s', customer_password='%s', customer_fname='%s', customer_surname='%s', customer_phoneNo='%s' WHERE customer_id='%s'", email, password, fname, surname, phoneNo, id));
+            }
+            else {
+                st.executeUpdate(String.format("UPDATE Customers SET customer_email='%s', customer_fname='%s', customer_surname='%s', customer_phoneNo='%s' WHERE customer_id='%s'", email, fname, surname, phoneNo, id));
+            }
+        }
+        else {
+            if (!password.equals("")) {
+                st.executeUpdate(String.format("UPDATE Staff SET staff_email='%s', staff_password='%s', staff_fname='%s', staff_surname='%s', staff_phoneNo='%s' WHERE staff_id='%s'", email, password, fname, surname, phoneNo, id));
+            }
+            else {
+                st.executeUpdate(String.format("UPDATE Staff SET staff_email='%s', staff_fname='%s', staff_surname='%s', staff_phoneNo='%s' WHERE staff_id='%s'", email, fname, surname, phoneNo, id));
+            }
+        }
+    }
+
+    public void updateCustomer(String email, String password, String fname, String surname, String phoneNo) throws SQLException {       
+        st.executeUpdate(String.format("UPDATE Customers SET customer_email='%s', customer_password='%s', customer_fname='%s', customer_surname='%s', customer_phoneNo='%s' WHERE customer_email='%s', customer_password='%s'", email, password, fname, surname, phoneNo, email, password));
     } 
 
-    public void updateStaff(String email, String password, String fName, String surname, String phoneNo) throws SQLException {       
-        st.executeUpdate(String.format("UPDATE Staff SET staff_email='%s', staff_password='%s', staff_fname='%s', staff_surname='%s', staff_phoneNo='%s' WHERE staff_email='%s' AMD staff_password='%s')", email, password, fName, surname, phoneNo, email, password));
+    public void updateStaff(String email, String password, String fname, String surname, String phoneNo) throws SQLException {       
+        st.executeUpdate(String.format("UPDATE Staff SET staff_email='%s', staff_password='%s', staff_fname='%s', staff_surname='%s', staff_phoneNo='%s' WHERE staff_email='%s' AMD staff_password='%s'", email, password, fname, surname, phoneNo, email, password));
     } 
 
     public void deleteUser(int id, String type) throws SQLException{       
