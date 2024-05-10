@@ -55,7 +55,7 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Viewing user: <%= fname%> <%= surname%></h1>
+				<h1 class="heading-text">Viewing User: <%= fname%> <%= surname%></h1>
 			</div>
             <br>
 
@@ -67,10 +67,12 @@
 							<td><label>ID:</label></td>
 							<td><label><%= id%></label></td>
 						</tr>
+						<tr><td></td><td></td></tr>
 						<tr>
 							<td><label>User type:</label></td>
 							<td><label><%= type%></label></td>
 						</tr>
+						<tr><td></td><td></td></tr>
 						<tr>
 							<td><label for="email">Email:</label></td>
 							<td><input type="text" name="email" value="<%= email%>" required></td>
@@ -119,6 +121,7 @@
 								<% }%>
 							</td>
 					  	</tr>
+						<tr><td></td><td></td></tr>
 						<tr>
 							<td><label for="password">Reset Password (optional):</label></td>
 							<td><input type="password" id="password" name="password" placeholder="Enter new password"></td>

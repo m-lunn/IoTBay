@@ -67,10 +67,12 @@
 							<td><label>ID:</label></td>
 							<td><label><%= id%></label></td>
 						</tr>
+						<tr><td></td><td></td></tr>
 						<tr>
 							<td><label>User type:</label></td>
 							<td><label><%= type%></label></td>
 						</tr>
+						<tr><td></td><td></td></tr>
 						<tr>
 							<td><label for="email">Email:</label></td>
 							<td><input type="text" name="email" value="<%= email%>" required></td>
@@ -119,6 +121,7 @@
 								<% }%>
 							</td>
 					  	</tr>
+						<tr><td></td><td></td></tr>
 						<tr>
 							<td><label for="password">Reset Password (optional):</label></td>
 							<td><input type="password" id="password" name="password" placeholder="Enter new password"></td>

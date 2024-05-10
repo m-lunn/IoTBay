@@ -104,11 +104,11 @@ public class DBManager {
     }
 
     public void addCustomer(String email, String password, String fname, String surname, String phoneNo) throws SQLException {    
-        st.executeUpdate(String.format("INSERT INTO Customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo, customer_isactive) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", email, password, fname, surname, phoneNo, true));   
+        st.executeUpdate(String.format("INSERT INTO Customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo, customer_isactive) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", email, password, fname, surname, phoneNo, (int)1));   
     }
 
     public void addStaff(String email, String password, String fname, String surname, String phoneNo) throws SQLException {    
-        st.executeUpdate(String.format("INSERT INTO Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo, staff_isactive) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", email, password, fname, surname, phoneNo, true));   
+        st.executeUpdate(String.format("INSERT INTO Staff (staff_email, staff_password, staff_fname, staff_surname, staff_phoneNo, staff_isactive) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", email, password, fname, surname, phoneNo, (int)1));   
     }
  
     public void updateUser(int id, String type, String email, String password, String fname, String surname, String phoneNo, int isActive) throws SQLException {

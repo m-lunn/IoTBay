@@ -55,7 +55,7 @@ create table Customers (
     primary key (customer_id));
 
 insert into customers (customer_email, customer_password, customer_fname, customer_surname, customer_phoneNo, customer_isactive) values
-("m.lunn54@gmail.com","123", "Michael", "Lunn", "0412345645", 1),
-("mickeymouse@gmail.com","123", "Mickey", "Mouse", "0424121232", 1),
-("donaldduck@gmail.com","123", "Donald", "Duck", "0421554266", 1);
+("m.lunn54@gmail.com","1234", "Michael", "Lunn", "0412345645", 1),
+("mickeymouse@gmail.com","1234", "Mickey", "Mouse", "0424121232", 1),
+("donaldduck@gmail.com","1234", "Donald", "Duck", "0421554266", 1);
 

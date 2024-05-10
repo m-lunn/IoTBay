@@ -19,8 +19,8 @@
 
 	<body>
         <%
-        String existErr = (String) session.getAttribute("existErr");
-        session.setAttribute("existErr", "");
+        String loginErr = (String) session.getAttribute("loginErr");
+        session.setAttribute("loginErr", "");
         %>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
@@ -43,7 +43,7 @@
 			</div>
 
 			<br><br><br>
-            <h3 class="error-text"><%= (existErr != null ? existErr : "")%></h3>
+            <h3 class="error-text"><%= (loginErr != null ? loginErr : "")%></h3>
             <div class="form-container">
                 <form action="login", method="post">
                     <div class="form-group">

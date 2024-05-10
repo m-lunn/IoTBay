@@ -57,12 +57,16 @@ public class LoginServlet extends HttpServlet {
         if (email.equals("root") && password.equals("iotbay")) {
             user = new User("root");
         }
-        if (user != null) {                     
+        if (user != null && user.isActive()) {                     
             session.setAttribute("user", user);
             request.getRequestDispatcher("landing.jsp").include(request, response);
         } 
+        else if (user != null) {
+            session.setAttribute("loginErr", "Account is currently inactive! Please contact system admin for further information.");   
+            request.getRequestDispatcher("login.jsp").include(request, response);
+        }
         else {                        
-            session.setAttribute("existErr", "Email or password is incorrect!");   
+            session.setAttribute("loginErr", "Email or password is incorrect!");   
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
     }
