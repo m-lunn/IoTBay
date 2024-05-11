@@ -61,8 +61,6 @@
             </div>
 
 	</div>
-     
-
         <div class="footer">
             <br>
             <ul class="footer-menu">

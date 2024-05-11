@@ -33,7 +33,7 @@
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp"><span class="active-page">Home</span></a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
@@ -76,7 +76,7 @@
         <div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp"><span class="active-page">Home</span></a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp">Home</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="about.html">About</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="contact.html">Contact</a></button></li>
