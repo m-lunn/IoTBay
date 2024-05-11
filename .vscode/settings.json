@@ -1,20 +1,21 @@
 {
     "actionButtons": {
-    "reloadButton": null,
-    "commands": [
-        {
-            "name": "$(rocket)$(rocket)$(rocket)",
-            "singleInstance": true,
-            "color": "pink",
-            // "useVsCodeApi": true,
-            "command": "./utils/bar.sh",
-        },
-        {
-            "name": "$(stop)",
-            "singleInstance": true,
-            "color": "white",
-            "command": "./utils/shutdown.sh",
-        }
-    ]
-}
+        "reloadButton": null,
+        "commands": [
+            {
+                "name": "$(rocket)$(rocket)$(rocket)",
+                "singleInstance": true,
+                "color": "pink",
+                // "useVsCodeApi": true,
+                "command": "./utils/bar.sh",
+            },
+            {
+                "name": "$(stop)",
+                "singleInstance": true,
+                "color": "white",
+                "command": "./utils/shutdown.sh",
+            }
+        ]
+    },
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

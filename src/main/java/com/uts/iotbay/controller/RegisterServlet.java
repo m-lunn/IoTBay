@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             Boolean valid = true;
-            if (manager.checkCustomer(email, password) || manager.checkStaff(email, password)) {
+            if (manager.checkUser(email, password)) {
                 session.setAttribute("duplicateErr", "User is already registered with this email and password!");
                 valid = false;   
             }

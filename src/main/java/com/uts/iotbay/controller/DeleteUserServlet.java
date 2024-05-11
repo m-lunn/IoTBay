@@ -19,10 +19,9 @@ public class DeleteUserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
         int id = Integer.parseInt(request.getParameter("id"));
-        String type = request.getParameter("type");
 
         try {
-            manager.deleteUser(id, type);
+            manager.deleteUser(id);
         }
         catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);    

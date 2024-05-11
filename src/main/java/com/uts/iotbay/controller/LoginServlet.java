@@ -45,10 +45,7 @@ public class LoginServlet extends HttpServlet {
         User user = null;    
         
         try {       
-            user = manager.findCustomer(email, password);
-            if (user == null) {
-                user = manager.findStaff(email, password);
-            }
+            user = manager.findUser(email, password);
         } 
         catch (SQLException ex) {           
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       

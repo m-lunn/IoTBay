@@ -29,15 +29,7 @@ public class ViewUserServlet extends HttpServlet {
         User user = null;    
         
         try {
-            if (type.equals("Customer")) {
-                user = manager.findCustomer(id);
-            }   
-            else if (type.equals("Staff")) {
-                user = manager.findStaff(id);
-            }
-            else {
-                throw new SQLException("Invalid type");
-            }
+            user = manager.findUser(id);
         }
         catch (SQLException ex) {           
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       

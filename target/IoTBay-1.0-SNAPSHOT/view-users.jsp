@@ -78,7 +78,6 @@
       <tr>
         <form action="delete-user", method="post">
           <input type="hidden" name="id" value="<%= id%>">
-          <input type="hidden" name="type" value="<%= type%>">
           <td><button class="x-btn">x</button></td>
         </form>
         <td><%= id%></td>

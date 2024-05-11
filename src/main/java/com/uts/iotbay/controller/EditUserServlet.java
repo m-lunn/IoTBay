@@ -19,13 +19,12 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int id = Integer.valueOf((String)session.getAttribute("id"));
-        String type = (String)session.getAttribute("type");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String fname = request.getParameter("fname");
         String surname = request.getParameter("surname");
         String phoneNo = request.getParameter("phoneNo");
-        int isActive = Boolean.parseBoolean(request.getParameter("status"))? 1 : 0;
+        int isActive = Boolean.parseBoolean(request.getParameter("status")) ? 1 : 0;
         DBManager manager = (DBManager) session.getAttribute("manager");
 
         try {
@@ -51,7 +50,7 @@ public class EditUserServlet extends HttpServlet {
                 valid = false;   
             }
             if (valid) {
-                manager.updateUser(id, type, email, password, fname, surname, phoneNo, isActive);
+                manager.updateUser(id, email, password, fname, surname, phoneNo, isActive);
                 request.getRequestDispatcher("view-users").include(request, response);
             }
             else {
