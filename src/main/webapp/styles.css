@@ -85,7 +85,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover {
+.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover {
     transform: scale(1.03);
 }
 
@@ -167,6 +167,12 @@ p {
 
 #mng-acc-pic {
     width: 60%;
+    text-align: center;
+}
+
+#cart-pic {
+    width: 60%;
+    text-align: center;
 }
 
 a {
@@ -175,16 +181,30 @@ a {
 
 #mng-acc-btn {
     position: fixed;
-    right: -3vh;
-    top: 2vh;
+    right: 1vh;
+    top: 3vh;
     background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
     display: block;
     border: none;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin: 0;
     transition: .2s; 
-    width: 7vw;
-    height: 5vw;
+    width: 5vw;
+    height: 4vw;
+    border-radius: 25px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+}
+
+#cart-btn {
+    position: fixed;
+    right: 12vh;
+    top: 3vh;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    display: block;
+    border: none;
+    margin: 0;
+    transition: .2s; 
+    width: 5vw;
+    height: 4vw;
     border-radius: 25px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
 }
