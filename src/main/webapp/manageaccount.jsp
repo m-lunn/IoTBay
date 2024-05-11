@@ -1,3 +1,6 @@
+<%@page import="com.uts.iotbay.User"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +8,18 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay | Sign Up</title>
+	<title>IoTBay | Edit Details</title>
 
 </head>
 
 	<body>
+
+		<% User user = (User)request.getSession().getAttribute("user"); 
+			if(user == null){
+				response.sendRedirect("index.jsp");
+			}
+		%>
+
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -18,6 +28,7 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+                    <li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
 			<br>
@@ -27,37 +38,29 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Sign Up</h1>
+				<h1 class="heading-text">Manage Account</h1>
 			</div>
 
 			<br><br><br>
-            <div class="form-container" id="register-form-container">
-                <form action="register" method="post">
-                    <div class="form-group">
-                        <label for="first name">First Name:</label>
-                        <input type="text" id="first name" name="fname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="surname">Surname:</label>
-                        <input type="text" id="surname" name="surname" required>
-                    </div>
-                    <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Phone Number:</label>
-                        <input type="text" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    </div>
-                    <br><br><br><br>
-                    <button type="submit" class="submit-btn">Create New Account</button>
-                    <a href="login.jsp" class="login-redirects">Already have an account?</a>
-                </form>
-              </div> 
+
+            <div class="buttons">
+				<ul class="logins-btns">
+					<li>
+						<div class="login-container">
+							<button class="login-btn" id="edit-details"><a href="editdetails.jsp" class="login-text">Edit Details</a></button>
+						</div>
+					</li>
+					<li>
+						<div class="login-container">
+							<form action="accesslogs" method="get">
+								<button class="login-btn" id="view-access-logs"><a href="accesslogs" class="login-text">Access Logs</a></button>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
               <br><br><br>
 		</div>
 

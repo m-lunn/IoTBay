@@ -6,6 +6,9 @@ package com.uts.iotbay;
  */
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -110,19 +113,19 @@ public class LoginServlet extends HttpServlet {
         }
         
         catch(Exception e){
-//            PrintWriter out = response.getWriter();
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet LoginServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            StringWriter sw = new StringWriter();
-//            PrintWriter pw = new PrintWriter(sw);
-//            e.printStackTrace(pw);
-//            out.println(sw.toString());
-//            out.println("</body>");
-//            out.println("</html>");
+           PrintWriter out = response.getWriter();
+           out.println("<!DOCTYPE html>");
+           out.println("<html>");
+           out.println("<head>");
+           out.println("<title>Servlet LoginServlet</title>");            
+           out.println("</head>");
+           out.println("<body>");
+           StringWriter sw = new StringWriter();
+           PrintWriter pw = new PrintWriter(sw);
+           e.printStackTrace(pw);
+           out.println(sw.toString());
+           out.println("</body>");
+           out.println("</html>");
         }
 //        
     }

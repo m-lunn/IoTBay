@@ -4,6 +4,8 @@ cd ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4
 
 ./shutdown.sh
 
+rm -r ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war
+
 /Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml
 
 mv ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war

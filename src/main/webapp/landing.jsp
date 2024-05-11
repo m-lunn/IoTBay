@@ -16,9 +16,15 @@
 
 </head>
 	<%
-		User user = (User)request.getSession().getAttribute("user");
-		String fname = user.getFname();
-		String email = user.getEmail();
+		User user1 = (User)request.getSession().getAttribute("user");
+
+		if(user1 == null){
+			response.sendRedirect("homedirect.jsp");
+		}
+	
+
+		String fname = user1.getFname();
+		String email = user1.getEmail();
 	%>
 	<body>
 		<div class="backdrop">
@@ -29,7 +35,7 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
-					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.html"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
+					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
 			<br>
