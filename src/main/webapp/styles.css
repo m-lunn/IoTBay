@@ -85,7 +85,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover {
+.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .add-to-cart-btn:hover {
     transform: scale(1.03);
 }
 
@@ -243,13 +243,23 @@ a {
 
 
 #logo {
-    width: 1000%;
-    max-width: 600px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     display: block;
     border-radius: 50%; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.50); 
+}
+
+#logo-small {
+    width: 100%;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 50%; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.50); 
+
 }
 
   .btn:hover,.footer-button:hover {
@@ -445,24 +455,38 @@ input[type="text"], input[type="password"] {
     text-align: center;
 }
 
-.date-range {
+.date-range, .product-search {
     text-align: center;
 }
 
-.date-range-form-input {
-    display: inline;
-    margin: 10px;
-    font-size: 24px;
-    border-radius: 5px;
+.product-search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.date-range-form-label {
+.date-range-form-input, .product-search-form-input {
+    display: inline;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #34495e;
+    border: 1px solid #566573; 
+    border-radius: 4px;
+    color: #fff; 
+}
+
+.date-range-form-label, .product-search-form-label {
     display:inline;
     margin: 10px;
     font-size: 28px;
 }
 
-#date-range-submit {
+#date-range-submit, #product-search-submit {
     font-family: "Space Mono";
     padding: 10px;
     background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
@@ -472,4 +496,99 @@ input[type="text"], input[type="password"] {
     cursor: pointer;
     transition: .2s;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
+}
+
+hr {
+    border-top: 2px solid rgba(233, 106, 140, 0.4);
+    border-bottom: none;
+}
+
+.product-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 60px;
+    row-gap: 90px;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: center;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    transition: .2s;
+}
+
+.product-img {
+    min-height: 300px;
+    min-width: 300px;
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.product-name {
+    font-family: "Space Mono";
+    font-size: 18px;
+}
+
+#name {
+    width: 300px;
+    font-size: 18px;
+    margin-left: 200px;
+ }
+
+ #search-pic {
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+ }
+
+ .buy-line {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    bottom: 0;
+    
+ }
+
+ .add-to-cart-btn {
+    font-family: "Space Mono";
+    position: relative;
+    width: 40%;
+    padding: 10px;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: scale 1.1;
+    transition: .2s; 
+    margin-left: 125px;
+    
+}
+
+.price {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Space Mono";
+}
+
+.product-name:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fill {
+    height: 100%;
+    width: 100%;
 }

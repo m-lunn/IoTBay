@@ -19,6 +19,16 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>Products</servlet-name>
+        <servlet-class>com.uts.iotbay.ViewProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Products</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.uts.iotbay.LogoutServlet</servlet-class>
