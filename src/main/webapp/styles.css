@@ -509,7 +509,7 @@ hr {
 
 .product-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, 410px);
     column-gap: 60px;
     row-gap: 90px;
     margin-left: 10%;
