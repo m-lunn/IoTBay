@@ -20,16 +20,6 @@
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
 
-
-            String processors = "Processors";
-            String sensors = "Sensors";
-            String cameras = "Cameras";
-            String routers = "Routers";
-            String accessPoints = "Access Points";
-            String dongles = "Dongles";
-            String locks = "Locks";
-            String recorders = "Recorders";
-
             if(search == null){
                 search = "";
             }
@@ -68,14 +58,14 @@
                     <label class="product-search-form-label" for="category">Category:</label>
                     <select class="product-search-form-input" name="category" id="category" text="bruh">
                         <option value="Any">Any</option>
-                        <option <%if(category.equals(processors)){out.println("selected");}%> value="Processors">Processors</option>
-                        <option <%if(category.equals(sensors)){out.println("selected");}%> value="Sensors">Sensors</option>
-                        <option <%if(category.equals(cameras)){out.println("selected");}%> value="Cameras">Cameras</option>
-                        <option <%if(category.equals(routers)){out.println("selected");}%> value="Routers">Routers</option>
-                        <option <%if(category.equals(accessPoints)){out.println("selected");}%> value="Access Points">Access Points</option>
-                        <option <%if(category.equals(dongles)){out.println("selected");}%> value="Dongles">Dongles</option>
-                        <option <%if(category.equals(locks)){out.println("selected");}%> value="Locks">Locks</option>
-                        <option <%if(category.equals(recorders)){out.println("selected");}%> value="Recorders">Recorders</option>
+                        <option <%if(category.equals("Processors")){out.println("selected");}%> value="Processors">Processors</option>
+                        <option <%if(category.equals("Sensors")){out.println("selected");}%> value="Sensors">Sensors</option>
+                        <option <%if(category.equals("Cameras")){out.println("selected");}%> value="Cameras">Cameras</option>
+                        <option <%if(category.equals("Routers")){out.println("selected");}%> value="Routers">Routers</option>
+                        <option <%if(category.equals("Access Points")){out.println("selected");}%> value="Access Points">Access Points</option>
+                        <option <%if(category.equals("Dongles")){out.println("selected");}%> value="Dongles">Dongles</option>
+                        <option <%if(category.equals("Locks")){out.println("selected");}%> value="Locks">Locks</option>
+                        <option <%if(category.equals("Recorders")){out.println("selected");}%> value="Recorders">Recorders</option>
                     </select>
                     <input class="product-search-form-input" type="text" id="name" name="name" placeholder="Search..." value="<%=search%>">
                     <Button class="product-search-form-input" id="product-search-submit" type="submit">
