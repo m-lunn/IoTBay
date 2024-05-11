@@ -1,4 +1,4 @@
-package com.uts.iotbay;
+package com.uts.iotbay.controller;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -6,9 +6,6 @@ package com.uts.iotbay;
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,12 +16,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.uts.iotbay.model.User;
+
 /**
  *
  * @author michaellunn
  */
 //@WebServlet(urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -68,9 +67,12 @@ public class LoginServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            
+            User user = (User) request.getSession().getAttribute("user");
 
+            String email = user.getEmail();
+            request.getSession().invalidate();
+            
             PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
             findUser.setString(1, email);
             ResultSet rs = findUser.executeQuery();
@@ -78,54 +80,35 @@ public class LoginServlet extends HttpServlet {
             if(rs.next()) {
 
                 int userId = rs.getInt("user_id");
-                String dbPassword = rs.getString("user_password");
-                int activeUser = rs.getInt("user_active");
 
-                if(!password.equals(dbPassword) || activeUser != 1) {
-                    request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
-                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
-                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
-                    logStatement.setInt(1, userId);
-                    logStatement.executeUpdate();
-                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                    rd.forward(request, response);
-                }
-                else {
-                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
-                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
-                    logStatement.setInt(1, userId);
-                    logStatement.executeUpdate();
-                    request.getSession().setAttribute("errorMsg", "");
-                    String fname = rs.getString("user_fname");
-                    String surname = rs.getString("user_surname");
-                    email = rs.getString("user_email");
-                    User user = new User(fname, surname, email, password);
-                    request.getSession().setAttribute("user", user);
-                    RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
-                    rd.forward(request, response);
-                }
+                String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Logout\")";
+                PreparedStatement logStatement = con.prepareStatement(sqlInsert);
+                logStatement.setInt(1, userId);
+                logStatement.executeUpdate();
+
+                RequestDispatcher rd = request.getRequestDispatcher("homedirect.jsp");
+                rd.forward(request, response);
             }
             else {
-                request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("homedirect.jsp");
                 rd.forward(request, response);
             }
         }
         
         catch(Exception e){
-           PrintWriter out = response.getWriter();
-           out.println("<!DOCTYPE html>");
-           out.println("<html>");
-           out.println("<head>");
-           out.println("<title>Servlet LoginServlet</title>");            
-           out.println("</head>");
-           out.println("<body>");
-           StringWriter sw = new StringWriter();
-           PrintWriter pw = new PrintWriter(sw);
-           e.printStackTrace(pw);
-           out.println(sw.toString());
-           out.println("</body>");
-           out.println("</html>");
+//            PrintWriter out = response.getWriter();
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet LoginServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            StringWriter sw = new StringWriter();
+//            PrintWriter pw = new PrintWriter(sw);
+//            e.printStackTrace(pw);
+//            out.println(sw.toString());
+//            out.println("</body>");
+//            out.println("</html>");
         }
 //        
     }

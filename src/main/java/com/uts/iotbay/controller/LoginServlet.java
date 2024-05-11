@@ -1,4 +1,4 @@
-package com.uts.iotbay;
+package com.uts.iotbay.controller;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,16 +13,20 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.uts.iotbay.model.User;
+
 /**
  *
  * @author michaellunn
  */
-public class RegisterServlet extends HttpServlet {
+//@WebServlet(urlPatterns = {"/login"})
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +37,9 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -47,6 +53,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        processRequest(request, response);
     }
 
     /**
@@ -63,36 +70,48 @@ public class RegisterServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
-            
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            String fname = request.getParameter("fname");
-            String surname = request.getParameter("surname");
-            String phone = request.getParameter("phone");
 
-            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(user_email, user_password, user_fname, user_surname, user_type, user_phone, user_active) VALUES (?, ?, ?, ?, \"C\",?,1)");
-            createUser.setString(1, email);
-            createUser.setString(2, password);
-            createUser.setString(3, fname);
-            createUser.setString(4, surname);
-            createUser.setString(5, phone);
-            createUser.executeUpdate();
-
-            PreparedStatement findUser = con.prepareStatement("SELECT user_id FROM Users WHERE user_email = ?");
+            PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
             findUser.setString(1, email);
-
             ResultSet rs = findUser.executeQuery();
 
-            int userId = -1;
-
             if(rs.next()) {
-                userId = rs.getInt("user_id");
-                PreparedStatement logStatement = con.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Account Created\")");
-                logStatement.setInt(1, userId);
-                logStatement.executeUpdate();
+
+                int userId = rs.getInt("user_id");
+                String dbPassword = rs.getString("user_password");
+                int activeUser = rs.getInt("user_active");
+
+                if(!password.equals(dbPassword) || activeUser != 1) {
+                    request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
+                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
+                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
+                    logStatement.setInt(1, userId);
+                    logStatement.executeUpdate();
+                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                    rd.forward(request, response);
+                }
+                else {
+                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
+                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
+                    logStatement.setInt(1, userId);
+                    logStatement.executeUpdate();
+                    request.getSession().setAttribute("errorMsg", "");
+                    String fname = rs.getString("user_fname");
+                    String surname = rs.getString("user_surname");
+                    email = rs.getString("user_email");
+                    User user = new User(fname, surname, email, password);
+                    request.getSession().setAttribute("user", user);
+                    RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
+                    rd.forward(request, response);
+                }
             }
-            
-            response.sendRedirect("login.jsp");
+            else {
+                request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                rd.forward(request, response);
+            }
         }
         
         catch(Exception e){
@@ -110,6 +129,7 @@ public class RegisterServlet extends HttpServlet {
            out.println("</body>");
            out.println("</html>");
         }
+//        
     }
 
     /**

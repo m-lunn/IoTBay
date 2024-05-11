@@ -1,4 +1,4 @@
-package com.uts.iotbay;
+package com.uts.iotbay.model;
 
 import java.io.Serializable;
 

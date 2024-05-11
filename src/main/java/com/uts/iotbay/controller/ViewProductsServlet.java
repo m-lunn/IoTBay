@@ -1,9 +1,4 @@
-package com.uts.iotbay;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+package com.uts.iotbay.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,14 +13,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import com.uts.iotbay.model.Product;
+import com.uts.iotbay.model.User;
 
 /**
  *
  * @author michaellunn
  */
-// @WebServlet(urlPatterns = {"/editdetails"})
-public class AccessLogsServlet extends HttpServlet {
+public class ViewProductsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,39 +50,43 @@ public class AccessLogsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        DecimalFormat df = new DecimalFormat("0.00");  
+
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
 
-            int userID = getUserID(request, response);
-
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM AccessLogs WHERE user_id = ?");
-            ps.setInt(1, userID);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_active = 1");
             ResultSet rs = ps.executeQuery();
-            ArrayList<String[]> accessLogs = new ArrayList<>();
+
+            ArrayList<Product> products = new ArrayList<>();
 
             while(rs.next()) {
-                String log[] = {rs.getString(2), rs.getString(3)};
-                accessLogs.add(log);
+                int productID = rs.getInt(1);
+                String productName = rs.getString(2);
+                String productDescription = rs.getString(3);
+                float productPrice = rs.getFloat(4);
+                String image_path = rs.getString(5);
+                products.add(new Product(productID, productName, productDescription, productPrice, image_path));
             }
 
-            String htmlInsert = "<tr>\n" + //
-                                "<th class=\"access-logs-header\">Date</th>\n" + //
-                                "<th></th>\n" + //
-                                "<th class=\"access-logs-header\">Activity</th>\n" + //
-                                "</tr>\n";
+            String htmlInsert = "";
 
-            for(int i = accessLogs.size()-1; i >= 0; i--) {
-                htmlInsert += "<tr>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[0] + "</td>\n";
-                htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[1] + "</td>\n";
-                htmlInsert += "</tr>\n";
+            for(Product p : products) {
+                htmlInsert += "<div class=\"product\">\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3></a>\n";
+                htmlInsert += "<div class=\"fill\"></div>";
+                htmlInsert += "<div class=\"buy-line\">\n";
+                htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
+                htmlInsert += "</div>\n</div>\n";
             }
 
-            request.getSession().setAttribute("accesslogs", htmlInsert);
-            RequestDispatcher rd = request.getRequestDispatcher("accesslogs.jsp");
+
+            request.getSession().setAttribute("products", htmlInsert);
+            RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
             rd.forward(request, response);
     
         }
@@ -118,56 +120,70 @@ public class AccessLogsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-        String fromDate = (String)request.getParameter("from");
-        String toDate = (String)request.getParameter("to");
-        int userID = getUserID(request, response);
+        DecimalFormat df = new DecimalFormat("0.00");  
+        request.getSession().setAttribute("errorMsg", "");
 
-        if(fromDate.isEmpty()){
-            fromDate = "2000-01-01";
+        String displayCategory = (String)request.getParameter("category");
+
+        String category = (String)request.getParameter("category").toLowerCase();
+       
+        if(category.equals("any")){
+            category = "%";
         }
-        if(toDate.isEmpty()){
-            toDate = "3000-01-01";
+        else {
+            category = category.substring(0, category.length() - 1);
         }
+
+        String displaySearch = (String)request.getParameter("name");
+        String search = (String)request.getParameter("name");
+        if(search.equals("")){
+            search = "%";
+        }
+
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
 
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM AccessLogs WHERE user_id = ? AND date_accessed >= ? AND CAST(date_accessed AS DATE) <= ?");
-            ps.setInt(1, userID);
-            ps.setString(2, fromDate);
-            ps.setString(3, toDate);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ?");
+            ps.setString(1, "%" + category + "%");
+            ps.setString(2, "%" + search + "%");
 
             ResultSet rs = ps.executeQuery();
-            ArrayList<String[]> accessLogs = new ArrayList<>();
+
+            ArrayList<Product> products = new ArrayList<>();
 
             while(rs.next()) {
-                String log[] = {rs.getString(2), rs.getString(3)};
-                accessLogs.add(log);
+                int productID = rs.getInt(1);
+                String productName = rs.getString(2);
+                String productDescription = rs.getString(3);
+                float productPrice = rs.getFloat(4);
+                String image_path = rs.getString(5);
+                products.add(new Product(productID, productName, productDescription, productPrice, image_path));
             }
 
-            String htmlInsert = "<tr>\n" + //
-                                "<th class=\"access-logs-header\">Date</th>\n" + //
-                                "<th></th>\n" + //
-                                "<th class=\"access-logs-header\">Activity</th>\n" + //
-                                "</tr>\n";
+            String htmlInsert = "";
 
-            for(int i = accessLogs.size()-1; i >= 0; i--) {
-                htmlInsert += "<tr>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[0] + "</td>\n";
-                htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[1] + "</td>\n";
-                htmlInsert += "</tr>\n";
+            for(Product p : products) {
+                htmlInsert += "<div class=\"product\">\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3>\n";
+                htmlInsert += "<div class=\"fill\"></div>";
+                htmlInsert += "<div class=\"buy-line\">\n";
+                htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
+                htmlInsert += "</div>\n</div>\n";
             }
 
-            if(fromDate.equals("2000-01-01")){ fromDate = ""; }
-            if(toDate.equals("3000-01-01")){ toDate = ""; }
+            if(products.size() == 0){
+                request.getSession().setAttribute("errorMsg", "No products found.");
+            }
 
-            request.getSession().setAttribute("accesslogs", htmlInsert);
-            request.getSession().setAttribute("fromdate", fromDate);
-            request.getSession().setAttribute("todate", toDate);
+            request.getSession().setAttribute("category", displayCategory);
+            request.getSession().setAttribute("search", displaySearch);
 
-            RequestDispatcher rd = request.getRequestDispatcher("accesslogs.jsp");
+            request.getSession().setAttribute("products", htmlInsert);
+            RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
             rd.forward(request, response);
 
         }

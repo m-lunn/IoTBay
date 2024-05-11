@@ -1,4 +1,4 @@
-package com.uts.iotbay;
+package com.uts.iotbay.controller;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,6 +16,8 @@ import jakarta.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+
+import com.uts.iotbay.model.User;
 
 /**
  *
