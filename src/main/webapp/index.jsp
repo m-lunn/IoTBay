@@ -44,7 +44,7 @@
 				<ul class="logins-btns">
 					<li>
 						<div class="login-container">
-							<button class="login-btn"><a href="login.jsp" class="login-text">Login</a></button>
+							<button class="login-btn"><a href="newjsp.jsp" class="login-text">Login</a></button>
 						</div>
 					</li>
 					<li>
@@ -61,7 +61,7 @@
 			<ul class="footer-menu">
 				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="#"><span class="active-page">Home</span></a></button></li>
 				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
-				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
+				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="newjsp.jsp">Products</a></button></li>
 				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>
 			</ul>
 			<p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
