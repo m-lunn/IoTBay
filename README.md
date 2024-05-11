@@ -1,4 +1,4 @@
-# Branch Summary (so far) (Implementing Feature 06)
+# Branch Summary (Implementing Feature 06) (Feature Complete)
 * The structure of the project has been overhauled by creating subfolders to hold related files for better file management (e.g. model for javabeans files, controller for servlets, etc.).
 
 * The servlet ConnServlet has been added and is initalised during the first launch of index.jsp to pass the DBManager class into the session. 
@@ -10,6 +10,6 @@ The DBManager class contains SQL queries that can be used throughout the entire 
 
 * Added the ability to log in as a system admin (email: "root", password: "iotbay").
 
-* System admin can view all users registered in the database of both customer and staff types in a table format. The table includes filtering options by email/phone number (not implemented), the option to delete table entries, the option to view users in more detail with editing capabilities, the option to deactive users and the option to add users.
+* System admin can view all users registered in the database of both customer and staff types in a table format. The table includes filtering options by email/phone number, the option to delete table entries, the option to view users in more detail with editing capabilities, the option to deactivate users and the option to add users.
 
 * The system can now keep track of whether a user is active or inactive. Inactive users cannot log in.

@@ -19,6 +19,8 @@
   <%
     Users users = (Users)request.getSession().getAttribute("users");
     ArrayList<Integer> ids = (ArrayList<Integer>)request.getSession().getAttribute("ids");
+    String emailFilter = (String) session.getAttribute("emailFilter");
+    String phoneNoFilter = (String) session.getAttribute("phoneNoFilter");
   %>
   <div class="backdrop">
     <div class="button-wrapper"></div>
@@ -36,10 +38,10 @@
       <!-- Logo created using DreamStudio by stability.ai -->
       <br><br><br>
     </div>
-    <form action="login", method="post" class="admin-search">
-      <input type="text" id="email" name="email" placeholder="Filter by email...">
-      <input type="text" id="phoneNo" name="phoneNo" placeholder="Filter by phone number...">
-      <td><button class="logout-btn"><a href="homedirect.jsp" class="login-text">Search</a></button></td>
+    <form action="search-users", method="post" class="admin-search">
+      <input type="text" id="emailFilter" name="emailFilter" value="<%= (emailFilter != null ? emailFilter : "")%>" placeholder="Filter by email...">
+      <input type="text" id="phoneNoFilter" name="phoneNoFilter" value="<%= (phoneNoFilter != null ? phoneNoFilter : "")%>" placeholder="Filter by phone number...">
+      <button type="submit" class="logout-btn"><div class="login-text">Search</div></button>
     </form>
     <br><br>
     <table class="admin-table">

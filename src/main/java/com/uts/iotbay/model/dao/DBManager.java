@@ -36,6 +36,29 @@ public class DBManager {
         return new Users(users);
     }
 
+    public Users getUsers(String emailFilter, String phoneNoFilter) throws SQLException {
+        ArrayList<User> users = new ArrayList<User>();
+        ResultSet rs = st.executeQuery(String.format("SELECT * FROM Customers WHERE customer_email LIKE '%s' AND customer_phoneNo LIKE '%s'", emailFilter + "%", phoneNoFilter + "%"));
+        while (rs.next()) {
+            String email = rs.getString("customer_email");
+            String fname = rs.getString("customer_fname");
+            String surname = rs.getString("customer_surname");
+            String phoneNo = rs.getString("customer_phoneNo");
+            Boolean isActive = rs.getBoolean("customer_isactive");
+            users.add(new Customer(fname, surname, email, phoneNo, isActive));
+        }
+        rs = st.executeQuery(String.format("SELECT * FROM Staff WHERE staff_email LIKE '%s' AND staff_phoneNo LIKE '%s'", emailFilter + "%", phoneNoFilter + "%"));
+        while (rs.next()) {
+            String email = rs.getString("staff_email");
+            String fname = rs.getString("staff_fname");
+            String surname = rs.getString("staff_surname");
+            String phoneNo = rs.getString("staff_phoneNo");
+            Boolean isActive = rs.getBoolean("staff_isactive");
+            users.add(new Staff(fname, surname, email, phoneNo, isActive));
+        }
+        return new Users(users);
+    }
+
     public ArrayList<Integer> getIds() throws SQLException {
         ArrayList<Integer> ids = new ArrayList<Integer>();
         ResultSet rs = st.executeQuery(String.format("SELECT customer_id FROM Customers"));
@@ -43,6 +66,19 @@ public class DBManager {
             ids.add(rs.getInt(1));
         }
         rs = st.executeQuery(String.format("SELECT staff_id FROM Staff"));
+        while (rs.next()) {
+            ids.add(rs.getInt(1));
+        }
+        return ids;
+    }
+
+    public ArrayList<Integer> getIds(String emailFilter, String phoneNoFilter) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ResultSet rs = st.executeQuery(String.format("SELECT customer_id FROM Customers WHERE customer_email LIKE '%s' AND customer_phoneNo LIKE '%s'", emailFilter + "%", phoneNoFilter + "%"));
+        while (rs.next()) {
+            ids.add(rs.getInt(1));
+        }
+        rs = st.executeQuery(String.format("SELECT staff_id FROM Staff WHERE staff_email LIKE '%s' AND staff_phoneNo LIKE '%s'", emailFilter + "%", phoneNoFilter + "%"));
         while (rs.next()) {
             ids.add(rs.getInt(1));
         }

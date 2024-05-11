@@ -74,6 +74,14 @@
         <servlet-name>Add-User</servlet-name>
         <url-pattern>/add-user</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Search-Users</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.SearchUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search-Users</servlet-name>
+        <url-pattern>/search-users</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
