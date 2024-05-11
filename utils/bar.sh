@@ -6,6 +6,8 @@ cd ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4
 
 rm -r ~/IoTBay/target/IoTBay-1.0-SNAPSHOT
 
+rm -r ~/IoTBay/target/classes
+
 /Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml
 
 mv ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war

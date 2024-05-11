@@ -1,4 +1,4 @@
-<%@page import="com.uts.iotbay.Product"%>
+<%@page import="com.uts.iotbay.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>

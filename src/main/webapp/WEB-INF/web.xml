@@ -12,7 +12,7 @@
 
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>com.uts.iotbay.LoginServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -22,7 +22,7 @@
 
     <servlet>
         <servlet-name>Products</servlet-name>
-        <servlet-class>com.uts.iotbay.ViewProductsServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.ViewProductsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Products</servlet-name>
@@ -31,7 +31,7 @@
 
     <servlet>
         <servlet-name>Logout</servlet-name>
-        <servlet-class>com.uts.iotbay.LogoutServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.LogoutServlet</servlet-class>
      </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
@@ -40,7 +40,7 @@
 
     <servlet>
         <servlet-name>EditDetails</servlet-name>
-        <servlet-class>com.uts.iotbay.EditDetailsServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.EditDetailsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>EditDetails</servlet-name>
@@ -48,7 +48,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Register</servlet-name>
-        <servlet-class>com.uts.iotbay.RegisterServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
@@ -57,7 +57,7 @@
 
     <servlet>
         <servlet-name>AccessLogs</servlet-name>
-        <servlet-class>com.uts.iotbay.AccessLogsServlet</servlet-class>
+        <servlet-class>com.uts.iotbay.controller.AccessLogsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AccessLogs</servlet-name>
