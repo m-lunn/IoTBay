@@ -62,20 +62,26 @@ public class AccessLogsServlet extends HttpServlet {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM AccessLogs WHERE user_id = ?");
             ps.setInt(1, userID);
             ResultSet rs = ps.executeQuery();
-            ArrayList<String> accessLogs = new ArrayList<>();
+            ArrayList<String[]> accessLogs = new ArrayList<>();
 
             while(rs.next()) {
-                String dateAccessed = rs.getString(2);
-                String activityType = rs.getString(3);
-                accessLogs.add(dateAccessed + " | " + activityType);
+                String log[] = {rs.getString(2), rs.getString(3)};
+                accessLogs.add(log);
             }
 
-            String htmlInsert = "<div>\n";
+            String htmlInsert = "<tr>\n" + //
+                                "<th class=\"access-logs-header\">Date</th>\n" + //
+                                "<th></th>\n" + //
+                                "<th class=\"access-logs-header\">Activity</th>\n" + //
+                                "</tr>\n";
 
             for(int i = accessLogs.size()-1; i >= 0; i--) {
-                htmlInsert += "<p class=\"access-log\">" + accessLogs.get(i) +  "</p>\n";
+                htmlInsert += "<tr>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[0] + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[1] + "</td>\n";
+                htmlInsert += "</tr>\n";
             }
-            htmlInsert += "</div>\n";
 
             request.getSession().setAttribute("accesslogs", htmlInsert);
             RequestDispatcher rd = request.getRequestDispatcher("accesslogs.jsp");
@@ -133,20 +139,26 @@ public class AccessLogsServlet extends HttpServlet {
             ps.setString(3, toDate);
 
             ResultSet rs = ps.executeQuery();
-            ArrayList<String> accessLogs = new ArrayList<>();
+            ArrayList<String[]> accessLogs = new ArrayList<>();
 
             while(rs.next()) {
-                String dateAccessed = rs.getString(2);
-                String activityType = rs.getString(3);
-                accessLogs.add(dateAccessed + " | " + activityType);
+                String log[] = {rs.getString(2), rs.getString(3)};
+                accessLogs.add(log);
             }
 
-            String htmlInsert = "<div>\n";
+            String htmlInsert = "<tr>\n" + //
+                                "<th class=\"access-logs-header\">Date</th>\n" + //
+                                "<th></th>\n" + //
+                                "<th class=\"access-logs-header\">Activity</th>\n" + //
+                                "</tr>\n";
 
             for(int i = accessLogs.size()-1; i >= 0; i--) {
-                htmlInsert += "<p class=\"access-log\">" + accessLogs.get(i) +  "</p>\n";
+                htmlInsert += "<tr>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[0] + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[1] + "</td>\n";
+                htmlInsert += "</tr>\n";
             }
-            htmlInsert += "</div>\n";
 
             if(fromDate.equals("2000-01-01")){ fromDate = ""; }
             if(toDate.equals("3000-01-01")){ toDate = ""; }

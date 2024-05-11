@@ -118,6 +118,7 @@ public class ViewProductsServlet extends HttpServlet {
     throws ServletException, IOException {
 
         DecimalFormat df = new DecimalFormat("0.00");  
+        request.getSession().setAttribute("errorMsg", "");
 
         String displayCategory = (String)request.getParameter("category");
 
@@ -169,6 +170,10 @@ public class ViewProductsServlet extends HttpServlet {
                 htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
                 htmlInsert += "<Button class=\"add-to-cart-btn\">View Product</Button>\n";
                 htmlInsert += "</div>\n</div>\n";
+            }
+
+            if(products.size() == 0){
+                request.getSession().setAttribute("errorMsg", "No products found.");
             }
 
             request.getSession().setAttribute("category", displayCategory);

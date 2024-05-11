@@ -21,8 +21,6 @@
         if(user == null){
             response.sendRedirect("homedirect.jsp");
         }
-    
-
 		String fname = user.getFname();
 		String email = user.getEmail();
         String htmlInsert = (String)request.getSession().getAttribute("accesslogs");
@@ -35,10 +33,10 @@
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Home</span></a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp"><span class="active-page">Home</span></a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
 					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
                     <li><button id="cart-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></a></button></li>
 				</ul>
@@ -53,7 +51,6 @@
 				<h1 class="heading-text">Access Logs</h1>
 			</div>
             <br>
-            <div>
                 <h2 class="subheading-text">All logs for:</h2>
                 
                 <h2 class="email-text"><%= email%></h2>
@@ -69,21 +66,20 @@
                 </div>
                 <br>
                 <div class="access-logs-container">
-                <%out.println(htmlInsert);%>
+                    <table class="access-log-table">
+                        <%out.println(htmlInsert);%>
+                    </table>
                 </div>
                 <br><br><br><br>
-            </div>
 
-	</div>
-     
-
+	    </div>
         <div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="#"><span class="active-page">Home</span></a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp"><span class="active-page">Home</span></a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="about.html">About</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="contact.html">Contact</a></button></li>
             </ul>
             <p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
         </div>	

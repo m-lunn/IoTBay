@@ -207,6 +207,7 @@ a {
     height: 4vw;
     border-radius: 25px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    z-index: 10;
 }
 
 #edit-details {
@@ -449,10 +450,14 @@ input[type="text"], input[type="password"] {
     font-weight: bold;
     font-size: 18px;
     color: white;
+    padding: 20px;
 }
 
 .access-logs-container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .date-range, .product-search {
@@ -472,8 +477,7 @@ input[type="text"], input[type="password"] {
     font-size: 18px;
     border-radius: 5px;
     box-sizing: border-box;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
     background-color: #34495e;
     border: 1px solid #566573; 
     border-radius: 4px;
@@ -522,6 +526,8 @@ hr {
     border-radius: 20px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
     transition: .2s;
+    position: relative;
+    z-index: 1;
 }
 
 .product-img {
@@ -591,4 +597,28 @@ hr {
 .fill {
     height: 100%;
     width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color:#6ac623;
+    filter: invert(1);
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+}
+
+.access-log-table {
+    position: relative;
+}
+
+.access-logs-header {
+    font-family: "Space Mono";
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: underline;
+    font-size: 20px;
+    text-underline-offset: 3px;
+
+
 }
