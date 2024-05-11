@@ -20,15 +20,10 @@
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
 
-            if(search == null){
-                search = "";
-            }
-            if(category == null){
-                category = "";
-            }
-            if(errorMsg == null){
-                errorMsg = "";
-            }
+            if(search == null){search = "";}
+            if(category == null){category = "";}
+            if(errorMsg == null){errorMsg = "";}
+
             if(!category.equals("Any") && !category.equals("")){
                 title = category;
             }

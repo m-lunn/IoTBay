@@ -85,7 +85,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .add-to-cart-btn:hover {
+.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.03);
 }
 
@@ -177,6 +177,9 @@ p {
 
 a {
     display: block;
+    text-decoration: none;
+    color: black;
+    margin: 0;
 }
 
 #mng-acc-btn {
@@ -541,6 +544,8 @@ hr {
 .product-name {
     font-family: "Space Mono";
     font-size: 18px;
+    color: black;
+    text-decoration: none;
 }
 
 #name {
@@ -559,17 +564,17 @@ hr {
 
  .buy-line {
     display: flex;
-    justify-content: flex-end;
+    justify-content: stretch;
     width: 100%;
     align-items: center;
     bottom: 0;
     
  }
 
- .add-to-cart-btn {
+ .view-product-btn {
     font-family: "Space Mono";
     position: relative;
-    width: 40%;
+    width: 50%;
     padding: 10px;
     background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
     color: #fff;
@@ -605,6 +610,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 8px;
     padding: 8px;
     color: white;
+    cursor: pointer;
+    transition: .2s; 
 }
 
 .access-log-table {
@@ -619,6 +626,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-decoration: underline;
     font-size: 20px;
     text-underline-offset: 3px;
-
-
 }

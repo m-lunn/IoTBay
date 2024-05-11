@@ -72,12 +72,12 @@ public class ViewProductsServlet extends HttpServlet {
 
             for(Product p : products) {
                 htmlInsert += "<div class=\"product\">\n";
-                htmlInsert += "<img class=\"product-img\" src=\""+ p.getImagePath() +"\">\n";
-                htmlInsert += "<h3 class=\"product-name\">" + p.getName() + "</h3>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3></a>\n";
                 htmlInsert += "<div class=\"fill\"></div>";
                 htmlInsert += "<div class=\"buy-line\">\n";
                 htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
-                htmlInsert += "<Button class=\"add-to-cart-btn\">View Product</Button>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
                 htmlInsert += "</div>\n</div>\n";
             }
 
@@ -163,12 +163,12 @@ public class ViewProductsServlet extends HttpServlet {
 
             for(Product p : products) {
                 htmlInsert += "<div class=\"product\">\n";
-                htmlInsert += "<img class=\"product-img\" src=\""+ p.getImagePath() +"\">\n";
-                htmlInsert += "<h3 class=\"product-name\">" + p.getName() + "</h3>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3>\n";
                 htmlInsert += "<div class=\"fill\"></div>";
                 htmlInsert += "<div class=\"buy-line\">\n";
                 htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
-                htmlInsert += "<Button class=\"add-to-cart-btn\">View Product</Button>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
                 htmlInsert += "</div>\n</div>\n";
             }
 
