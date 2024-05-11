@@ -438,6 +438,7 @@ input[type="text"], input[type="password"] {
 }
 
 .details input[type="text"], .details input[type="password"] {
+    min-width: 500px;
     width: 100%;
 }
 
@@ -447,7 +448,7 @@ input[type="text"], input[type="password"] {
     background-color: #34495e;
     border: 1px solid #566573; 
     border-radius: 4px;
-    color: grey; ; 
+    color: #fff; 
     font-size: 15pt;
     position: relative;
 }

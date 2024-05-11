@@ -10,6 +10,6 @@ The DBManager class contains SQL queries that can be used throughout the entire 
 
 * Added the ability to log in as a system admin (email: "root", password: "iotbay").
 
-* System admin can view all users registered in the database of both customer and staff types in a table format. The table includes filtering options by email/phone number (not implemented), the option to delete table entries, the option to view users in more detail with editing capabilities and the option to add users (not implemented).
+* System admin can view all users registered in the database of both customer and staff types in a table format. The table includes filtering options by email/phone number (not implemented), the option to delete table entries, the option to view users in more detail with editing capabilities and the option to add users.
 
 * The system can now keep track of whether a user is active or inactive. Inactive users cannot log in.

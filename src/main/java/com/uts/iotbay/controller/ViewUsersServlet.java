@@ -34,4 +34,22 @@ public class ViewUsersServlet extends HttpServlet{
         session.setAttribute("ids", ids);
         request.getRequestDispatcher("view-users.jsp").include(request, response);
     }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        DBManager manager = (DBManager) session.getAttribute("manager");
+        Users users = null;
+        ArrayList<Integer> ids = null;
+        try {
+            users = manager.getUsers();
+            ids = manager.getIds();
+        }
+        catch (SQLException ex) {           
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
+        }
+        session.setAttribute("users", users);
+        session.setAttribute("ids", ids);
+        request.getRequestDispatcher("view-users.jsp").include(request, response);
+    }
 }

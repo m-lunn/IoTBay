@@ -17,6 +17,11 @@ public class ViewUserServlet extends HttpServlet {
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
         HttpSession session = request.getSession();
+        session.setAttribute("emailErr", "");
+        session.setAttribute("passwordErr", "");
+        session.setAttribute("fnameErr", "");
+        session.setAttribute("surnameErr", "");
+        session.setAttribute("phoneErr", "");
         int id = Integer.valueOf(request.getParameter("id"));
         String type = request.getParameter("type");
         DBManager manager = (DBManager) session.getAttribute("manager");

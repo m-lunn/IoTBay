@@ -55,7 +55,7 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Viewing user: <%= fname%> <%= surname%></h1>
+				<h1 class="heading-text">Viewing User: <%= fname%> <%= surname%></h1>
 			</div>
             <br>
 
@@ -79,7 +79,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= emailErr%></div></td>
+							<td><div class="error-text"><%= (emailErr != null ? emailErr : "")%></div></td>
 						</tr>
 							<tr>
 								<td><label for="fname">First name:</label></td>
@@ -87,7 +87,7 @@
 							</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= fnameErr%></div></td>
+							<td><div class="error-text"><%= (fnameErr != null ? fnameErr : "")%></div></td>
 						</tr>
 							<tr>
 								<td><label for="surname">Surname:</label></td>
@@ -95,7 +95,7 @@
 							</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= surnameErr%></div></td>
+							<td><div class="error-text"><%= (surnameErr != null ? surnameErr : "")%></div></td>
 						</tr>
 						<tr>
 							<td><label for="phoneNo">Phone Number:</label></td>
@@ -103,7 +103,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= phoneErr%></div></td>
+							<td><div class="error-text"><%= (phoneErr != null ? phoneErr : "")%></div></td>
 						</tr>
 						<tr>
 							<td><label for="status">User Status:</label></td>
@@ -128,15 +128,13 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= passwordErr%></div></td>
+							<td><div class="error-text"><%= (passwordErr != null ? passwordErr : "")%></div></td>
 						</tr>
 					</table>
 				</div>
 				<br><br><br><br>
 				<div class="page-btns">
-					<form action="view-users" method="post"></form>
-						<button class="logout-btn"><div class="login-text">Back</div></button>
-					</form>
+					<button class="logout-btn"><a href="view-users" class="login-text">Back</a></button>
 					<button type="submit" class="logout-btn"><div class="login-text">Apply</div></button>
 				</div>
 			</form>
