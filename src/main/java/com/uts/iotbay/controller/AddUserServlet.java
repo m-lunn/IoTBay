@@ -66,7 +66,7 @@ public class AddUserServlet extends HttpServlet{
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);   
+            Logger.getLogger(AddUserServlet.class.getName()).log(Level.SEVERE, null, ex);   
         }
     }
 }

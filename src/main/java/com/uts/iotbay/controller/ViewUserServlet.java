@@ -29,10 +29,10 @@ public class ViewUserServlet extends HttpServlet {
         User user = null;    
         
         try {
-            user = manager.findUser(id);
+            user = manager.getUser(id);
         }
         catch (SQLException ex) {           
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
+            Logger.getLogger(ViewUserServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
 
         session.setAttribute("id", String.valueOf(id));

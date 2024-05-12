@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
+    DBManager manager;
     Connection conn;
 
     public DBConnector() throws ClassNotFoundException, SQLException {

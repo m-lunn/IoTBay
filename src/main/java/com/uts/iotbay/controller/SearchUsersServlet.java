@@ -31,7 +31,7 @@ public class SearchUsersServlet extends HttpServlet {
             ids = manager.getIds(emailFilter, phoneNoFilter);
         }
         catch (SQLException ex) {           
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
+            Logger.getLogger(SearchUsersServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
         session.setAttribute("users", users);
         session.setAttribute("ids", ids);

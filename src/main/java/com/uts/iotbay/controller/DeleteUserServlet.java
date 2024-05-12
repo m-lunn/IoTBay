@@ -24,7 +24,7 @@ public class DeleteUserServlet extends HttpServlet {
             manager.deleteUser(id);
         }
         catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);    
+            Logger.getLogger(DeleteUserServlet.class.getName()).log(Level.SEVERE, null, ex);    
         }
 
         request.getRequestDispatcher("view-users").include(request, response);

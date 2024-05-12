@@ -28,7 +28,7 @@ public class ViewUsersServlet extends HttpServlet{
             ids = manager.getIds();
         }
         catch (SQLException ex) {           
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
+            Logger.getLogger(ViewUsersServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
         session.setAttribute("users", users);
         session.setAttribute("ids", ids);
@@ -46,7 +46,7 @@ public class ViewUsersServlet extends HttpServlet{
             ids = manager.getIds();
         }
         catch (SQLException ex) {           
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
+            Logger.getLogger(ViewUsersServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
         session.setAttribute("users", users);
         session.setAttribute("ids", ids);
