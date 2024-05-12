@@ -1,5 +1,5 @@
 
-<%@page import="com.uts.iotbay.User"%>
+<%@page import="com.uts.iotbay.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
