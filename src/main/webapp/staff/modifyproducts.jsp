@@ -24,6 +24,13 @@
 
         if(user == null || !user.isStaff()){response.sendRedirect("/products");}
 
+        String s = (String)request.getSession().getAttribute("productsCount");
+        int productsCount = 0;
+
+        if(s != null && s != ""){
+            productsCount = Integer.parseInt(s);
+        }
+
         String products = (String)request.getSession().getAttribute("products");
         String category = (String)request.getSession().getAttribute("category");
         String search = (String)request.getSession().getAttribute("search");
@@ -31,10 +38,11 @@
         String successMsg = (String)request.getSession().getAttribute("successMsg");
         String title = "All Products";
 
-        request.getSession().setAttribute("category", "");
-        request.getSession().setAttribute("search", "");
+
         request.getSession().setAttribute("errorMsg", "");
         request.getSession().setAttribute("successMsg", "");
+        request.getSession().setAttribute("productsCount", "");
+
 
         if(search == null){search = "";}
         if(category == null){category = "";}
@@ -90,7 +98,9 @@
                     </Button>
                 </form>
             </div>
-            
+            <% if(productsCount > 0) {
+                out.println("<p class=\"result-number\">Found " + productsCount + " results</p>");
+            } %>
             <p class="error-msg"><%=errorMsg%></p>
             <p class="success-msg"><%=successMsg%></p>
             <div class="products-view-staff">

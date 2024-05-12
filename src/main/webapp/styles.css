@@ -41,6 +41,7 @@ body {
     color:#ED7550;
     text-align: center;
     position: relative;
+    font-weight: 500;
 }
 
 .email-text {
@@ -578,6 +579,7 @@ hr {
     font-size: 18px;
     color: black;
     text-decoration: none;
+    font-weight: 500;
 }
 
 #name {
@@ -760,4 +762,12 @@ button {
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: italic;
+  }
+
+  .result-number {
+    font-family: "Space Mono";
+    text-align: center;
+    font-style: italic;
+    font-weight: 700;
+    color: white;
   }

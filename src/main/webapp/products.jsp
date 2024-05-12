@@ -19,14 +19,21 @@
         <% 
             User user = (User)request.getSession().getAttribute("user");
             String products = (String)request.getSession().getAttribute("products");
+
+            String s = (String)request.getSession().getAttribute("productsCount");
+            int productsCount = 0;
+
+            if(s != null && s != ""){
+                productsCount = Integer.parseInt(s);
+            }
+
             String category = (String)request.getSession().getAttribute("category");
             String search = (String)request.getSession().getAttribute("search");
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
 
-            request.getSession().setAttribute("category", "");
-            request.getSession().setAttribute("search", "");
             request.getSession().setAttribute("errorMsg", "");
+            request.getSession().setAttribute("productsCount", "");
 
             if(search == null){search = "";}
             if(category == null){category = "";}
@@ -83,7 +90,10 @@
                     </Button>
                 </form>
             </div>
-            <br><br><br><br>
+            <% if(productsCount > 0) {
+                out.println("<p class=\"result-number\">Found " + productsCount + " results</p>");
+            } %>
+            <br>
             <p class="error-msg"><%=errorMsg%></p>
             <div class="product-grid-container">
                 <% out.println(products); %>

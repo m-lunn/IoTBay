@@ -84,6 +84,8 @@ public class ViewProductsServlet extends HttpServlet {
                 htmlInsert += "</div>\n</div>\n";
             }
 
+            request.getSession().setAttribute("productsCount", products.size()+"");
+
 
             request.getSession().setAttribute("products", htmlInsert);
             RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
@@ -178,6 +180,8 @@ public class ViewProductsServlet extends HttpServlet {
             if(products.size() == 0){
                 request.getSession().setAttribute("errorMsg", "No products found.");
             }
+
+            request.getSession().setAttribute("productsCount", products.size()+"");
 
             request.getSession().setAttribute("category", displayCategory);
             request.getSession().setAttribute("search", displaySearch);
