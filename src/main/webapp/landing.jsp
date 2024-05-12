@@ -9,7 +9,9 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>IoTBay</title>
@@ -21,7 +23,6 @@
 		if(user1 == null){
 			response.sendRedirect("homedirect.jsp");
 		}
-	
 
 		String fname = user1.getFname();
 		String email = user1.getEmail();
@@ -55,6 +56,7 @@
                 <h2 class="email-text"><%= email%></h2>
                 <br>
 				<form action="logout" method="post" id="logout">
+				<br><br>
                 <button class="logout-btn" type="submit"><p class="login-text">Logout</p></button>
 				</form>
                 <br><br><br><br>

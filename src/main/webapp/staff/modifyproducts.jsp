@@ -8,7 +8,9 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="/styles.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>IoTBay</title>
@@ -37,7 +39,7 @@
         if(search == null){search = "";}
         if(category == null){category = "";}
         if(errorMsg == null){errorMsg = "";}
-        if(successMsg == null){successMsg = "bruh";}
+        if(successMsg == null){successMsg = "";}
 
         if(!category.equals("Any") && !category.equals("")){
             title = category;
@@ -71,7 +73,7 @@
             <div class="product-search">
                 <form action="products" class="product-search-form" method="post">
                     <label class="product-search-form-label" for="category">Category:</label>
-                    <select class="product-search-form-input" name="category" id="category" text="bruh">
+                    <select class="product-search-form-input" name="category" id="category">
                         <option value="Any">Any</option>
                         <option <%if(category.equals("Processors")){out.println("selected");}%> value="Processors">Processors</option>
                         <option <%if(category.equals("Sensors")){out.println("selected");}%> value="Sensors">Sensors</option>
