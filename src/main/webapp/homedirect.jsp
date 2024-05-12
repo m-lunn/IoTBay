@@ -6,6 +6,8 @@
 <%@page import="com.uts.iotbay.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
+
 <%
     User user = (User)request.getSession().getAttribute("user");
     if(user != null) {
