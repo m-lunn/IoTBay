@@ -23,7 +23,7 @@ import com.uts.iotbay.model.User;
  *
  * @author michaellunn
  */
-public class ViewProductsServlet extends HttpServlet {
+public class ModifyProductsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,9 +48,7 @@ public class ViewProductsServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        DecimalFormat df = new DecimalFormat("0.00");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
 
         try{
 
@@ -74,19 +72,22 @@ public class ViewProductsServlet extends HttpServlet {
             String htmlInsert = "";
 
             for(Product p : products) {
-                htmlInsert += "<div class=\"product\">\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3></a>\n";
-                htmlInsert += "<div class=\"fill\"></div>";
-                htmlInsert += "<div class=\"buy-line\">\n";
-                htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
+                htmlInsert += "<div class=\"product-staff\">\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><img class=\"product-pic-staff\" src=\"../" + p.getImagePath() + "\"></a>\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
+                htmlInsert += "<div class=\"modify-product-btns\">\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
+                htmlInsert += "<a href=\"product/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
                 htmlInsert += "</div>\n</div>\n";
+
             }
 
+            if(products.size() == 0){
+                request.getSession().setAttribute("errorMsg", "No products found.");
+            }
 
             request.getSession().setAttribute("products", htmlInsert);
-            RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("modifyproducts.jsp");
             rd.forward(request, response);
     
         }
@@ -120,7 +121,6 @@ public class ViewProductsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-        DecimalFormat df = new DecimalFormat("0.00");  
         request.getSession().setAttribute("errorMsg", "");
 
         String displayCategory = (String)request.getParameter("category");
@@ -165,14 +165,14 @@ public class ViewProductsServlet extends HttpServlet {
             String htmlInsert = "";
 
             for(Product p : products) {
-                htmlInsert += "<div class=\"product\">\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3>\n";
-                htmlInsert += "<div class=\"fill\"></div>";
-                htmlInsert += "<div class=\"buy-line\">\n";
-                htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
+                htmlInsert += "<div class=\"product-staff\">\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><img class=\"product-pic-staff\" src=\"../" + p.getImagePath() + "\"></a>\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
+                htmlInsert += "<div class=\"modify-product-btns\">\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
+                htmlInsert += "<a href=\"product/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
                 htmlInsert += "</div>\n</div>\n";
+
             }
 
             if(products.size() == 0){
@@ -183,7 +183,7 @@ public class ViewProductsServlet extends HttpServlet {
             request.getSession().setAttribute("search", displaySearch);
 
             request.getSession().setAttribute("products", htmlInsert);
-            RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("modifyproducts.jsp");
             rd.forward(request, response);
 
         }

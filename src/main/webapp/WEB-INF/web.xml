@@ -30,6 +30,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ModifyProducts</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ModifyProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyProducts</servlet-name>
+        <url-pattern>/staff/products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.uts.iotbay.controller.LogoutServlet</servlet-class>
      </servlet>

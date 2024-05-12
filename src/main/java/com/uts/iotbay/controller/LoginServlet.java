@@ -97,11 +97,18 @@ public class LoginServlet extends HttpServlet {
                     PreparedStatement logStatement = con.prepareStatement(sqlInsert);
                     logStatement.setInt(1, userId);
                     logStatement.executeUpdate();
+
                     request.getSession().setAttribute("errorMsg", "");
                     String fname = rs.getString("user_fname");
                     String surname = rs.getString("user_surname");
                     email = rs.getString("user_email");
-                    User user = new User(fname, surname, email, password);
+
+                    String subtype = rs.getString("user_type");
+                    User.UserType ut = User.UserType.CUSTOMER;
+                    if(subtype.equals("S")){ut = User.UserType.STAFF;}
+                    if(subtype.equals("A")){ut = User.UserType.ADMIN;}
+
+                    User user = new User(fname, surname, email, password, ut);
                     request.getSession().setAttribute("user", user);
                     RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
                     rd.forward(request, response);

@@ -85,7 +85,7 @@ body {
     margin: 0;
 }
 
-.login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
+#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.03);
 }
 
@@ -211,6 +211,27 @@ a {
     border-radius: 25px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
     z-index: 10;
+}
+
+#switch-view-btn {
+    position: fixed;
+    left: 1vh;
+    top: 3vh;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    display: block;
+    border: none;
+    margin: 0;
+    transition: .2s; 
+    width: 215px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    z-index: 10;
+}
+
+#switch-view-text {
+    font-family: "Space Mono";
+    color: white;
 }
 
 #edit-details {
@@ -389,12 +410,18 @@ input[type="text"], input[type="password"] {
     text-align: center;
 }
 
-#delete-btn {
+.delete-btn {
     width: 20%;
     position: relative;
     margin: auto;
     bottom: none;
     background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
+}
+
+#delete-btn {
+    width: 230px;
+    background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
+
 }
 
 .submit-btn2 {
@@ -594,7 +621,7 @@ hr {
     font-family: "Space Mono";
 }
 
-.product-name:hover {
+.product-name:hover, .product-name-staff:hover {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -627,3 +654,73 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 20px;
     text-underline-offset: 3px;
 }
+
+.products-view-staff {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.product-staff {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    width: 70%;
+    background-color: #34495e;
+    border: 1px solid #566573; 
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.product-pic-staff {
+    max-height: 150px;
+    max-width: 175px;
+    min-height: 150px;
+    min-width: 175px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.product-name-staff {
+    color: white;
+    font-family: "Space Mono";
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+.modify-product-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.modify-product-btn {
+    font-family: "Space Mono";
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.2s;
+    color: white;
+    cursor: pointer;
+}
+
+#edit-product {
+    background-image: linear-gradient(to bottom right, #d3aa31, #f97e02);
+
+}
+#delete-product {
+    background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
+}
+
+#add-product {
+    background-image: linear-gradient(to bottom right, #36862b, green); 
+}
+
