@@ -9,6 +9,9 @@
 
 
 <%
+    request.getSession().setAttribute("category", "");
+    request.getSession().setAttribute("search", "");
+
     User user = (User)request.getSession().getAttribute("user");
     if(user != null) {
        response.sendRedirect("landing.jsp");

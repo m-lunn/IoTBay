@@ -1,6 +1,9 @@
 <%@page import="com.uts.iotbay.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%
+    request.getSession().setAttribute("category", "");
+    request.getSession().setAttribute("search", "");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
