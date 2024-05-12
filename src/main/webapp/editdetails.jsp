@@ -22,6 +22,7 @@
             String password="";
 
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+            request.getSession().setAttribute("errorMsg", "");
 
             User user = (User)request.getSession().getAttribute("user");
             if(user != null) {

@@ -460,6 +460,13 @@ input[type="text"], input[type="password"] {
     font-size: larger;
 }
 
+.success-msg {
+    font-family: "Space Mono";
+    text-align: center;
+    color: #0db10d;
+    font-size: larger;
+}
+
 #login-form-container {
     width: 450px;
     min-width: 450px;

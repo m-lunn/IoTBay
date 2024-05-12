@@ -20,6 +20,7 @@
 	<body>
 
         <%String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+        request.getSession().setAttribute("errorMsg", "");
     
         if(errorMsg == null) {
            errorMsg ="";

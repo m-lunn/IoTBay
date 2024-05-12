@@ -22,6 +22,10 @@
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
 
+            request.getSession().setAttribute("category", "");
+            request.getSession().setAttribute("search", "");
+            request.getSession().setAttribute("errorMsg", "");
+
             if(search == null){search = "";}
             if(category == null){category = "";}
             if(errorMsg == null){errorMsg = "";}

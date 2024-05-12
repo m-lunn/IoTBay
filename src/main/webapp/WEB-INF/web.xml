@@ -37,6 +37,14 @@
         <servlet-name>ModifyProducts</servlet-name>
         <url-pattern>/staff/products</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyProducts</servlet-name>
+        <url-pattern>/staff/products/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyProducts</servlet-name>
+        <url-pattern>/staff/products/delete/*</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>Logout</servlet-name>

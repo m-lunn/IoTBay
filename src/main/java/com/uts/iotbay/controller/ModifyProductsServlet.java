@@ -13,11 +13,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-
 import com.uts.iotbay.model.Product;
-import com.uts.iotbay.model.User;
 
 /**
  *
@@ -55,6 +52,24 @@ public class ModifyProductsServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
 
+            if(request.getRequestURI().contains("delete")) {
+
+                String[] url = request.getRequestURI().split("/");
+                int idToDelete = Integer.parseInt(url[url.length-1]);
+
+                PreparedStatement getProductName = con.prepareStatement("SELECT product_name FROM Products WHERE product_id = ?");
+                getProductName.setInt(1, idToDelete);
+                ResultSet rs = getProductName.executeQuery();
+    
+                if(rs.next()){
+                    String name = rs.getString("product_name");
+                    request.getSession().setAttribute("successMsg", name + " successfully deleted.");
+                }
+
+                deleteProduct(idToDelete);
+                response.sendRedirect("/staff/products");
+            }
+            
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_active = 1");
             ResultSet rs = ps.executeQuery();
 
@@ -77,7 +92,7 @@ public class ModifyProductsServlet extends HttpServlet {
                 htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
                 htmlInsert += "<div class=\"modify-product-btns\">\n";
                 htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
-                htmlInsert += "<a href=\"product/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
+                htmlInsert += "<a href=\"products/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
                 htmlInsert += "</div>\n</div>\n";
 
             }
@@ -87,7 +102,7 @@ public class ModifyProductsServlet extends HttpServlet {
             }
 
             request.getSession().setAttribute("products", htmlInsert);
-            RequestDispatcher rd = request.getRequestDispatcher("modifyproducts.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/staff/modifyproducts.jsp");
             rd.forward(request, response);
     
         }
@@ -145,7 +160,7 @@ public class ModifyProductsServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
 
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
             ps.setString(1, "%" + category + "%");
             ps.setString(2, "%" + search + "%");
 
@@ -170,7 +185,7 @@ public class ModifyProductsServlet extends HttpServlet {
                 htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
                 htmlInsert += "<div class=\"modify-product-btns\">\n";
                 htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
-                htmlInsert += "<a href=\"product/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
+                htmlInsert += "<a href=\"products/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
                 htmlInsert += "</div>\n</div>\n";
 
             }
@@ -183,7 +198,7 @@ public class ModifyProductsServlet extends HttpServlet {
             request.getSession().setAttribute("search", displaySearch);
 
             request.getSession().setAttribute("products", htmlInsert);
-            RequestDispatcher rd = request.getRequestDispatcher("modifyproducts.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/staff/modifyproducts.jsp");
             rd.forward(request, response);
 
         }
@@ -205,41 +220,33 @@ public class ModifyProductsServlet extends HttpServlet {
                 
     }
 
-    public int getUserID(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int userID = -1;
+    public void deleteProduct(int idToDelete) {
+        
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
-            
-            User user = (User)request.getSession().getAttribute("user");
-            String email = user.getEmail();
 
-            PreparedStatement findUserID = con.prepareStatement("SELECT user_id from Users WHERE user_email = ?");
-            findUserID.setString(1, email);
-            ResultSet userIDs = findUserID.executeQuery();
-
-            userID = -1;
-
-            if(userIDs.next()) {
-                userID = userIDs.getInt("user_id");
-            }
+            PreparedStatement ps = con.prepareStatement("UPDATE Products SET product_active = 0 WHERE product_id = ?");
+            ps.setInt(1, idToDelete);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
         }
-        catch(Exception e) {
-            PrintWriter out = response.getWriter();
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            e.printStackTrace(pw);
-            out.println(sw.toString());
-            out.println("</body>");
-            out.println("</html>");
+        catch(Exception e){
+            // PrintWriter out = response.getWriter();
+            // out.println("<!DOCTYPE html>");
+            // out.println("<html>");
+            // out.println("<head>");
+            // out.println("<title>Servlet LoginServlet</title>");            
+            // out.println("</head>");
+            // out.println("<body>");
+            // StringWriter sw = new StringWriter();
+            // PrintWriter pw = new PrintWriter(sw);
+            // e.printStackTrace(pw);
+            // out.println(sw.toString());
+            // out.println("</body>");
+            // out.println("</html>");
         }
-        return userID;
     }
 
     

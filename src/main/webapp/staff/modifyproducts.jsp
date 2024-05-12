@@ -26,18 +26,24 @@
         String category = (String)request.getSession().getAttribute("category");
         String search = (String)request.getSession().getAttribute("search");
         String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+        String successMsg = (String)request.getSession().getAttribute("successMsg");
         String title = "All Products";
+
+        request.getSession().setAttribute("category", "");
+        request.getSession().setAttribute("search", "");
+        request.getSession().setAttribute("errorMsg", "");
+        request.getSession().setAttribute("successMsg", "");
 
         if(search == null){search = "";}
         if(category == null){category = "";}
         if(errorMsg == null){errorMsg = "";}
+        if(successMsg == null){successMsg = "bruh";}
 
         if(!category.equals("Any") && !category.equals("")){
             title = category;
         }
-     %>
+        %>
         
-
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -47,12 +53,12 @@
                             out.println("<li><button id=\"switch-view-btn\" tabindex=\"-1\"><a id=\"switch-view-text\" href=\"/products\">Switch to Customer View</a></button></li>");
                         }
                     } %>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/homedirect.jsp">Home</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Products</span></a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
-					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="mng-acc-pic" src="../assets/account.png" alt="manage account button"></a></button></li>
-					<li><button id="cart-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="cart-pic" src="../assets/shopping-cart.png" alt="manage account button"></a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/contact.html">Contact</a></button></li>
+					<li><button id="mng-acc-btn" tabindex="-1"><a href="/manageaccount.jsp"><img id="mng-acc-pic" src="../assets/account.png" alt="manage account button"></a></button></li>
+					<li><button id="cart-btn" tabindex="-1"><a href="/manageaccount.jsp"><img id="cart-pic" src="../assets/shopping-cart.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
             <br>
@@ -84,6 +90,7 @@
             </div>
             
             <p class="error-msg"><%=errorMsg%></p>
+            <p class="success-msg"><%=successMsg%></p>
             <div class="products-view-staff">
                 <a href="addproduct"><Button class="modify-product-btn" id="add-product">Add Product</Button></a>
                 <br><br>
@@ -98,10 +105,10 @@
         <div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp">Home</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="about.html">About</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/homedirect.jsp">Home</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/about.html">About</a></button></li>
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="#"><span class="active-page">Products</span></a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="contact.html">Contact</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/contact.html">Contact</a></button></li>
             </ul>
             <p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
         </div>	
