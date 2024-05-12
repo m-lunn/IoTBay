@@ -1,17 +1,21 @@
 #!/bin/bash
 
-cd /Users/michaellunn/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/bin
+cd ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/bin
 
 ./shutdown.sh
 
-/Library/Maven/bin/mvn package -f /Users/michaellunn/IoTBay/pom.xml
+rm -r ~/IoTBay/target/IoTBay-1.0-SNAPSHOT
 
-mv /Users/michaellunn/IoTBay/target/IoTBay-1.0-SNAPSHOT.war /Users/michaellunn/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war
+rm -r ~/IoTBay/target/classes
 
-cp /Users/michaellunn/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war /Users/michaellunn/IoTBay/target/
+/Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml
 
-mv /Users/michaellunn/IoTBay/target/ROOT.war /Users/michaellunn/IoTBay/target/IoTBay-1.0-SNAPSHOT.war
+mv ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war
 
-rm -r /Users/michaellunn/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT
+cp ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war ~//IoTBay/target/
+
+mv ~/IoTBay/target/ROOT.war ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war
+
+rm -r ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT
 
 ./startup.sh

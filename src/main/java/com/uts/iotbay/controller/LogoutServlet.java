@@ -1,4 +1,4 @@
-package com.uts.iotbay;
+package com.uts.iotbay.controller;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,15 +10,20 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.uts.iotbay.model.User;
 
 /**
  *
  * @author michaellunn
  */
-public class RegisterServlet extends HttpServlet {
+//@WebServlet(urlPatterns = {"/login"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +34,9 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -43,6 +50,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        processRequest(request, response);
     }
 
     /**
@@ -60,19 +68,31 @@ public class RegisterServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
             
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String fname = request.getParameter("fname");
-            String surname = request.getParameter("surname");
+            User user = (User) request.getSession().getAttribute("user");
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users(user_email, user_password, user_fname, user_surname) VALUES (?, ?, ?, ?)");
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ps.setString(3, fname);
-            ps.setString(4, surname);
-            ps.executeUpdate();
+            String email = user.getEmail();
+            request.getSession().invalidate();
             
-            response.sendRedirect("login.jsp");
+            PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
+            findUser.setString(1, email);
+            ResultSet rs = findUser.executeQuery();
+
+            if(rs.next()) {
+
+                int userId = rs.getInt("user_id");
+
+                String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Logout\")";
+                PreparedStatement logStatement = con.prepareStatement(sqlInsert);
+                logStatement.setInt(1, userId);
+                logStatement.executeUpdate();
+
+                RequestDispatcher rd = request.getRequestDispatcher("homedirect.jsp");
+                rd.forward(request, response);
+            }
+            else {
+                RequestDispatcher rd = request.getRequestDispatcher("homedirect.jsp");
+                rd.forward(request, response);
+            }
         }
         
         catch(Exception e){
@@ -90,6 +110,7 @@ public class RegisterServlet extends HttpServlet {
 //            out.println("</body>");
 //            out.println("</html>");
         }
+//        
     }
 
     /**

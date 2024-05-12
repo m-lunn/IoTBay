@@ -1,9 +1,8 @@
 <%-- 
-    Document   : login
-    Created on : 14 Apr 2024, 12:19:15 am
+    Document   : landing
+    Created on : 14 Apr 2024, 12:20:15 am
     Author     : michaellunn
 --%>
-
 <%@page import="com.uts.iotbay.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,22 +14,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay | Login</title>
+	<title>IoTBay</title>
 
 </head>
+	<%
+		User user = (User)request.getSession().getAttribute("user");
 
-	<body>
-
-        <%String errorMsg = (String)request.getSession().getAttribute("errorMsg");
-        request.getSession().setAttribute("errorMsg", "");
-    
-        if(errorMsg == null) {
-           errorMsg ="";
+        if(user == null){
+            response.sendRedirect("homedirect.jsp");
         }
-        %>
+		String fname = user.getFname();
+		String email = user.getEmail();
+        String htmlInsert = (String)request.getSession().getAttribute("accesslogs");
+        String fromDate = (String)request.getSession().getAttribute("fromdate");
+        String toDate = (String)request.getSession().getAttribute("todate");
 
-        
-                
+	%>
+	<body>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -39,6 +39,8 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
+					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
+                    <li><button id="cart-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></a></button></li>
 				</ul>
 			</div>
 			<br>
@@ -48,35 +50,31 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Welcome Back!</h1>
+				<h1 class="heading-text">Access Logs</h1>
 			</div>
-
-            
-
-			<br><br>
-            <p class="error-msg"> <%= errorMsg%> </p>
             <br>
-            <div class="form-container" id="login-form-container">
-                <form action="login", method="post">
-                    <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    </div>
-                    <br><br><br>
-                    <button type="submit" class="submit-btn2">Login</button>
-                    <br><br>
-                    <a href="register.jsp" class="login-redirects">Don't have an account?</a>
-                    <br>
-                </form>
-              </div>
-              <br><br><br>
+                <h2 class="subheading-text">All logs for:</h2>
+                
+                <h2 class="email-text"><%= email%></h2>
+                <br>
+                <div class="date-range">
+                    <form action="accesslogs" class="date-range-form" method="post">
+                        <label class="date-range-form-label" for="from">From:</label>
+                        <input class="date-range-form-input" type="date" id="from" name="from" value="<%=fromDate%>">
+                        <label class="date-range-form-label" for="to">To:</label>
+                        <input class="date-range-form-input" type="date" id="to" name="to" value="<%=toDate%>">
+                        <input class="date-range-form-input" id="date-range-submit" type="submit" value="Filter">
+                    </form>
+                </div>
+                <br>
+                <div class="access-logs-container">
+                    <table class="access-log-table">
+                        <%out.println(htmlInsert);%>
+                    </table>
+                </div>
+                <br><br><br><br>
 
-		</div>
-
+	    </div>
         <div class="footer">
             <br>
             <ul class="footer-menu">
