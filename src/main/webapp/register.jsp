@@ -1,6 +1,6 @@
 <%-- 
     Document   : register
-    Created on : 14 Apr 2024, 12:20:29 am
+    Created on : 14 Apr 2024, 12:20:29 am
     Author     : michaellunn
 --%>
 
@@ -9,7 +9,9 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>IoTBay | Sign Up</title>
@@ -22,9 +24,9 @@
 			<div class="buttons">
 				<ul class="menu-bar">
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
 				</ul>
 			</div>
 			<br>
@@ -72,9 +74,9 @@
             <br>
             <ul class="footer-menu">
                 <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp">Home</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="about.html">About</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="contact.html">Contact</a></button></li>
             </ul>
             <p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
         </div>	
