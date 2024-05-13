@@ -63,7 +63,7 @@
 				<ul class="menu-bar">
                     <%  if(user != null){
                         if(user.isStaff()){
-                            out.println("<li><a href=\"/products\"><button class=\"switch-view-text\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Customer View</button></a></li>");
+                            out.println("<li><button id=\"switch-view-btn\" tabindex=\"-1\"><a id=\"switch-view-text\" href=\"/products\">Switch to Customer View</a></button></li>");
                         }
                     } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/homedirect.jsp">Home</a></button></li>

@@ -47,9 +47,6 @@ public class ModifyProductsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
 
-        String category = (String)request.getSession().getAttribute("category");
-        String search = (String)request.getSession().getAttribute("search");
-
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -57,9 +54,9 @@ public class ModifyProductsServlet extends HttpServlet {
 
             if(request.getRequestURI().contains("delete")) {
 
-                category = (String)request.getSession().getAttribute("category");
+                String category = (String)request.getSession().getAttribute("category");
                 if(category == null){category = "Any";}
-                search = (String)request.getSession().getAttribute("search");
+                String search = (String)request.getSession().getAttribute("search");
                 if(search == null){search = "";}
 
                 String[] url = request.getRequestURI().split("/");
@@ -79,11 +76,6 @@ public class ModifyProductsServlet extends HttpServlet {
                 response.sendRedirect("/staff/modifyproducts.jsp");
                 return;
 
-            }
-
-            if(category != null || search != null){
-                switchView(request, response);
-                return;
             }
             
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_active = 1");
@@ -155,11 +147,8 @@ public class ModifyProductsServlet extends HttpServlet {
     throws ServletException, IOException {
 
         String displayCategory = (String)request.getParameter("category");
-        if(displayCategory == null){
-            displayCategory = "Any";
-        }
 
-        String category = displayCategory.toLowerCase();
+        String category = (String)request.getParameter("category").toLowerCase();
        
         if(category.equals("any")){
             category = "%";
@@ -330,7 +319,7 @@ public class ModifyProductsServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-
+                
     }
 
     public void deleteProduct(int idToDelete) {

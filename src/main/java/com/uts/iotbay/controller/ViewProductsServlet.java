@@ -52,14 +52,6 @@ public class ViewProductsServlet extends HttpServlet {
         
         DecimalFormat df = new DecimalFormat("0.00");
 
-        String category = (String)request.getSession().getAttribute("category");
-        String search = (String)request.getSession().getAttribute("search");
-
-        if(category != null || search != null){
-            switchView(request, response);
-            return;
-        }
-
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
