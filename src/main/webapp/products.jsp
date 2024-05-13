@@ -17,6 +17,7 @@
 	<body>
 
         <% 
+            
             User user = (User)request.getSession().getAttribute("user");
             String products = (String)request.getSession().getAttribute("products");
 
@@ -29,6 +30,8 @@
 
             String category = (String)request.getSession().getAttribute("category");
             String search = (String)request.getSession().getAttribute("search");
+            out.println(category);
+            out.println(search);
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
 
@@ -52,7 +55,7 @@
 				<ul class="menu-bar">
                     <%  if(user != null){
                             if(user.isStaff()){
-                                out.println("<li><button id=\"switch-view-btn\" tabindex=\"-1\"><a id=\"switch-view-text\" href=\"/staff/products\">Switch to Staff View</a></button></li>");
+                                out.println("<form action=\"/staff/products\" method=\"post\"> <li><button type=\"submit\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Staff View</button></li></form>");
                             }
                         } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
