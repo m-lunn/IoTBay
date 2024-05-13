@@ -14,4 +14,4 @@ The DBManager class contains SQL queries that can be used throughout the entire 
 
 * The system can now keep track of whether a user is active or inactive. Inactive users cannot log in.
 
-* Added JUnit framework to the project and test suite to test DBManager SQL queries.
+* Added JUnit framework to the project and test units to test DBManager SQL queries.
