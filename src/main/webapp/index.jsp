@@ -21,7 +21,6 @@
 </head>
 
 	<body>
-		<jsp:include page="/ConnServlet" flush="true"/>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">

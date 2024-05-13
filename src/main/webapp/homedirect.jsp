@@ -9,7 +9,7 @@
 <%
     User user = (User)request.getSession().getAttribute("user");
     if(user != null) {
-        response.sendRedirect("landing.jsp");
+       response.sendRedirect("landing.jsp");
     }
     else {
         response.sendRedirect("index.jsp");
