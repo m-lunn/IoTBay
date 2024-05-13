@@ -1,5 +1,8 @@
-com/uts/iotbay/resources/JakartaEE10Resource.class
-com/uts/iotbay/RegisterServlet.class
-com/uts/iotbay/JakartaRestConfiguration.class
-com/uts/iotbay/LoginServlet.class
-com/uts/iotbay/User.class
+com\uts\iotbay\LogoutServlet.class
+com\uts\iotbay\AccessLogsServlet.class
+com\uts\iotbay\EditDetailsServlet.class
+com\uts\iotbay\LoginServlet.class
+com\uts\iotbay\User.class
+com\uts\iotbay\RegisterServlet.class
+com\uts\iotbay\JakartaRestConfiguration.class
+com\uts\iotbay\resources\JakartaEE10Resource.class
