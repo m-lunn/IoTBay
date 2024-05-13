@@ -84,7 +84,7 @@ body {
     margin: 0;
 }
 
-#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, .admin-btn:hover, .x-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.admin-btn:hover, #switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, .admin-btn:hover, .x-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.03);
 }
 
@@ -770,3 +770,23 @@ button {
     font-weight: 700;
     color: white;
   }
+
+  .admin-btn {
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    display: block;
+    border: none;
+    margin: auto;
+    transition: .2s; 
+    width: 45%;
+    height: 5vw;
+    border-radius: 25px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    min-width: 200px;
+    min-height: 100px;
+    color: white;
+    font-size: 200%;
+    font-family: "Space Mono";
+    font-weight: bold;
+    line-height: 5vw;
+}
+
