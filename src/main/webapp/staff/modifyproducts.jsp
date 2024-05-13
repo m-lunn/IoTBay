@@ -38,6 +38,9 @@
         String successMsg = (String)request.getSession().getAttribute("successMsg");
         String title = "All Products";
 
+        out.println(category);
+        out.println(search);
+
 
         request.getSession().setAttribute("errorMsg", "");
         request.getSession().setAttribute("successMsg", "");
