@@ -60,11 +60,11 @@
                 <form action="login", method="post">
                     <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="email" name="email" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
                     </div>
                     <br><br><br>
                     <button type="submit" class="submit-btn2">Login</button>
