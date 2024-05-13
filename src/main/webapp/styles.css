@@ -228,7 +228,7 @@ a {
     z-index: 10;
 }
 
-#switch-view-text {
+.switch-view-text {
     font-family: "Space Mono";
     color: white;
 }

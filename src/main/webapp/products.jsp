@@ -55,7 +55,7 @@
 				<ul class="menu-bar">
                     <%  if(user != null){
                             if(user.isStaff()){
-                                out.println("<form action=\"/staff/products\" method=\"post\"> <li><button type=\"submit\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Staff View</button></li></form>");
+                                out.println("<li><a href=\"/staff/products\"><button id=\"switch-view-btn\" tabindex=\"-1\"><p class=\"switch-view-text\">Switch to Staff View</p></button></a></li>");
                             }
                         } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
