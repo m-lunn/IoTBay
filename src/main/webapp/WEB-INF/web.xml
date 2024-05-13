@@ -5,8 +5,8 @@
             30
         </session-timeout>
         <cookie-config>
-            <http-only>false</http-only>
-            <secure>false</secure>
+            <http-only>true</http-only>
+            <secure>true</secure>
         </cookie-config>
     </session-config>
 

@@ -57,7 +57,7 @@ public class AccessLogsServlet extends HttpServlet {
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
 
             int userID = getUserID(request, response);
 
@@ -137,7 +137,7 @@ public class AccessLogsServlet extends HttpServlet {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM AccessLogs WHERE user_id = ? AND date_accessed >= ? AND CAST(date_accessed AS DATE) <= ?");
             ps.setInt(1, userID);
@@ -203,7 +203,7 @@ public class AccessLogsServlet extends HttpServlet {
         int userID = -1;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
             
             User user = (User)request.getSession().getAttribute("user");
             String email = user.getEmail();

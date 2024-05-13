@@ -66,7 +66,7 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
             
             User user = (User) request.getSession().getAttribute("user");
 
