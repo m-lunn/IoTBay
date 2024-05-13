@@ -53,7 +53,7 @@ public class EditDetailsServlet extends HttpServlet {
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
             
             User deleteUser = (User)request.getSession().getAttribute("user");
             String email = deleteUser.getEmail();
@@ -113,7 +113,7 @@ public class EditDetailsServlet extends HttpServlet {
             }
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement updateDetails = con.prepareStatement("UPDATE Users SET user_fname=?, user_surname =?, user_password = ? WHERE user_email = ?");
             updateDetails.setString(1, fname);

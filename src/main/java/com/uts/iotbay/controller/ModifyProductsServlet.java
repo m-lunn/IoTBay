@@ -53,7 +53,7 @@ public class ModifyProductsServlet extends HttpServlet {
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             if(request.getRequestURI().contains("delete")) {
 
@@ -181,7 +181,7 @@ public class ModifyProductsServlet extends HttpServlet {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
             ps.setString(1, "%" + category + "%");
@@ -269,7 +269,7 @@ public class ModifyProductsServlet extends HttpServlet {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
             ps.setString(1, "%" + category + "%");
@@ -337,7 +337,7 @@ public class ModifyProductsServlet extends HttpServlet {
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("UPDATE Products SET product_active = 0 WHERE product_id = ?");
             ps.setInt(1, idToDelete);
@@ -383,7 +383,7 @@ public class ModifyProductsServlet extends HttpServlet {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
             ps.setString(1, "%" + category + "%");

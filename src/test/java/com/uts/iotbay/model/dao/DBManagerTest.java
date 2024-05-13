@@ -23,7 +23,7 @@ public class DBManagerTest {
     public void initialize() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM Users").executeUpdate();
             manager = new DBManager(conn); 

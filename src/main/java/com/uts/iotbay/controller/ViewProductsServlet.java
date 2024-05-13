@@ -63,7 +63,7 @@ public class ViewProductsServlet extends HttpServlet {
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_active = 1");
             ResultSet rs = ps.executeQuery();
@@ -153,7 +153,7 @@ public class ViewProductsServlet extends HttpServlet {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
             ps.setString(1, "%" + category + "%");
@@ -221,7 +221,7 @@ public class ViewProductsServlet extends HttpServlet {
         int userID = -1;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
             
             User user = (User)request.getSession().getAttribute("user");
             String email = user.getEmail();
@@ -277,7 +277,7 @@ public class ViewProductsServlet extends HttpServlet {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
 
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
             ps.setString(1, "%" + category + "%");
