@@ -20,14 +20,14 @@
 
 </head>
 	<%
-		User user1 = (User)request.getSession().getAttribute("user");
+		User user = (User)request.getSession().getAttribute("user");
 
-		if(user1 == null){
+		if(user == null){
 			response.sendRedirect("homedirect.jsp");
 		}
 
-		String fname = user1.getFname();
-		String email = user1.getEmail();
+		String fname = user.getFname();
+		String email = user.getEmail();
 	%>
 	<body>
 		<div class="backdrop">

@@ -59,11 +59,11 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("landing.jsp").include(request, response);
         } 
         else if (user != null) {
-            session.setAttribute("loginErr", "Account is currently inactive! Please contact system admin for further information.");   
+            session.setAttribute("errorMsg", "Account is currently inactive! Please contact system admin for further information.");   
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
         else {                        
-            session.setAttribute("loginErr", "Email or password is incorrect!");   
+            session.setAttribute("errorMsg", "Email or password is incorrect!");   
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
     }
