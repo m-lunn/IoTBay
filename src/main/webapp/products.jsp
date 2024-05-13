@@ -30,8 +30,6 @@
 
             String category = (String)request.getSession().getAttribute("category");
             String search = (String)request.getSession().getAttribute("search");
-            out.println(category);
-            out.println(search);
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
 
