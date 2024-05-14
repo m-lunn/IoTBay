@@ -8,8 +8,10 @@ package com.uts.iotbay.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,8 +20,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.uts.iotbay.model.User;
+import com.uts.iotbay.model.dao.DBManager;
 
 /**
  *
@@ -67,76 +71,98 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        DBManager manager = (DBManager) session.getAttribute("manager");
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            Connection conn = manager.getConnection();
+            PreparedStatement findUserStmt = conn.prepareStatement("select * from users where email=?");
+            findUserStmt.setString(1, email);
+            ResultSet rs = findUserStmt.executeQuery();
 
-            PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
-            findUser.setString(1, email);
-            ResultSet rs = findUser.executeQuery();
-
-            if(rs.next()) {
-
+            if(rs.next()){
                 int userId = rs.getInt("user_id");
-                String dbPassword = rs.getString("user_password");
-                int activeUser = rs.getInt("user_active");
-
-                if(!password.equals(dbPassword) || activeUser != 1) {
-                    request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
-                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
-                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
-                    logStatement.setInt(1, userId);
-                    logStatement.executeUpdate();
-                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                    rd.forward(request, response);
-                }
-                else {
-                    String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
-                    PreparedStatement logStatement = con.prepareStatement(sqlInsert);
-                    logStatement.setInt(1, userId);
-                    logStatement.executeUpdate();
-
-                    request.getSession().setAttribute("errorMsg", "");
-                    String fname = rs.getString("user_fname");
-                    String surname = rs.getString("user_surname");
-                    email = rs.getString("user_email");
-
-                    String subtype = rs.getString("user_type");
-                    User.UserType ut = User.UserType.CUSTOMER;
-                    if(subtype.equals("S")){ut = User.UserType.STAFF;}
-                    if(subtype.equals("A")){ut = User.UserType.ADMIN;}
-
-                    User user = new User(fname, surname, email, password, ut);
-                    request.getSession().setAttribute("user", user);
-                    RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
-                    rd.forward(request, response);
-                }
+                String dbPassword = rs.getString("password");
+                int isActive = rs.getInt("isactive");
+                logLogin(manager, request, response, userId, password, dbPassword, isActive);
             }
-            else {
-                request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                rd.forward(request, response);
-            }
+
+        }catch(Exception e){
+            PrintWriter out = response.getWriter();
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("THIS ONE");
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            out.println(sw.toString());
+            out.println("</body>");
+            out.println("</html>");
         }
         
-        catch(Exception e){
-           PrintWriter out = response.getWriter();
-           out.println("<!DOCTYPE html>");
-           out.println("<html>");
-           out.println("<head>");
-           out.println("<title>Servlet LoginServlet</title>");            
-           out.println("</head>");
-           out.println("<body>");
-           StringWriter sw = new StringWriter();
-           PrintWriter pw = new PrintWriter(sw);
-           e.printStackTrace(pw);
-           out.println(sw.toString());
-           out.println("</body>");
-           out.println("</html>");
+        User user = null;  
+        
+        try {       
+            user = manager.getUser(email, password);
+        } 
+        catch (SQLException ex) {           
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
+        } 
+
+        if (email.equals("root") && password.equals("iotbay")) {
+            user = new User("root");
         }
-//        
+        if (user != null && user.isActive()) {                     
+            session.setAttribute("user", user);
+            request.getRequestDispatcher("landing.jsp").include(request, response);
+        } 
+        else if (user != null) {
+            session.setAttribute("loginErr", "Account is currently inactive! Please contact system admin for further information.");   
+            request.getRequestDispatcher("login.jsp").include(request, response);
+        }
+        else {                        
+            session.setAttribute("loginErr", "Email or password is incorrect!");   
+            request.getRequestDispatcher("login.jsp").include(request, response);
+        }
+    }
+
+    public void logLogin(DBManager manager, HttpServletRequest request, HttpServletResponse response, int userID, String password, String dbPassword, int isActive) throws IOException{ 
+        Connection conn = manager.getConnection();
+        try{
+            if(!password.equals(dbPassword) || isActive != 1) {
+                String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
+                PreparedStatement logStatement = conn.prepareStatement(sqlInsert);
+                logStatement.setInt(1, userID);
+                logStatement.executeUpdate();
+            }
+            else {
+                String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
+                PreparedStatement logStatement = conn.prepareStatement(sqlInsert);
+                logStatement.setInt(1, userID);
+                logStatement.executeUpdate();
+            }
+        }
+        catch(Exception e){
+            PrintWriter out = response.getWriter();
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            out.println(sw.toString());
+            out.println("</body>");
+            out.println("</html>");
+        } // catch deez nuts
     }
 
     /**

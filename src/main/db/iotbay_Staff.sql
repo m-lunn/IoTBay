@@ -16,33 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Users`
+-- Table structure for table `Staff`
 --
 
-DROP TABLE IF EXISTS `Users`;
+DROP TABLE IF EXISTS `Staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Users` (
-  `user_id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `fname` varchar(50) DEFAULT NULL,
-  `surname` varchar(50) DEFAULT NULL,
-  `phoneno` varchar(12) DEFAULT NULL,
-  `isactive` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Staff` (
+  `staff_id` int NOT NULL,
+  PRIMARY KEY (`staff_id`),
+  CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `Staff`
 --
 
-LOCK TABLES `Users` WRITE;
-/*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'m.lunn54@gmail.com','123','Michael','Lunn','0499999999',_binary ''),(2,'mickeymouse@gmail.com','123','Mickey','Mouse','0400000000',_binary ''),(3,'donaldduck@gmail.com','123','Donald','Duck','0400000000',_binary ''),(5,'pabloescobar@gmail.com','1','Pablo','Escobar','0400000000',_binary ''),(6,'daffyduck@gmail.com','123','Daffy','Duck','0400000000',_binary ''),(39,'jeffbezos@iotbay.com','iotbay','Jeff','Bezos','0412345678',_binary '');
-/*!40000 ALTER TABLE `Users` ENABLE KEYS */;
+LOCK TABLES `Staff` WRITE;
+/*!40000 ALTER TABLE `Staff` DISABLE KEYS */;
+INSERT INTO `Staff` VALUES (1),(5),(39);
+/*!40000 ALTER TABLE `Staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -11,6 +11,65 @@
     </session-config>
 
     <servlet>
+        <servlet-name>ConnServlet</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ConnServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnServlet</servlet-name>
+        <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>View-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ViewUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>View-User</servlet-name>
+        <url-pattern>/view-user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>View-Users</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ViewUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>View-Users</servlet-name>
+        <url-pattern>/view-users</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Delete-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Delete-User</servlet-name>
+        <url-pattern>/delete-user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Edit-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit-User</servlet-name>
+        <url-pattern>/edit-user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Add-User</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.AddUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Add-User</servlet-name>
+        <url-pattern>/add-user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Search-Users</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.SearchUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search-Users</servlet-name>
+        <url-pattern>/search-users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.uts.iotbay.controller.LoginServlet</servlet-class>
     </servlet>
@@ -83,10 +142,4 @@
     <welcome-file-list>
         <welcome-file>homedirect.jsp</welcome-file>
     </welcome-file-list>
-
-    <configuration>
-    <system.webServer>
-        <caching enabled="false" enableKernelCache="false" /> <!-- This one -->
-    </system.webServer>
-</configuration>
 </web-app>

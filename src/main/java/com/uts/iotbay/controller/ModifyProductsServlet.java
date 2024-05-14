@@ -47,6 +47,9 @@ public class ModifyProductsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
 
+        String category = (String)request.getSession().getAttribute("category");
+        String search = (String)request.getSession().getAttribute("search");
+
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -54,9 +57,9 @@ public class ModifyProductsServlet extends HttpServlet {
 
             if(request.getRequestURI().contains("delete")) {
 
-                String category = (String)request.getSession().getAttribute("category");
+                category = (String)request.getSession().getAttribute("category");
                 if(category == null){category = "Any";}
-                String search = (String)request.getSession().getAttribute("search");
+                search = (String)request.getSession().getAttribute("search");
                 if(search == null){search = "";}
 
                 String[] url = request.getRequestURI().split("/");
@@ -76,6 +79,11 @@ public class ModifyProductsServlet extends HttpServlet {
                 response.sendRedirect("/staff/modifyproducts.jsp");
                 return;
 
+            }
+
+            if(category != null || search != null){
+                switchView(request, response);
+                return;
             }
             
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_active = 1");
@@ -147,8 +155,11 @@ public class ModifyProductsServlet extends HttpServlet {
     throws ServletException, IOException {
 
         String displayCategory = (String)request.getParameter("category");
+        if(displayCategory == null){
+            displayCategory = "Any";
+        }
 
-        String category = (String)request.getParameter("category").toLowerCase();
+        String category = displayCategory.toLowerCase();
        
         if(category.equals("any")){
             category = "%";
@@ -158,7 +169,11 @@ public class ModifyProductsServlet extends HttpServlet {
         }
 
         String displaySearch = (String)request.getParameter("name");
-        String search = (String)request.getParameter("name");
+        if(displaySearch == null) {
+            displaySearch = "";
+        }
+        String search = displaySearch;
+
         if(search.equals("")){
             search = "%";
         }
@@ -228,6 +243,94 @@ public class ModifyProductsServlet extends HttpServlet {
             out.println("</html>");
         }
                 
+    }
+
+    public void switchView(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String displayCategory = (String)request.getSession().getAttribute("category");
+
+        String category = displayCategory.toLowerCase();
+       
+        if(category.equals("any")){
+            category = "%";
+        }
+        else {
+            category = category.substring(0, category.length() - 1);
+        }
+
+        String displaySearch = (String)request.getSession().getAttribute("search");
+
+        String search = displaySearch;
+
+        if(search.equals("")){
+            search = "%";
+        }
+
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
+            ps.setString(1, "%" + category + "%");
+            ps.setString(2, "%" + search + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Product> products = new ArrayList<>();
+
+            while(rs.next()) {
+                int productID = rs.getInt(1);
+                String productName = rs.getString(2);
+                String productDescription = rs.getString(3);
+                float productPrice = rs.getFloat(4);
+                String image_path = rs.getString(5);
+                products.add(new Product(productID, productName, productDescription, productPrice, image_path));
+            }
+
+            String htmlInsert = "";
+
+            for(Product p : products) {
+                htmlInsert += "<div class=\"product-staff\">\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><img class=\"product-pic-staff\" src=\"../" + p.getImagePath() + "\"></a>\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
+                htmlInsert += "<div class=\"modify-product-btns\">\n";
+                htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
+                htmlInsert += "<a href=\"products/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
+                htmlInsert += "</div>\n</div>\n";
+
+            }
+
+            if(products.size() == 0){
+                request.getSession().setAttribute("errorMsg", "No products found.");
+            }
+
+            request.getSession().setAttribute("productsCount", products.size()+"");
+
+            request.getSession().setAttribute("category", displayCategory);
+            request.getSession().setAttribute("search", displaySearch);
+
+            request.getSession().setAttribute("products", htmlInsert);
+            RequestDispatcher rd = request.getRequestDispatcher("/staff/modifyproducts.jsp");
+            rd.forward(request, response);
+
+        }
+        catch(Exception e){
+            PrintWriter out = response.getWriter();
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            out.println(sw.toString());
+            out.println("</body>");
+            out.println("</html>");
+        }
+
     }
 
     public void deleteProduct(int idToDelete) {

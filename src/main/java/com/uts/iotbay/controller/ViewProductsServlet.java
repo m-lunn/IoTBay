@@ -52,6 +52,14 @@ public class ViewProductsServlet extends HttpServlet {
         
         DecimalFormat df = new DecimalFormat("0.00");
 
+        String category = (String)request.getSession().getAttribute("category");
+        String search = (String)request.getSession().getAttribute("search");
+
+        if(category != null || search != null){
+            switchView(request, response);
+            return;
+        }
+
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -218,7 +226,7 @@ public class ViewProductsServlet extends HttpServlet {
             User user = (User)request.getSession().getAttribute("user");
             String email = user.getEmail();
 
-            PreparedStatement findUserID = con.prepareStatement("SELECT user_id from Users WHERE user_email = ?");
+            PreparedStatement findUserID = con.prepareStatement("SELECT user_id from Users WHERE email = ?");
             findUserID.setString(1, email);
             ResultSet userIDs = findUserID.executeQuery();
 
@@ -244,6 +252,93 @@ public class ViewProductsServlet extends HttpServlet {
             out.println("</html>");
         }
         return userID;
+    }
+
+    public void switchView(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        DecimalFormat df = new DecimalFormat("0.00");  
+        request.getSession().setAttribute("errorMsg", "");
+
+        String displayCategory = (String)request.getSession().getAttribute("category");
+        String category = (String)request.getSession().getAttribute("category").toString().toLowerCase();
+       
+        if(category.equals("any")){
+            category = "%";
+        }
+        else {
+            category = category.substring(0, category.length() - 1);
+        }
+
+        String displaySearch = (String)request.getSession().getAttribute("search");
+        String search = (String)request.getSession().getAttribute("search");
+        if(search.equals("")){
+            search = "%";
+        }
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
+            ps.setString(1, "%" + category + "%");
+            ps.setString(2, "%" + search + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Product> products = new ArrayList<>();
+
+            while(rs.next()) {
+                int productID = rs.getInt(1);
+                String productName = rs.getString(2);
+                String productDescription = rs.getString(3);
+                float productPrice = rs.getFloat(4);
+                String image_path = rs.getString(5);
+                products.add(new Product(productID, productName, productDescription, productPrice, image_path));
+            }
+
+            String htmlInsert = "";
+
+            for(Product p : products) {
+                htmlInsert += "<div class=\"product\">\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3>\n";
+                htmlInsert += "<div class=\"fill\"></div>";
+                htmlInsert += "<div class=\"buy-line\">\n";
+                htmlInsert += "<p class=\"price\">$" + df.format(p.getPrice()) + "</p>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><Button class=\"view-product-btn\">View Product</Button></a>\n";
+                htmlInsert += "</div>\n</div>\n";
+            }
+
+            if(products.size() == 0){
+                request.getSession().setAttribute("errorMsg", "No products found.");
+            }
+
+            request.getSession().setAttribute("productsCount", products.size()+"");
+
+            request.getSession().setAttribute("category", displayCategory);
+            request.getSession().setAttribute("search", displaySearch);
+
+            request.getSession().setAttribute("products", htmlInsert);
+            RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
+            rd.forward(request, response);
+
+        }
+        catch(Exception e){
+            PrintWriter out = response.getWriter();
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            out.println(sw.toString());
+            out.println("</body>");
+            out.println("</html>");
+        }
+
     }
 
     

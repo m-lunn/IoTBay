@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +20,7 @@
 </head>
 
 	<body>
+		<jsp:include page="/ConnServlet"/>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -46,17 +46,17 @@
 				<ul class="logins-btns">
 					<li>
 						<div class="login-container">
-							<button class="login-btn"><a href="login.jsp" class="login-text">Login</a></button>
+							<a href="login.jsp"><button class="login-btn">Login</button></a>
 						</div>
 					</li>
 					<li>
 						<div class="login-container">
-							<button class="login-btn"><a href="register.jsp" class="login-text">Sign Up</a></button>
+							<a href="register.jsp"><button class="login-btn">Sign Up</button></a>
 						</div>
 					</li>
 				</ul>
 			</div>
-                        <br><br><br><br>
+        <br><br><br><br>
 		</div>
 		<div class="footer">
 			<br>

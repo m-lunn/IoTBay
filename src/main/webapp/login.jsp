@@ -21,16 +21,16 @@
 
 	<body>
 
-        <%String errorMsg = (String)request.getSession().getAttribute("errorMsg");
-        request.getSession().setAttribute("errorMsg", "");
+        <%String loginErr = (String)request.getSession().getAttribute("loginErr");
+        request.getSession().setAttribute("loginErr", "");
     
-        if(errorMsg == null) {
-           errorMsg ="";
+        if(loginErr == null) {
+           loginErr ="";
         }
         %>
 
         
-                
+        <jsp:include page="/ConnServlet"/>        
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -39,6 +39,8 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
+                    <li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
 			<br>
@@ -54,7 +56,7 @@
             
 
 			<br><br>
-            <p class="error-msg"> <%= errorMsg%> </p>
+            <p class="error-msg"> <%= loginErr%> </p>
             <br>
             <div class="form-container" id="login-form-container">
                 <form action="login", method="post">

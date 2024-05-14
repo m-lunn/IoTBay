@@ -1,5 +1,7 @@
 <%@page import="com.uts.iotbay.model.Product"%>
 <%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Staff"%>
+<%@page import="com.uts.iotbay.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -22,7 +24,7 @@
         <% 
         User user = (User)request.getSession().getAttribute("user");
 
-        if(user == null || !user.isStaff()){response.sendRedirect("/products");}
+        if(user == null || !(user instanceof Staff)){response.sendRedirect("/products"); return;}
 
         String s = (String)request.getSession().getAttribute("productsCount");
         int productsCount = 0;
@@ -59,16 +61,16 @@
 			<div class="buttons">
 				<ul class="menu-bar">
                     <%  if(user != null){
-                        if(user.isStaff()){
-                            out.println("<li><button id=\"switch-view-btn\" tabindex=\"-1\"><a id=\"switch-view-text\" href=\"/products\">Switch to Customer View</a></button></li>");
+                        if(!(user instanceof Customer)){
+                            out.println("<li><a href=\"/products\"><button class=\"switch-view-text\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Customer View</button></a></li>");
                         }
                     } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/homedirect.jsp">Home</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Products</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/contact.html">Contact</a></button></li>
-					<li><button id="mng-acc-btn" tabindex="-1"><a href="/manageaccount.jsp"><img id="mng-acc-pic" src="../assets/account.png" alt="manage account button"></a></button></li>
-					<li><button id="cart-btn" tabindex="-1"><a href="/manageaccount.jsp"><img id="cart-pic" src="../assets/shopping-cart.png" alt="manage account button"></a></button></li>
+					<li><a href="../manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="../assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="../assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
             <br>

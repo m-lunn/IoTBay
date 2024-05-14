@@ -4,6 +4,8 @@
     Author     : michaellunn
 --%>
 <%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Customer"%>
+<%@page import="com.uts.iotbay.model.Staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,17 +19,17 @@
 	<title>IoTBay</title>
 
 </head>
-	<%
-		User user1 = (User)request.getSession().getAttribute("user");
-
-		if(user1 == null){
-			response.sendRedirect("homedirect.jsp");
-		}
-
-		String fname = user1.getFname();
-		String email = user1.getEmail();
-	%>
+		<% 
+			User user = (User)request.getSession().getAttribute("user");
+			if(user == null){
+				response.sendRedirect("homedirect.jsp");
+				return;
+			}
+			String fname = user.getFname();
+			String email = user.getEmail();
+		%>
 	<body>
+		<jsp:include page="/ConnServlet"/>   
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -36,8 +38,8 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
-					<li><button id="mng-acc-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></a></button></li>
-					<li><button id="cart-btn" tabindex="-1"><a href="manageaccount.jsp"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></a></button></li>
+					<li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
 			<br>
@@ -50,17 +52,40 @@
 				<h1 class="heading-text">Welcome Back <%= fname%>!</h1>
 			</div>
             <br>
-            <div>
-                <h2 class="subheading-text">You are logged in as: </h2>
-                
-                <h2 class="email-text"><%= email%></h2>
-                <br>
-				<form action="logout" method="post" id="logout">
-				<br><br>
-                <button class="logout-btn" type="submit"><p class="login-text">Logout</p></button>
-				</form>
-                <br><br><br><br>
-            </div>
+
+			<% if (user instanceof Customer) { %>
+				<div>
+					<h2 class="subheading-text">You are logged in as: </h2>
+					
+					<h2 class="email-text"><%= email%></h2>
+					<br>
+					<button class="logout-btn"><a href="logout" class="login-text" method="post">Logout</a></button>
+					<br><br><br><br>
+				</div>
+				<% } else if (user instanceof Staff) { %>
+				<div>
+					<h2 class="subheading-text">You are logged in as staff: </h2>
+					
+					<h2 class="email-text"><%= email%></h2>
+					<br>
+					<button class="logout-btn"><a href="logout" class="login-text">Logout</a></button>
+					<br><br><br><br>
+				</div>
+				<% } else { %>
+				<div>
+					<div>
+						<h2 class="subheading-text">You are logged in as system admin: </h2>
+						<br><br><br><br>
+					</div>
+			  
+					  <form class="admin-content" action="view-users">
+						<button type="submit" class="admin-btn">View Users</button>
+					</form>
+					<br><br><br><br>
+					<button class="logout-btn"><a href="logout" class="login-text">Logout</a></button>
+					<br><br><br><br>
+				</div>
+				<% } %>
 
 	</div>
         <div class="footer">

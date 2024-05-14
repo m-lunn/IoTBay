@@ -17,41 +17,40 @@ public class User implements Serializable {
     String surname;
     String email;
     String password;
+    String phoneNo;
     boolean isActive;
-    UserType userType;
-
-    public enum UserType {
-        CUSTOMER,
-        STAFF,
-        ADMIN
-    } 
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User(String fname, String surname, String email, String password) {
+    
+    public User(String fname, String surname, String email, String password, String phoneNo, Boolean isActive) {
         this.fname = fname;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.isActive = true;
-        this.userType = UserType.CUSTOMER;
-    }
-
-    public User(String fname, String surname, String email, String password, UserType userType) {
-        this.fname = fname;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.isActive = true;
-        this.userType = userType;
+        this.phoneNo = phoneNo;
+        this.isActive = isActive;
     }
     
+    public User(String fname, String surname, String email, String phoneNo, Boolean isActive) {
+        this.fname = fname;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNo = phoneNo;
+        this.isActive = isActive;
+    }
+
+    public User(String fname, String surname, String email, String phoneNo) {
+        this.fname = fname;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNo = phoneNo;
+        isActive = true;
+    }
+
     public User(String email) {
-        this.fname = "";
+        this.fname = email;
         this.surname = "";
         this.email = email;
+        this.phoneNo = "";
+        isActive = true;
     }
 
     public String getEmail() {
@@ -73,19 +72,27 @@ public class User implements Serializable {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    public UserType getUserType() {
-        return userType;
+    
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public boolean isStaff() {
-        return this.userType != UserType.CUSTOMER;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    
+    public Boolean isActive() {
+        return isActive;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+
+    }
 
 
-    
-    
-    
 }
