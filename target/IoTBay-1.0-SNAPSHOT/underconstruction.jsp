@@ -1,4 +1,4 @@
-
+<%@page import="com.uts.iotbay.Product"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +10,16 @@
 
 </head>
 <%
-Product product1 = (Product)request.getSession().getAttribute("product");
+Product product1 = (Product) request.getSession().getAttribute("product");
 
 if(product1 == null){
 	response.sendRedirect("index.jsp");
 }
-
-String productname = product1.getName();
+else { 
+	String productName = product1.getName();
+    String productDescription = product1.getDescription();
+    float productPrice = product1.getPrice();
+    String productImagePath = product1.getImagePath();
 %>
 	<body>
 			<div class="backdrop">
@@ -31,16 +34,15 @@ String productname = product1.getName();
 				</div>
 				<div>
 					<div class="left-column">
-						<img src="https://m.media-amazon.com/images/I/51TY0OI74wL._AC_UF894,1000_QL80_.jpg" alt="Product Image">
+						<img src="<%= productImagePath %>" alt="Product Image">
 					</div>
 					<div class="right-column">
 						<div class="product-description">
 						<span>Router</span>
-						<h1><%= productname></h1>
-						<h2>$399.00</h2>
+						<h1><%= productName %></h1>
+						<h2><%= productPrice %></h2>
 						<button class="addtocart-btn">Add to cart</button>
-						<p1>TP-LINK TL-MR3420 3G/4G N300 Wireless Router Connect a 3/4G USB dongle to TL-MR3420 and instantly create your own Wi-Fi hotspot. Share a stable internet connection with your friends and family. TL-MR3420 is compatible with the majority of brands, Struggling to get a fast connection with more devices? TL-MR3420 delivers up to 300Mbps speeds for up to 32 online devices at the same time. 
-							Stay connected with your smartphone, laptop, games console and more, TL-MR3420 also supports a WAN internet connection via an Ethernet cable. Switch between wired WAN and wireless 3/4G connections as required with this cost-effective all-in-one router.</p1>
+						<p1><%= productDescription %></p1>
 					</div>
 					</div>
 				</div>
@@ -60,3 +62,6 @@ String productname = product1.getName();
 			</div>	
 		</body>
 	</html>
+	<%
+}
+%>
