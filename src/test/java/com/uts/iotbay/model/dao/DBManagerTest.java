@@ -302,7 +302,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getIds() method is called, then an arraylist of ints should be returned with ints corresponding to the created users ids.
+    @Test //Given that newly created users are added to the users table, when getUsers() method is called, then an arraylist of ints should be returned with ints corresponding to the created users ids.
     public void testGetIds() {
         try {
             int id1 = -1;
@@ -323,7 +323,7 @@ public class DBManagerTest {
             if (rs3.next()) {
                 id3 = rs3.getInt(1);
             }
-            ArrayList<Integer> ids = manager.getIds();
+            ArrayList<Integer> ids = manager.getUsers().getIds();
             assertEquals(id1, (int)ids.get(0));
             assertEquals(id2, (int)ids.get(1));
             assertEquals(id3, (int)ids.get(2));
@@ -333,7 +333,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getIds() method is called by email filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email filter.
+    @Test //Given that newly created users are added to the users table, when getUsers() method is called by email filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email filter.
     public void testGetIdsEmailFilter() {
         try {
             int id1 = -1;
@@ -349,7 +349,7 @@ public class DBManagerTest {
                 id2 = rs2.getInt(1);
             }
             manager.addStaff("test3@mail.com", "test3", "Test5", "Test6", "0433333333");
-            ArrayList<Integer> ids = manager.getIds("test1@", "");
+            ArrayList<Integer> ids = manager.getUsers("test1@", "").getIds();
             assertEquals(id1, (int)ids.get(0));
             assertEquals(id2, (int)ids.get(1));
         }
@@ -358,7 +358,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getIds() method is called by phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the phone filter.
+    @Test //Given that newly created users are added to the users table, when getUsers() method is called by phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the phone filter.
     public void testGetIdsPhoneFilter() {
         try {
             int id1 = -1;
@@ -374,7 +374,7 @@ public class DBManagerTest {
             if (rs2.next()) {
                 id2 = rs2.getInt(1);
             }
-            ArrayList<Integer> ids = manager.getIds("", "042");
+            ArrayList<Integer> ids = manager.getUsers("", "042").getIds();
             assertEquals(id1, (int)ids.get(0));
             assertEquals(id2, (int)ids.get(1));
         }
@@ -383,7 +383,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getIds() method is called by email and phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email and phone filter.
+    @Test //Given that newly created users are added to the users table, when getUsers() method is called by email and phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email and phone filter.
     public void testGetIdsEmailAndPhoneFilter() {
         try {
             int id = -1;
@@ -394,13 +394,14 @@ public class DBManagerTest {
             if (rs.next()) {
                 id = rs.getInt(1);
             }
-            ArrayList<Integer> ids = manager.getIds("test1@", "042");
+            ArrayList<Integer> ids = manager.getUsers("test1@", "042").getIds();
             assertEquals(id, (int)ids.get(0));
         }
         catch (SQLException ex) {
             Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);   
         }
     }
+
     @Test //Given that a newly created user is added to the users table, when updateUser() method is called, then the created user should be modified to contain the parameters input in the method.
     public void testUpdateUser() {
         try {

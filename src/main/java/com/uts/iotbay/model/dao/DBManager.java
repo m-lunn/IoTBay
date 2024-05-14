@@ -113,6 +113,7 @@ public class DBManager {
 
     public Users getUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
+        ArrayList<Integer> ids = new ArrayList<Integer>();
         ResultSet rs = conn.prepareStatement("SELECT * FROM Users").executeQuery();
         while (rs.next()) {
             int id = rs.getInt("user_id");
@@ -127,13 +128,15 @@ public class DBManager {
             else {
                 users.add(new Staff(fname, surname, email, phoneNo, isActive));
             }
+            ids.add(id);
             
         }
-        return new Users(users);
+        return new Users(users, ids);
     }
 
     public Users getUsers(String emailFilter, String phoneNoFilter) throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
+        ArrayList<Integer> ids = new ArrayList<Integer>();
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM Users WHERE email LIKE ? AND phoneno LIKE ?");
         ps.setString(1, emailFilter + "%");
         ps.setString(2, phoneNoFilter + "%");
@@ -151,29 +154,9 @@ public class DBManager {
             else {
                 users.add(new Staff(fname, surname, email, phoneNo, isActive));
             }
+            ids.add(id);
         }
-        return new Users(users);
-    }
-
-    public ArrayList<Integer> getIds() throws SQLException {
-        ArrayList<Integer> ids = new ArrayList<Integer>();
-        ResultSet rs = conn.prepareStatement("SELECT user_id FROM Users").executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt(1));
-        }
-        return ids;
-    }
-
-    public ArrayList<Integer> getIds(String emailFilter, String phoneNoFilter) throws SQLException {
-        ArrayList<Integer> ids = new ArrayList<Integer>();
-        PreparedStatement ps = conn.prepareStatement("SELECT user_id FROM Users WHERE email LIKE ? AND phoneno LIKE ?");
-        ps.setString(1, emailFilter + "%");
-        ps.setString(2, phoneNoFilter + "%");
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt(1));
-        }
-        return ids;
+        return new Users(users, ids);
     }
 
     public void updateUser(int id, String email, String password, String fname, String surname, String phoneNo, int isActive) throws SQLException {

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.uts.iotbay.model.dao.DBManagerTest
 -------------------------------------------------------------------------------
-Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.417 s -- in com.uts.iotbay.model.dao.DBManagerTest
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.796 s -- in com.uts.iotbay.model.dao.DBManagerTest

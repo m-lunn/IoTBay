@@ -2,7 +2,6 @@
 <%@page import="com.uts.iotbay.model.Users"%>
 <%@page import="com.uts.iotbay.model.User"%>
 <%@page import="com.uts.iotbay.model.Customer"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="java.io.IOException"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +17,6 @@
 <body>
   <%
     Users users = (Users)request.getSession().getAttribute("users");
-    ArrayList<Integer> ids = (ArrayList<Integer>)request.getSession().getAttribute("ids");
     String emailFilter = (String) session.getAttribute("emailFilter");
     String phoneNoFilter = (String) session.getAttribute("phoneNoFilter");
   %>
@@ -57,7 +55,7 @@
       <% 
         int i = 0;
         for (User user : users.getUsers()) {
-          int id = ids.get(i);
+          int id = users.getIds().get(i);
           String email = user.getEmail();
           String phoneNo = user.getPhoneNo();
           String type = "";

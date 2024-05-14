@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,16 +21,13 @@ public class ViewUsersServlet extends HttpServlet{
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
         Users users = null;
-        ArrayList<Integer> ids = null;
         try {
             users = manager.getUsers();
-            ids = manager.getIds();
         }
         catch (SQLException ex) {           
             Logger.getLogger(ViewUsersServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
         session.setAttribute("users", users);
-        session.setAttribute("ids", ids);
         request.getRequestDispatcher("view-users.jsp").include(request, response);
     }
 
@@ -40,16 +36,13 @@ public class ViewUsersServlet extends HttpServlet{
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
         Users users = null;
-        ArrayList<Integer> ids = null;
         try {
             users = manager.getUsers();
-            ids = manager.getIds();
         }
         catch (SQLException ex) {           
             Logger.getLogger(ViewUsersServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
         session.setAttribute("users", users);
-        session.setAttribute("ids", ids);
         request.getRequestDispatcher("view-users.jsp").include(request, response);
     }
 }
