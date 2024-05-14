@@ -212,8 +212,6 @@ public class AccessLogsServlet extends HttpServlet {
             findUserID.setString(1, email);
             ResultSet userIDs = findUserID.executeQuery();
 
-            userID = -1;
-
             if(userIDs.next()) {
                 userID = userIDs.getInt("user_id");
             }

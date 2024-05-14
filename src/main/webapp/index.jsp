@@ -46,12 +46,12 @@
 				<ul class="logins-btns">
 					<li>
 						<div class="login-container">
-							<button class="login-btn"><a href="login.jsp" class="login-text">Login</a></button>
+							<a href="login.jsp"><button class="login-btn">Login</button></a>
 						</div>
 					</li>
 					<li>
 						<div class="login-container">
-							<button class="login-btn"><a href="register.jsp" class="login-text">Sign Up</a></button>
+							<a href="register.jsp"><button class="login-btn">Sign Up</button></a>
 						</div>
 					</li>
 				</ul>

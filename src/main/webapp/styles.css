@@ -79,6 +79,12 @@ body {
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
     min-width: 200px;
     min-height: 100px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-size: 22px;
+    font-family: "Space Mono";
+    position: relative;
 }
 
 .login-btns {
@@ -234,11 +240,11 @@ a {
 }
 
 #edit-details {
-    font-size: 70%;
+    font-size: 20px;
 }
 
 #view-access-logs {
-    font-size: 70%;
+    font-size: 20px;
 }
 
 #edit-details-btn {
