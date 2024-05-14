@@ -489,7 +489,6 @@ input[type="text"], input[type="password"] {
 
 .access-log {
     font-family: "Space Mono";
-    font-weight: bold;
     font-size: 18px;
     color: white;
     padding: 20px;

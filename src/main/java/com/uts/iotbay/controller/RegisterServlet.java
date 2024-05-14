@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
             
             String email = request.getParameter("email");
             String password = request.getParameter("password");
