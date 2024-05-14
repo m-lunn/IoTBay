@@ -132,11 +132,15 @@ public class AccessLogsServlet extends HttpServlet {
             ps.setString(3, toDate);
 
             ResultSet rs = ps.executeQuery();
-            ArrayList<String[]> accessLogs = new ArrayList<>();
+            ArrayList<AccessLog> accessLogs = new ArrayList<>();
 
             while(rs.next()) {
-                String log[] = {rs.getString(2).split(" ")[0], rs.getString(2).split(" ")[1] , rs.getString(3)};
-                accessLogs.add(log);
+                String[] timestamp = rs.getString(2).split(" ");
+                String date = timestamp[0];
+                String time = timestamp[1];
+                String activity = rs.getString(3);
+
+                accessLogs.add(new AccessLog(userID + "", date, time, activity));
             }
 
             String htmlInsert = "<tr>\n" + //
@@ -149,11 +153,11 @@ public class AccessLogsServlet extends HttpServlet {
 
             for(int i = accessLogs.size()-1; i >= 0; i--) {
                 htmlInsert += "<tr>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[0] + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getDate() + "</td>\n";
                 htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[1] + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getTime() + "</td>\n";
                 htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i)[2] + "</td>\n";
+                htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getActivity() + "</td>\n";
                 htmlInsert += "</tr>\n";
             }
 
