@@ -797,4 +797,135 @@ button {
     line-height: 5vw;
 }
 
+.admin-content {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+}
+
+.admin-table {
+    font-size: max(1vw, 30px);
+    font-family: "Space Mono", sans-serif, Helvetica, Arial;
+    color:#ED7550;
+    text-align: center;
+    margin-inline: auto;
+    font-weight: bold;
+    
+    --border: 4px solid #ff66ff;
+    border-radius: 10px;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: var(--border);
+    overflow: hidden;
+  }
+  
+.admin-table th:not(:last-child),
+.admin-table td:not(:last-child) {
+    border-right: 4px solid #ff66ff;
+}
+
+.admin-table td, .admin-table th {
+    padding: 8px;
+}
+
+.admin-table tr:not(:last-child)>td,
+.admin-table tr:not(:last-child)>th {
+    border-bottom: var(--border);
+}
+
+.admin-table tr:nth-child(even){background-color: darkblue;}
+.admin-table tr:nth-child(odd){background-color: midnightblue;}
+
+.admin-table tr:last-child td:not(:last-child) {
+    border: none;
+}
+
+.admin-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #660066;
+    color: DarkOrange;
+    font-size: max(1.5vw, 35px);
+}
+
+.x-btn {
+    display:block;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    font-size: max(1.5vw, 35px);
+    color: white;
+    border: 1px solid #990099;
+    background-color: #741AB7;
+}
+
+.admin-search {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 50px;
+    margin-inline: 100px;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 0 80px 0;
+    background-image: linear-gradient(to right top, #40404d, #414050, #434153, #454156, #474159, #473f59, #463e59, #463c59, #433957, #403555, #3e3252, #3b2f50);
+    width: 60%;
+    border-radius: 30px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
+    margin-inline: auto;
+    min-width: 700px;
+    min-height: 100%;
+}
+
+.details input[type="text"], .details input[type="password"] {
+    min-width: 500px;
+    width: 100%;
+}
+
+.details select {
+    width: 100%;
+    padding: 10px;
+    background-color: #34495e;
+    border: 1px solid #566573; 
+    border-radius: 4px;
+    color: #fff; 
+    font-size: 15pt;
+    position: relative;
+}
+
+.details table {
+    table-layout: fixed;
+}
+
+.details td {
+    width: 50%;
+    padding: 1vw 2vw;
+}
+
+.page-btns {
+    display: flex;
+    flex-direction: row;
+    margin-inline: 25%;
+}
+
+.logout-btn2 {
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    display: block;
+    border: none;
+    margin: auto;
+    transition: .2s; 
+    width: 200px;
+    height: 80px;
+    border-radius: 25px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20); 
+    min-width: 200px;
+    min-height: 100px;
+}
+
+
 

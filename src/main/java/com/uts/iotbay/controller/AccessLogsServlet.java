@@ -30,7 +30,6 @@ import com.uts.iotbay.model.AccessLog;
  *
  * @author michaellunn
  */
-// @WebServlet(urlPatterns = {"/editdetails"})
 public class AccessLogsServlet extends HttpServlet {
 
     @Override

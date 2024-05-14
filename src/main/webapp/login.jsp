@@ -21,16 +21,16 @@
 
 	<body>
 
-        <%String errorMsg = (String)request.getSession().getAttribute("errorMsg");
-        request.getSession().setAttribute("errorMsg", "");
+        <%String loginErr = (String)request.getSession().getAttribute("loginErr");
+        request.getSession().setAttribute("loginErr", "");
     
-        if(errorMsg == null) {
-           errorMsg ="";
+        if(loginErr == null) {
+           loginErr ="";
         }
         %>
 
         
-                
+        <jsp:include page="/ConnServlet"/>        
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -56,7 +56,7 @@
             
 
 			<br><br>
-            <p class="error-msg"> <%= errorMsg%> </p>
+            <p class="error-msg"> <%= loginErr%> </p>
             <br>
             <div class="form-container" id="login-form-container">
                 <form action="login", method="post">

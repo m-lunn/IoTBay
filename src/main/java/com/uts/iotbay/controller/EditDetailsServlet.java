@@ -122,7 +122,10 @@ public class EditDetailsServlet extends HttpServlet {
             updateDetails.setString(4, email);
             updateDetails.executeUpdate();
 
-            User updatedUser = new User(fname, surname, email, password);
+            User updatedUser = (User)request.getSession().getAttribute("user");
+            updatedUser.setFname(fname);
+            updatedUser.setSurname(surname);
+            updatedUser.setPassword(confirmPassword);
 
             request.getSession().setAttribute("user", updatedUser);
 

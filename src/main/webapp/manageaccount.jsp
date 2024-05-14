@@ -23,6 +23,7 @@
 		%>
 
 		<div class="backdrop">
+			<jsp:include page="/ConnServlet"/>   
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
@@ -61,9 +62,7 @@
 						</div>
 					</li>
 				</ul>
-				<form action="logout" method="post" id="logout">
-					<button class="logout-btn" id="mng-acc-logout" type="submit"><p class="login-text">Logout</p></button>
-				</form>
+					<a href="logout"><button class="logout-btn" id="mng-acc-logout" type="submit"><p class="login-text">Logout</p></button></a>
 			</div>
 
 

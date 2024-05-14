@@ -26,13 +26,16 @@
         session.setAttribute("duplicateErr", "");
     %>
     <div class="backdrop">
+        <jsp:include page="/ConnServlet"/>   
         <div class="button-wrapper"></div>
         <div class="buttons">
             <ul class="menu-bar">
                 <li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
-                <li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
-                <li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
-                <li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+                <li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
+                <li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
+                <li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
+                <li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></button></a></li>
+                <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></button></a></li>
             </ul>
         </div>
         <br>
@@ -84,8 +87,8 @@
             </div>
             <br><br><br><br>
             <div class="page-btns">
-                <button class="logout-btn"><a href="view-users" class="login-text">Back</a></button>
-                <button type="submit" class="logout-btn"><div class="login-text">Create User</div></button>
+                <button class="logout-btn2"><a href="view-users" class="login-text">Back</a></button>
+                <button type="submit" class="logout-btn2"><div class="login-text">Create User</div></button>
             </div>
         </form>
         <br><br><br><br>
@@ -95,9 +98,9 @@
         <br>
         <ul class="footer-menu">
             <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp">Home</a></button></li>
-            <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
-            <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
-            <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>
+            <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="about.html">About</a></button></li>
+            <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
+            <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="contact.html">Contact</a></button></li>
         </ul>
         <p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
     </div>	

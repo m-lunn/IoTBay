@@ -31,6 +31,7 @@
 
 	%>
 	<body>
+        <jsp:include page="/ConnServlet"/>   
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">

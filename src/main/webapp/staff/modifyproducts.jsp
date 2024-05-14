@@ -1,5 +1,7 @@
 <%@page import="com.uts.iotbay.model.Product"%>
 <%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Staff"%>
+<%@page import="com.uts.iotbay.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -22,7 +24,7 @@
         <% 
         User user = (User)request.getSession().getAttribute("user");
 
-        if(user == null || !user.isStaff()){response.sendRedirect("/products");}
+        if(user == null || !(user instanceof Staff)){response.sendRedirect("/products"); return;}
 
         String s = (String)request.getSession().getAttribute("productsCount");
         int productsCount = 0;
@@ -59,7 +61,7 @@
 			<div class="buttons">
 				<ul class="menu-bar">
                     <%  if(user != null){
-                        if(user.isStaff()){
+                        if(!(user instanceof Customer)){
                             out.println("<li><a href=\"/products\"><button class=\"switch-view-text\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Customer View</button></a></li>");
                         }
                     } %>

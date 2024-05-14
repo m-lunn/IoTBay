@@ -16,8 +16,18 @@ public class User implements Serializable {
     String fname;
     String surname;
     String email;
+    String password;
     String phoneNo;
     boolean isActive;
+    
+    public User(String fname, String surname, String email, String password, String phoneNo, Boolean isActive) {
+        this.fname = fname;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phoneNo = phoneNo;
+        this.isActive = isActive;
+    }
     
     public User(String fname, String surname, String email, String phoneNo, Boolean isActive) {
         this.fname = fname;
@@ -74,4 +84,15 @@ public class User implements Serializable {
     public Boolean isActive() {
         return isActive;
     }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+
+    }
+
+
 }

@@ -81,10 +81,10 @@ public class DBManager {
             String phoneNo = rs.getString("phoneno");
             Boolean isActive = rs.getBoolean("isactive");
             if (checkCustomer(id)) {
-                return new Customer(fname, surname, email, phoneNo, isActive);
+                return new Customer(fname, surname, email, password, phoneNo, isActive);
             }
             else {
-                return new Staff(fname, surname, email, phoneNo, isActive);
+                return new Staff(fname, surname, email, password, phoneNo, isActive);
             }
         }
         return null;

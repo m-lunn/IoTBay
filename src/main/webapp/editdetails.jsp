@@ -26,6 +26,10 @@
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             request.getSession().setAttribute("errorMsg", "");
 
+            if(errorMsg == null) {
+                errorMsg = "";
+            }
+
             User user = (User)request.getSession().getAttribute("user");
             if(user != null) {
                 fname = user.getFname();
@@ -40,6 +44,7 @@
 
 
 		<div class="backdrop">
+            <jsp:include page="/ConnServlet"/>   
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
