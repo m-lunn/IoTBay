@@ -1,5 +1,6 @@
 <%@page import="com.uts.iotbay.model.Product"%>
 <%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -52,7 +53,7 @@
 			<div class="buttons">
 				<ul class="menu-bar">
                     <%  if(user != null){
-                            if(user.isStaff()){
+                            if(user instanceof Staff){
                                 out.println("<li><a href=\"/staff/products\"><button id=\"switch-view-btn\" tabindex=\"-1\"><p class=\"switch-view-text\">Switch to Staff View</p></button></a></li>");
                             }
                         } %>

@@ -66,14 +66,14 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
             
             User user = (User) request.getSession().getAttribute("user");
 
             String email = user.getEmail();
             request.getSession().invalidate();
             
-            PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
+            PreparedStatement findUser = con.prepareStatement("select * from users where email=?");
             findUser.setString(1, email);
             ResultSet rs = findUser.executeQuery();
 

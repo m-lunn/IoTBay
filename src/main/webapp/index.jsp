@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +20,7 @@
 </head>
 
 	<body>
+		<jsp:include page="/ConnServlet"/>
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -56,7 +56,7 @@
 					</li>
 				</ul>
 			</div>
-                        <br><br><br><br>
+        <br><br><br><br>
 		</div>
 		<div class="footer">
 			<br>

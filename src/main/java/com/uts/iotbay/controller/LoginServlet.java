@@ -69,19 +69,19 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            PreparedStatement findUser = con.prepareStatement("select * from users where user_email=?");
+            PreparedStatement findUser = con.prepareStatement("select * from users where email=?");
             findUser.setString(1, email);
             ResultSet rs = findUser.executeQuery();
 
             if(rs.next()) {
 
                 int userId = rs.getInt("user_id");
-                String dbPassword = rs.getString("user_password");
-                int activeUser = rs.getInt("user_active");
+                String dbPassword = rs.getString("password");
+                int activeUser = rs.getInt("isactive");
 
                 if(!password.equals(dbPassword) || activeUser != 1) {
                     request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
@@ -99,16 +99,11 @@ public class LoginServlet extends HttpServlet {
                     logStatement.executeUpdate();
 
                     request.getSession().setAttribute("errorMsg", "");
-                    String fname = rs.getString("user_fname");
-                    String surname = rs.getString("user_surname");
-                    email = rs.getString("user_email");
+                    String fname = rs.getString("fname");
+                    String surname = rs.getString("surname");
+                    email = rs.getString("email");
 
-                    String subtype = rs.getString("user_type");
-                    User.UserType ut = User.UserType.CUSTOMER;
-                    if(subtype.equals("S")){ut = User.UserType.STAFF;}
-                    if(subtype.equals("A")){ut = User.UserType.ADMIN;}
-
-                    User user = new User(fname, surname, email, password, ut);
+                    User user = new User(fname, surname, email, password);
                     request.getSession().setAttribute("user", user);
                     RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
                     rd.forward(request, response);

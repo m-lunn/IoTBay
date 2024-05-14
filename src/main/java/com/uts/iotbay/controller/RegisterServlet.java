@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay2", "root", "iotbay");
             
             String email = request.getParameter("email");
             String password = request.getParameter("password");
@@ -70,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
             String surname = request.getParameter("surname");
             String phone = request.getParameter("phone");
 
-            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(user_email, user_password, user_fname, user_surname, user_type, user_phone, user_active) VALUES (?, ?, ?, ?, \"C\",?,1)");
+            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(email, password, fname, surname, phoneno, isactive) VALUES (?, ?, ?, ?, ?, 1)");
             createUser.setString(1, email);
             createUser.setString(2, password);
             createUser.setString(3, fname);
@@ -78,7 +78,7 @@ public class RegisterServlet extends HttpServlet {
             createUser.setString(5, phone);
             createUser.executeUpdate();
 
-            PreparedStatement findUser = con.prepareStatement("SELECT user_id FROM Users WHERE user_email = ?");
+            PreparedStatement findUser = con.prepareStatement("SELECT user_id FROM Users WHERE email = ?");
             findUser.setString(1, email);
 
             ResultSet rs = findUser.executeQuery();
