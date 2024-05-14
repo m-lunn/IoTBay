@@ -43,7 +43,7 @@ public class DBManagerTest {
         }
     }
     
-    @Test //Given that a newly created user is added to the users table, when addCustomer() method is called then, the user id should be in the customers table.
+    @Test //Given that a newly created user is added to the users table, when addCustomer() method is called, then the user id should be in the customers table.
     public void testAddCustomer() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -55,7 +55,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when addCustomer() method is called then, the user should contain all of the details passed in the addCustomer() method.
+    @Test //Given that a newly created user is added to the users table, when addCustomer() method is called, then the user should contain all of the details passed in the addCustomer() method.
     public void testAddCustomerDetails() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test1", "Test2", "0412345678");
