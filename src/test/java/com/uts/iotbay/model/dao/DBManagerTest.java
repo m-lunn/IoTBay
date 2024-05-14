@@ -265,7 +265,7 @@ public class DBManagerTest {
     public void testGetUsersEmailFilter() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
-            manager.addCustomer("test1@mail.com", "test2", "Test3", "Test4", "0422222222");
+            manager.addCustomer("test1@mail2.com", "test2", "Test3", "Test4", "0422222222");
             manager.addStaff("test3@mail.com", "test3", "Test5", "Test6", "0433333333");
             Users users = manager.getUsers("test1@ma", "");
             assertNotNull(users.getUsers().get(0));
@@ -274,7 +274,7 @@ public class DBManagerTest {
             assertEquals("Test1", users.getUsers().get(0).getFname());
             assertEquals("Test2", users.getUsers().get(0).getSurname());
             assertEquals("0411111111", users.getUsers().get(0).getPhoneNo());
-            assertEquals("test1@mail.com", users.getUsers().get(1).getEmail());
+            assertEquals("test1@mail2.com", users.getUsers().get(1).getEmail());
             assertEquals("Test3", users.getUsers().get(1).getFname());
             assertEquals("Test4", users.getUsers().get(1).getSurname());
             assertEquals("0422222222", users.getUsers().get(1).getPhoneNo());
@@ -288,11 +288,11 @@ public class DBManagerTest {
     public void testGetUsersEmailAndPhoneFilter() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
-            manager.addCustomer("test1@mail.com", "test2", "Test3", "Test4", "0422222222");
+            manager.addCustomer("test1@mail2.com", "test2", "Test3", "Test4", "0422222222");
             manager.addStaff("test3@mail.com", "test3", "Test5", "Test6", "0433333333");
             Users users = manager.getUsers("test1@ma", "042");
             assertNotNull(users.getUsers().get(0));
-            assertEquals("test1@mail.com", users.getUsers().get(0).getEmail());
+            assertEquals("test1@mail2.com", users.getUsers().get(0).getEmail());
             assertEquals("Test3", users.getUsers().get(0).getFname());
             assertEquals("Test4", users.getUsers().get(0).getSurname());
             assertEquals("0422222222", users.getUsers().get(0).getPhoneNo());
@@ -343,7 +343,7 @@ public class DBManagerTest {
             if (rs1.next()) {
                 id1 = rs1.getInt(1);
             }
-            manager.addCustomer("test1@mail.com", "test2", "Test3", "Test4", "0422222222");
+            manager.addCustomer("test1@mail2.com", "test2", "Test3", "Test4", "0422222222");
             ResultSet rs2 = conn.prepareStatement("SELECT last_insert_id()").executeQuery();
             if (rs2.next()) {
                 id2 = rs2.getInt(1);
@@ -389,7 +389,7 @@ public class DBManagerTest {
             int id = -1;
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
             manager.addCustomer("test2@mail.com", "test2", "Test3", "Test4", "0422222222");
-            manager.addStaff("test1@mail.com", "test3", "Test5", "Test6", "0422222222");
+            manager.addStaff("test1@mail2.com", "test3", "Test5", "Test6", "0422222222");
             ResultSet rs = conn.prepareStatement("SELECT last_insert_id()").executeQuery();
             if (rs.next()) {
                 id = rs.getInt(1);

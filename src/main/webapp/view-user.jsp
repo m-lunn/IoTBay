@@ -82,7 +82,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= (emailErr != null ? emailErr : "")%></div></td>
+							<td><div class="error-msg"><%= (emailErr != null ? emailErr : "")%></div></td>
 						</tr>
 							<tr>
 								<td><label for="fname">First name:</label></td>
@@ -90,7 +90,7 @@
 							</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= (fnameErr != null ? fnameErr : "")%></div></td>
+							<td><div class="error-msg"><%= (fnameErr != null ? fnameErr : "")%></div></td>
 						</tr>
 							<tr>
 								<td><label for="surname">Surname:</label></td>
@@ -98,7 +98,7 @@
 							</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= (surnameErr != null ? surnameErr : "")%></div></td>
+							<td><div class="error-msg"><%= (surnameErr != null ? surnameErr : "")%></div></td>
 						</tr>
 						<tr>
 							<td><label for="phoneNo">Phone Number:</label></td>
@@ -106,7 +106,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= (phoneErr != null ? phoneErr : "")%></div></td>
+							<td><div class="error-msg"><%= (phoneErr != null ? phoneErr : "")%></div></td>
 						</tr>
 						<tr>
 							<td><label for="status">User Status:</label></td>
@@ -131,7 +131,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><div class="error-text"><%= (passwordErr != null ? passwordErr : "")%></div></td>
+							<td><div class="error-msg"><%= (passwordErr != null ? passwordErr : "")%></div></td>
 						</tr>
 					</table>
 				</div>

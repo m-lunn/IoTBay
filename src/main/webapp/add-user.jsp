@@ -47,7 +47,7 @@
         <form action="add-user" method="post">
             <div class="details">
                 <h2 class="heading-text">Create New User</h2>
-                <h3 class="error-text"> <%= (duplicateErr != null ? duplicateErr : "")%> </h3>
+                <h3 class="error-msg"> <%= (duplicateErr != null ? duplicateErr : "")%> </h3>
                 <table>
                     <tr>
                         <td><label for="type">User Type:</label></td>
