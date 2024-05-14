@@ -63,40 +63,31 @@ public class ProductViewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            String[] url = request.getRequestURI().split("/");
+            int productId = Integer.parseInt(url[url.length - 1]);
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
-            String productName = request.getParameter("product_name");
 
-            PreparedStatement findProduct = con.prepareStatement("select * from products where product_name=?");
-            findProduct.setString(1, productName);
+            PreparedStatement findProduct = con.prepareStatement("select * from products where product_id=?");
+            findProduct.setInt(1, productId);
             ResultSet rs = findProduct.executeQuery();
 
             if(rs.next()) {
                 String productNameDB = rs.getString("product_name");
-                if(!productName.equals(productNameDB)) {
-                    // request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
-                    // String sqlInsert = "INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")";
-                    // PreparedStatement logStatement = con.prepareStatement(sqlInsert);
-                    // logStatement.setInt(1, userId);
-                    // logStatement.executeUpdate();
-                    // RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                    // rd.forward(request, response);
-                }
-                else {
+                String productDescriptionDB = rs.getString("product_description");
+                float productPriceDB = rs.getFloat("product_price");
+                String productImgPathDB = rs.getString("product_image_path");
+
                     String sqlInsert = "INSERT INTO AccessLogs (product_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
                     PreparedStatement logStatement = con.prepareStatement(sqlInsert);
-                    logStatement.setString(1, productName);
+                    logStatement.setInt(1, productId);
                     logStatement.executeUpdate();
                     request.getSession().setAttribute("errorMsg", "");
-                    int productIDDB = rs.getInt("product_id");
-                    String productDescriptionDB = rs.getString("product_description");
-                    float productPriceDB = rs.getFloat("product_price");
-                    String productImgPathDB = rs.getString("product_image_path");
-                    Product product = new Product(productIDDB, productNameDB, productDescriptionDB, productPriceDB, productImgPathDB);
+                    Product product = new Product(productId, productNameDB, productDescriptionDB, productPriceDB, productImgPathDB);
                     request.getSession().setAttribute("product", product);
                     RequestDispatcher rd = request.getRequestDispatcher("underconstruction.jsp");
                     rd.forward(request, response);
-                }
             }
             else {
                 request.getSession().setAttribute("errorMsg", "Incorrect username or password. Please try again.");
