@@ -34,7 +34,7 @@
             String search = (String)request.getSession().getAttribute("search");
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
-
+            
             request.getSession().setAttribute("errorMsg", "");
             request.getSession().setAttribute("productsCount", "");
 

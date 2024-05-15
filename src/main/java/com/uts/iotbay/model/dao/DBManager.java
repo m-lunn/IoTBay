@@ -5,6 +5,7 @@ import com.uts.iotbay.model.User;
 import com.uts.iotbay.model.Users;
 import com.uts.iotbay.controller.Utils;
 import com.uts.iotbay.model.AccessLog;
+import com.uts.iotbay.model.Product;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -253,7 +254,17 @@ public class DBManager {
         }
 
         return accessLogs;
+    }
 
+    private void addAccessLog(int userID, String activity) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(), ?)");
+        ps.setInt(1, userID);
+        ps.setString(2, activity);
+        ps.executeUpdate();
+    }
+
+    public void logAccountCreated(int userID) throws SQLException {
+        addAccessLog(userID, "Account Created");
     }
 
     public void setUserInactive(int id) throws SQLException{
@@ -287,19 +298,13 @@ public class DBManager {
     }
 
     public void logSuccessfulLogin(String email) throws SQLException {
-
         int userID = getUserIDFromEmail(email);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")");
-        ps.setInt(1, userID);
-        ps.executeUpdate();
-
+        addAccessLog(userID, "Successful Login");
     }
-    public void logFailedLogin(String email) throws SQLException {
 
+    public void logFailedLogin(String email) throws SQLException {
         int userID = getUserIDFromEmail(email);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Failed Login\")");
-        ps.setInt(1, userID);
-        ps.executeUpdate();
+        addAccessLog(userID, "Failed Login");
     }
 
     public String getPassword(String email) throws SQLException {
@@ -335,9 +340,49 @@ public class DBManager {
         
     }
 
+    public ArrayList<Product> getAllProducts() throws SQLException{
+        
+        ArrayList<Product> products = new ArrayList<>();
 
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_active = 1");
+        ResultSet rs = ps.executeQuery();
 
-    public Connection getConnection(){
-        return conn;
+        while(rs.next()) {
+            int id = rs.getInt("product_id");
+            String name = rs.getString("product_name");
+            String description = rs.getString("product_description");
+            float price = rs.getFloat("product_price");
+            String path = rs.getString("product_image_path");
+            Boolean isActive = Utils.bitToBool(rs.getInt("product_active"));
+            String category = rs.getString("product_category");
+            products.add(new Product(id, name, description, price, path, isActive, category));
+        }
+
+        return products;
+
     }
+
+    public ArrayList<Product> getFilteredProducts(String category, String search) throws SQLException {
+        
+        ArrayList<Product> products = new ArrayList<>();
+
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_category LIKE ? AND product_name LIKE ? AND product_active = 1");
+        ps.setString(1, "%" + category + "%");
+        ps.setString(2, "%" + search + "%");
+
+        ResultSet rs = ps.executeQuery();
+
+        while(rs.next()) {
+            int productID = rs.getInt(1);
+            String productName = rs.getString(2);
+            String productDescription = rs.getString(3);
+            float productPrice = rs.getFloat(4);
+            String image_path = rs.getString(5);
+            products.add(new Product(productID, productName, productDescription, productPrice, image_path));
+        }
+
+        return products;
+
+    }
+
 }
