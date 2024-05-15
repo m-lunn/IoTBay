@@ -8,15 +8,13 @@ package com.uts.iotbay.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
+import com.uts.iotbay.model.dao.DBManager;
 
 /**
  *
@@ -24,75 +22,53 @@ import java.sql.ResultSet;
  */
 public class RegisterServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay", "root", "iotbay");
-            
+            HttpSession session = request.getSession();
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String fname = request.getParameter("fname");
             String surname = request.getParameter("surname");
             String phone = request.getParameter("phone");
+            DBManager manager = (DBManager) session.getAttribute("manager");
 
-            PreparedStatement createUser = con.prepareStatement("INSERT INTO Users(email, password, fname, surname, phoneno, isactive) VALUES (?, ?, ?, ?, ?, 1)");
-            createUser.setString(1, email);
-            createUser.setString(2, password);
-            createUser.setString(3, fname);
-            createUser.setString(4, surname);
-            createUser.setString(5, phone);
-            createUser.executeUpdate();
-
-            PreparedStatement findUser = con.prepareStatement("SELECT user_id FROM Users WHERE email = ?");
-            findUser.setString(1, email);
-
-            ResultSet rs = findUser.executeQuery();
-
-            int userId = -1;
-
-            if(rs.next()) {
-                userId = rs.getInt("user_id");
-                PreparedStatement logStatement = con.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Account Created\")");
-                logStatement.setInt(1, userId);
-                logStatement.executeUpdate();
+            Boolean valid = true;
+            if (manager.checkUser(email, password)) {
+                session.setAttribute("duplicateErr", "User is already registered with this email and password!");
+                valid = false;   
             }
-            
-            response.sendRedirect("login.jsp");
+            if (!Utils.validateEmail(email)) {
+                session.setAttribute("emailErr", "Invalid email! Please enter a valid email.");
+                valid = false;   
+            }
+            if (!Utils.validateName(fname)) {
+                session.setAttribute("fnameErr", "Invalid first name! Please enter a valid first name.");
+                valid = false;   
+            }
+            if (!Utils.validateName(surname)) {
+                session.setAttribute("surnameErr", "Invalid surname! Please enter a valid surname.");
+                valid = false;   
+            }
+            if (!Utils.validatePhoneNo(phone)) {
+                session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid phone number.");
+                valid = false;
+            }
+            if (!Utils.validatePassword(password)) {
+                session.setAttribute("passwordErr", "Invalid password! Please enter at least 4 characters.");
+                valid = false;   
+            }
+            if (valid) {
+                manager.addCustomer(email, password, fname, surname, phone);
+                request.getRequestDispatcher("login.jsp").include(request, response);
+                int userId = manager.getLastId();
+                manager.addAccessLog(userId, "Account Created");
+                response.sendRedirect("login.jsp");
+            }
+            else {
+                request.getRequestDispatcher("register.jsp").include(request, response);
+            }
         }
         
         catch(Exception e){
@@ -111,15 +87,5 @@ public class RegisterServlet extends HttpServlet {
            out.println("</html>");
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

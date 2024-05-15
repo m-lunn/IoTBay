@@ -189,6 +189,21 @@ public class DBManager {
         ps.executeUpdate();
     }
 
+    public int getLastId() throws SQLException {
+        ResultSet rs = conn.prepareStatement("SELECT last_insert_id()").executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        throw new SQLException();
+    }
+
+    public void addAccessLog(int user_id, String activity_type) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(), ?)");
+        ps.setInt(1, user_id);
+        ps.setString(2, "\"" + activity_type + "\"");
+        ps.executeUpdate();
+    }
+
     public Connection getConnection() {
         return this.conn;
     }
