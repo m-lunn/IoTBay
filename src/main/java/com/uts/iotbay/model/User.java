@@ -18,7 +18,7 @@ public class User implements Serializable {
     String email;
     String password;
     String phoneNo;
-    boolean isActive;
+    Boolean isActive;
     
     public User(String fname, String surname, String email, String password, String phoneNo, Boolean isActive) {
         this.fname = fname;

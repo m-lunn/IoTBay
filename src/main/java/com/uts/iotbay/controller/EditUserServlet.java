@@ -50,7 +50,7 @@ public class EditUserServlet extends HttpServlet {
                 valid = false;   
             }
             if (valid) {
-                manager.updateUser(id, email, password, fname, surname, phoneNo, isActive);
+                manager.updateUserFromAdmin(id, email, password, fname, surname, phoneNo, isActive);
                 request.getRequestDispatcher("view-users").include(request, response);
             }
             else {

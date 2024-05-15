@@ -22,6 +22,7 @@
             String surname="";
             String email="";
             String password="";
+            String phone="";
 
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             request.getSession().setAttribute("errorMsg", "");
@@ -36,6 +37,7 @@
                 surname = user.getSurname();
                 email = user.getEmail();
                 password = user.getPassword();
+                phone = user.getPhoneNo();
             }
             else {
                 response.sendRedirect("homedirect.jsp");
@@ -82,6 +84,10 @@
                     <div class="form-group">
                         <label for="surname">Surname:</label>
                         <input value="<%=surname%>" type="text" id="surname" name="surname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Phone Number:</label>
+                        <input value="<%=phone%>" type="text" id="phone" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>

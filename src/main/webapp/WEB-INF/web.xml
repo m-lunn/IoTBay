@@ -139,6 +139,11 @@
         <servlet-name>AccessLogs</servlet-name>
         <url-pattern>/accesslogs</url-pattern>
     </servlet-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
     <welcome-file-list>
         <welcome-file>homedirect.jsp</welcome-file>
     </welcome-file-list>

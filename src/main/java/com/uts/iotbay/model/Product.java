@@ -9,7 +9,7 @@ public class Product implements Serializable {
     float price;
     String imagePath;
     int productID;
-    boolean isActive;
+    Boolean isActive;
 
     public Product(String name, String description, float price, String imagePath) {
         this.name = name;
@@ -57,11 +57,11 @@ public class Product implements Serializable {
         this.productID = productID;
     }
 
-    public boolean getIsActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean active) {
+    public void setIsActive(Boolean active) {
         this.isActive = active;
     }
 
