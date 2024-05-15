@@ -21,6 +21,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SwitchViewServlet</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.SwitchViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SwitchViewServlet</servlet-name>
+        <url-pattern>/switch/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>View-User</servlet-name>
         <servlet-class>com.uts.iotbay.controller.ViewUserServlet</servlet-class>
     </servlet>

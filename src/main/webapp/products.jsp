@@ -50,13 +50,13 @@
          %>
 
 		<div class="backdrop">
-            <jsp:include page="/ConnServlet"/>   
+            <jsp:include page="/ConnServlet"/>
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
                     <%  if(user != null){
                             if(!(user instanceof Customer)){
-                                out.println("<li><a href=\"/staff/products\"><button id=\"switch-view-btn\" tabindex=\"-1\"><p class=\"switch-view-text\">Switch to Staff View</p></button></a></li>");
+                                out.println("<li><a href=\"/switch/staff\"><button id=\"switch-view-btn\" tabindex=\"-1\"><p class=\"switch-view-text\">Switch to Staff View</p></button></a></li>");
                             }
                         } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>

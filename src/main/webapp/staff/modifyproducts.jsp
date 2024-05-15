@@ -55,14 +55,14 @@
             title = category;
         }
         %>
-        
+        <jsp:include page="/ConnServlet"/> 
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
                     <%  if(user != null){
                         if(!(user instanceof Customer)){
-                            out.println("<li><a href=\"/products\"><button class=\"switch-view-text\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Customer View</button></a></li>");
+                            out.println("<li><a href=\"/switch/customer\"><button class=\"switch-view-text\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Customer View</button></a></li>");
                         }
                     } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/homedirect.jsp">Home</a></button></li>
