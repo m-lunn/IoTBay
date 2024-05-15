@@ -54,6 +54,13 @@ public class DBManager {
         return (rs.next());
     }
 
+    public boolean checkUser(String email) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Users WHERE email=?");
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        return (rs.next());
+    }
+
     public boolean checkCustomer(int id) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM Customers WHERE customer_id=?");
         ps.setInt(1, id);
@@ -200,7 +207,7 @@ public class DBManager {
     public void addAccessLog(int user_id, String activity_type) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(), ?)");
         ps.setInt(1, user_id);
-        ps.setString(2, "\"" + activity_type + "\"");
+        ps.setString(2, activity_type);
         ps.executeUpdate();
     }
 
