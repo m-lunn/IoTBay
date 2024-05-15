@@ -35,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
             DBManager manager = (DBManager) session.getAttribute("manager");
 
             Boolean valid = true;
-            if (manager.checkUser(email, password)) {
+            if (manager.checkUser(email)) {
                 session.setAttribute("duplicateErr", "User is already registered with this email and password!");
                 valid = false;   
             }
