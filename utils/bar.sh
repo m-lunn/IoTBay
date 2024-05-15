@@ -19,3 +19,7 @@ mv ~/IoTBay/target/ROOT.war ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war
 rm -r ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT
 
 ./startup.sh
+
+cd ~/IoTBay/utils
+
+./serverlogs.sh
