@@ -10,6 +10,7 @@ public class Product implements Serializable {
     String imagePath;
     int productID;
     boolean isActive;
+    String category;
 
     public Product(String name, String description, float price, String imagePath) {
         this.name = name;
@@ -19,12 +20,13 @@ public class Product implements Serializable {
         this.isActive = true;
     }
 
-    public Product(int productID, String name, String description, float price, String imagePath) {
+    public Product(int productID, String name, String description, float price, String imagePath, String category) {
         this.productID = productID;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imagePath = imagePath;
+        this.category = category;
     }
     public String getName() {
         return name;
@@ -63,6 +65,14 @@ public class Product implements Serializable {
 
     public void setIsActive(boolean active) {
         this.isActive = active;
+    }
+
+    public String getProductCategory() {
+        return category;
+    }
+
+    public void setProductCategory(String category) {
+        this.category = category;
     }
 
 }

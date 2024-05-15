@@ -78,13 +78,14 @@ public class ProductViewServlet extends HttpServlet {
                 String productDescriptionDB = rs.getString("product_description");
                 float productPriceDB = rs.getFloat("product_price");
                 String productImgPathDB = rs.getString("product_image_path");
+                String productCategoryDB = rs.getString("product_category");
 
                     String sqlInsert = "INSERT INTO AccessLogs (product_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Login\")";
                     PreparedStatement logStatement = con.prepareStatement(sqlInsert);
                     logStatement.setInt(1, productId);
                     logStatement.executeUpdate();
                     request.getSession().setAttribute("errorMsg", "");
-                    Product product = new Product(productId, productNameDB, productDescriptionDB, productPriceDB, productImgPathDB);
+                    Product product = new Product(productId, productNameDB, productDescriptionDB, productPriceDB, productImgPathDB, productCategoryDB);
                     request.getSession().setAttribute("product", product);
                     RequestDispatcher rd = request.getRequestDispatcher("underconstruction.jsp");
                     rd.forward(request, response);
