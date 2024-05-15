@@ -385,4 +385,25 @@ public class DBManager {
 
     }
 
+    public void deleteProduct(int id) throws SQLException {
+
+        PreparedStatement ps = conn.prepareStatement("UPDATE Products SET product_active = 0 WHERE product_id = ?");
+        ps.setInt(1, id);
+        ps.executeUpdate();
+    }
+
+    public String getProductName(int id) throws SQLException {
+
+        PreparedStatement ps = conn.prepareStatement("SELECT product_name FROM Products WHERE product_id = ?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()) {
+            return rs.getString("product_name");
+        }
+        return null;
+    }
+
+   
+
 }

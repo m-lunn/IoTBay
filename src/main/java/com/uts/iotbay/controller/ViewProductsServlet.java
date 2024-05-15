@@ -35,7 +35,7 @@ public class ViewProductsServlet extends HttpServlet {
         String search = (String) session.getAttribute("search");
         
         if(category != null || search != null){
-            switchView(request, response);
+            doPost(request, response);
             return;
         }
 
@@ -51,7 +51,7 @@ public class ViewProductsServlet extends HttpServlet {
 
         for(Product p : products) {
             htmlInsert += "<div class=\"product\">\n";
-            htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+            htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"/" + p.getImagePath() + "\"</a>\n";
             htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3></a>\n";
             htmlInsert += "<div class=\"fill\"></div>";
             htmlInsert += "<div class=\"buy-line\">\n";
@@ -86,7 +86,7 @@ public class ViewProductsServlet extends HttpServlet {
         String category = displayCategory;
         String search = displaySearch;
 
-        if(search.equals("")){search = "%";}
+        if(search == null || search.equals("")){search = "%";}
 
         if(category.equals("Any")){category = "%";}
         else {
@@ -105,7 +105,7 @@ public class ViewProductsServlet extends HttpServlet {
 
         for(Product p : products) {
             htmlInsert += "<div class=\"product\">\n";
-            htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+            htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"/" + p.getImagePath() + "\"</a>\n";
             htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3>\n";
             htmlInsert += "<div class=\"fill\"></div>";
             htmlInsert += "<div class=\"buy-line\">\n";
@@ -174,7 +174,7 @@ public class ViewProductsServlet extends HttpServlet {
 
             for(Product p : products) {
                 htmlInsert += "<div class=\"product\">\n";
-                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath() + "\"</a>\n";
+                htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"/" + p.getImagePath() + "\"</a>\n";
                 htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3>\n";
                 htmlInsert += "<div class=\"fill\"></div>";
                 htmlInsert += "<div class=\"buy-line\">\n";

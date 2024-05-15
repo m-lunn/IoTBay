@@ -105,14 +105,6 @@
         <servlet-name>ModifyProducts</servlet-name>
         <url-pattern>/staff/products</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ModifyProducts</servlet-name>
-        <url-pattern>/staff/products/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ModifyProducts</servlet-name>
-        <url-pattern>/staff/products/delete/*</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>Logout</servlet-name>
@@ -147,6 +139,15 @@
     <servlet-mapping>
         <servlet-name>AccessLogs</servlet-name>
         <url-pattern>/accesslogs</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/staff/products/delete/*</url-pattern>
     </servlet-mapping>
 
     <error-page>
