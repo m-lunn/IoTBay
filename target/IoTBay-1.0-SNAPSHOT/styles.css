@@ -139,6 +139,16 @@ hr {
     position: relative;
     top: 2vh;
 }
+.number-container {
+        width: 75%;
+        max-width: 1000px;
+        margin: auto;
+        height: 100%;
+        border-radius: 10px;
+        position: relative;
+        top: 2vh;
+    }
+
 
 .active-page {
     text-decoration:underline;
@@ -325,3 +335,36 @@ input[type="text"], input[type="password"] {
     bottom: 6%;
     color: #bdc3c7;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-toggle {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #8125C9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgb(255, 255, 255);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1;}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  

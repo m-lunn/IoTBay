@@ -25,6 +25,16 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
+					<li class="dropdown">
+						<button class="btn dropdown-toggle" tabindex="-1">
+						  <a class="button-text">Payment</a>
+						</button>
+						<div class="dropdown-content">
+						  <a href="payment.jsp">Create Payment Method</a>
+						  <a href="editPayment.jsp">Edit Payment Method</a>
+						  <a href="viewPayment.jsp">View History Payment</a>
+						</div>
+					  </li>
 				</ul>
 			</div>
 			<br>
