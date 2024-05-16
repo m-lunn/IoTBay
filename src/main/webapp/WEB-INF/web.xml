@@ -85,7 +85,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Products</servlet-name>
-        <url-pattern>/IoTBay-1.0-SNAPSHOT/products</url-pattern>
+        <url-pattern>/products</url-pattern>
     </servlet-mapping>
 
     <servlet>
