@@ -51,7 +51,7 @@ public class ModifyProductsServlet extends HttpServlet {
         request.getSession().setAttribute("productsCount", products.size()+"");
         request.getSession().setAttribute("products", htmlInsert);
         
-        RequestDispatcher rd = request.getRequestDispatcher("/staff/modifyproducts.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/IoTBay-1.0-SNAPSHOT/staff/modifyproducts.jsp");
         rd.forward(request, response);
 
     }  
@@ -103,7 +103,7 @@ public class ModifyProductsServlet extends HttpServlet {
         request.getSession().setAttribute("search", displaySearch);
         request.getSession().setAttribute("products", htmlInsert);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/staff/modifyproducts.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/IoTBay-1.0-SNAPSHOT/staff/modifyproducts.jsp");
         rd.forward(request, response);
     }
 
