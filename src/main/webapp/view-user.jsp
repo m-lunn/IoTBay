@@ -137,7 +137,7 @@
 				<br><br><br><br>
 				<div class="page-btns">
 					<button class="logout-btn2"><a href="view-users" class="login-text">Back</a></button>
-					<button type="submit" class="logout-btn2"><div class="login-text">Edit</div></button>
+					<button type="submit" class="logout-btn2"><div class="login-text">Update</div></button>
 				</div>
 			</form>
 			<br><br><br><br>
