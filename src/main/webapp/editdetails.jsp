@@ -22,6 +22,7 @@
             String surname="";
             String email="";
             String password="";
+            String phone="";
 
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             request.getSession().setAttribute("errorMsg", "");
@@ -36,6 +37,7 @@
                 surname = user.getSurname();
                 email = user.getEmail();
                 password = user.getPassword();
+                phone = user.getPhoneNo();
             }
             else {
                 response.sendRedirect("homedirect.jsp");
@@ -43,8 +45,7 @@
         %>
 
 
-		<div class="backdrop">
-            <jsp:include page="/ConnServlet"/>   
+		<div class="backdrop">  
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
@@ -52,13 +53,13 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
-					<li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></button></a></li>
-                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></button></a></li>
+					<li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
 			<br>
 			<div class="logo">
-				<img src="./assets/logo.png" id="logo" alt="logo">
+				<img src="/assets/logo.png" id="logo" alt="logo">
 				<!-- Logo created using DreamStudio by stability.ai -->
 				<br>
 			</div>
@@ -82,6 +83,10 @@
                     <div class="form-group">
                         <label for="surname">Surname:</label>
                         <input value="<%=surname%>" type="text" id="surname" name="surname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Phone Number:</label>
+                        <input value="<%=phone%>" type="text" id="phone" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>

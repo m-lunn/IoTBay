@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,7 +49,7 @@ public class EditUserServlet extends HttpServlet {
                 valid = false;   
             }
             if (valid) {
-                manager.updateUser(id, email, password, fname, surname, phoneNo, isActive);
+                manager.updateUserFromAdmin(id, email, password, fname, surname, phoneNo, isActive);
                 request.getRequestDispatcher("view-users").include(request, response);
             }
             else {

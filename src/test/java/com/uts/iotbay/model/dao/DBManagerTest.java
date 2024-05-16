@@ -409,7 +409,7 @@ public class DBManagerTest {
             ResultSet rs = conn.prepareStatement("SELECT last_insert_id()").executeQuery();
             if (rs.next()) {
                 int id = rs.getInt(1);
-                manager.updateUser(id, "test2@mail.com", "test2", "Test3", "Test4", "0422222222", (int)0);
+                manager.updateUserFromAdmin(id, "test2@mail.com", "test2", "Test3", "Test4", "0422222222", (int)0);
                 User user = manager.getUser(id);
                 assertEquals("test2@mail.com", user.getEmail());
                 assertEquals("Test3", user.getFname());

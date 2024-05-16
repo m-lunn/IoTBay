@@ -96,14 +96,6 @@
         <servlet-name>ModifyProducts</servlet-name>
         <url-pattern>/staff/products</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ModifyProducts</servlet-name>
-        <url-pattern>/staff/products/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ModifyProducts</servlet-name>
-        <url-pattern>/staff/products/delete/*</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>Logout</servlet-name>
@@ -139,6 +131,20 @@
         <servlet-name>AccessLogs</servlet-name>
         <url-pattern>/accesslogs</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/staff/products/delete/*</url-pattern>
+    </servlet-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
     <welcome-file-list>
         <welcome-file>homedirect.jsp</welcome-file>
     </welcome-file-list>

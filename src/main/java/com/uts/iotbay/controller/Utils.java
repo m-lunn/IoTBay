@@ -33,4 +33,9 @@ public class Utils {
     public static boolean validatePhoneNo(String phoneNo) {
       return validate(phonePattern, phoneNo);
     }
+
+    public static boolean bitToBool(int bit) {
+      if(bit == 1){return true;}
+      else {return false;}
+    }
 }

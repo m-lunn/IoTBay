@@ -1,40 +1,31 @@
 package com.uts.iotbay.controller;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import com.uts.iotbay.model.dao.DBManager;
 
-/**
- *
- * @author michaellunn
- */
 public class RegisterServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            HttpSession session = request.getSession();
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String fname = request.getParameter("fname");
-            String surname = request.getParameter("surname");
-            String phone = request.getParameter("phone");
-            DBManager manager = (DBManager) session.getAttribute("manager");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            Boolean valid = true;
+        HttpSession session = request.getSession();
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String fname = request.getParameter("fname");
+        String surname = request.getParameter("surname");
+        String phone = request.getParameter("phone");
+        DBManager manager = (DBManager) session.getAttribute("manager");
+
+        Boolean valid = true;
+        try {
             if (manager.checkUser(email)) {
                 session.setAttribute("duplicateErr", "User is already registered with this email!");
                 valid = false;   
@@ -63,28 +54,14 @@ public class RegisterServlet extends HttpServlet {
                 manager.addCustomer(email, password, fname, surname, phone);
                 request.getRequestDispatcher("login.jsp").include(request, response);
                 int userId = manager.getLastId();
-                manager.addAccessLog(userId, "Account Created");
+                manager.logAccountCreated(userId);
                 response.sendRedirect("login.jsp");
             }
             else {
                 request.getRequestDispatcher("register.jsp").include(request, response);
             }
-        }
-        
-        catch(Exception e){
-           PrintWriter out = response.getWriter();
-           out.println("<!DOCTYPE html>");
-           out.println("<html>");
-           out.println("<head>");
-           out.println("<title>Servlet LoginServlet</title>");            
-           out.println("</head>");
-           out.println("<body>");
-           StringWriter sw = new StringWriter();
-           PrintWriter pw = new PrintWriter(sw);
-           e.printStackTrace(pw);
-           out.println(sw.toString());
-           out.println("</body>");
-           out.println("</html>");
+        } catch (SQLException | ServletException | IOException ex) {
+            Logger.getLogger(SearchUsersServlet.class.getName()).log(Level.SEVERE, null, ex);       
         }
     }
 
