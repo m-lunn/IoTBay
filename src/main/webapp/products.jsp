@@ -58,10 +58,10 @@
 			<div class="buttons">
 				<ul class="menu-bar">
                     <%  if(user != null){
-                            if(!(user instanceof Customer)){
+                             if(!(user instanceof Customer)){
                                 out.println("<li><a href=\"staff/products\"><button id=\"switch-view-btn\" tabindex=\"-1\"><p class=\"switch-view-text\">Switch to Staff View</p></button></a></li>");
                             }
-                        } %>
+                         } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Products</span></a></button></li>

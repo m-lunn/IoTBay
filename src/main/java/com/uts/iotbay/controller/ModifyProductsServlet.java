@@ -16,6 +16,8 @@ import com.uts.iotbay.model.dao.DBManager;
 
 public class ModifyProductsServlet extends HttpServlet {
 
+    Boolean switchView = false;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         
@@ -24,8 +26,9 @@ public class ModifyProductsServlet extends HttpServlet {
 
         String category = (String) session.getAttribute("category");
         String search = (String) session.getAttribute("search");
-
+        
         if(category != null || search != null){
+            switchView = true;
             doPost(request, response);
             return;
         }
@@ -61,8 +64,15 @@ public class ModifyProductsServlet extends HttpServlet {
 
         request.getSession().setAttribute("errorMsg", "");
 
+
         String displayCategory = (String)request.getParameter("category");
         String displaySearch = (String)request.getParameter("name");
+        
+        if(switchView) {
+            displayCategory = (String) session.getAttribute("category");
+            displaySearch = (String) session.getAttribute("search");
+            switchView = false;
+        }
 
         String category = displayCategory;
         String search = displaySearch;

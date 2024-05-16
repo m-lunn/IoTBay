@@ -22,7 +22,7 @@
         <% 
         User user = (User)request.getSession().getAttribute("user");
 
-        if(user == null || !(user instanceof Staff)){response.sendRedirect("/products"); return;}
+        // if(user == null || !(user instanceof Staff)){response.sendRedirect("/products"); return;}
 
         String s = (String)request.getSession().getAttribute("productsCount");
         int productsCount = 0;
@@ -61,10 +61,10 @@
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
-                    <%  if(user != null){
-                        if(!(user instanceof Customer)){
+                    <%   if(user != null){
+                         if(!(user instanceof Customer)){
                             out.println("<li><a href=\"../products\"><button class=\"switch-view-text\" id=\"switch-view-btn\" tabindex=\"-1\">Switch to Customer View</button></a></li>");
-                        }
+                         }
                     } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/homedirect.jsp">Home</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/about.html">About</a></button></li>
