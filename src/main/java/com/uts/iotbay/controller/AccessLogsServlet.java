@@ -35,24 +35,7 @@ public class AccessLogsServlet extends HttpServlet {
             Logger.getLogger(AccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
       
-
-        String htmlInsert = "<tr>\n" + //
-                            "<th class=\"access-logs-header\">Date</th>\n" + //
-                            "<th></th>\n" + //
-                            "<th class=\"access-logs-header\">Time</th>\n" + //
-                            "<th></th>\n" + //
-                            "<th class=\"access-logs-header\">Activity</th>\n" + //
-                            "</tr>\n";
-
-        for(int i = accessLogs.size()-1; i >= 0; i--) {
-            htmlInsert += "<tr>\n";
-            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getDate() + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getTime() + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getActivity() + "</td>\n";
-            htmlInsert += "</tr>\n";
-        }
+        String htmlInsert = generateAccessLogHTMLInsert(accessLogs);
 
         request.getSession().setAttribute("accesslogs", htmlInsert);
         RequestDispatcher rd = request.getRequestDispatcher("accesslogs.jsp");
@@ -81,23 +64,7 @@ public class AccessLogsServlet extends HttpServlet {
             Logger.getLogger(AccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);    
         }
 
-        String htmlInsert = "<tr>\n" + //
-                            "<th class=\"access-logs-header\">Date</th>\n" + //
-                            "<th></th>\n" + //
-                            "<th class=\"access-logs-header\">Time</th>\n" + //
-                            "<th></th>\n" + //
-                            "<th class=\"access-logs-header\">Activity</th>\n" + //
-                            "</tr>\n";
-
-        for(int i = accessLogs.size()-1; i >= 0; i--) {
-            htmlInsert += "<tr>\n";
-            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getDate() + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getTime() + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
-            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getActivity() + "</td>\n";
-            htmlInsert += "</tr>\n";
-        }
+        String htmlInsert = generateAccessLogHTMLInsert(accessLogs);
 
         if(fromDate.equals("2000-01-01")){ fromDate = ""; }
         if(toDate.equals("3000-01-01")){ toDate = ""; }
@@ -109,5 +76,27 @@ public class AccessLogsServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("accesslogs.jsp");
         rd.forward(request, response);
 
+    }
+
+    private String generateAccessLogHTMLInsert(ArrayList<AccessLog> accessLogs) {
+
+        String htmlInsert = "<tr>\n" + 
+        "<th class=\"access-logs-header\">Date</th>\n" + 
+        "<th></th>\n" + 
+        "<th class=\"access-logs-header\">Time</th>\n" + 
+        "<th></th>\n" + 
+        "<th class=\"access-logs-header\">Activity</th>\n" + 
+        "</tr>\n";
+
+        for(int i = accessLogs.size()-1; i >= 0; i--) {
+            htmlInsert += "<tr>\n";
+            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getDate() + "</td>\n";
+            htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
+            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getTime() + "</td>\n";
+            htmlInsert += "<td class=\"access-log\">" + "|" + "</td>\n";
+            htmlInsert += "<td class=\"access-log\">" + accessLogs.get(i).getActivity() + "</td>\n";
+            htmlInsert += "</tr>\n";
+        }
+        return htmlInsert;
     }
 }

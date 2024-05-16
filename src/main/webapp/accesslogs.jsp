@@ -30,8 +30,7 @@
         String toDate = (String)request.getSession().getAttribute("todate");
 
 	%>
-	<body>
-        <jsp:include page="/ConnServlet"/>   
+	<body> 
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">

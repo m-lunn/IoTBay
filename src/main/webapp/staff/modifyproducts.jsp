@@ -38,10 +38,6 @@
         String successMsg = (String)request.getSession().getAttribute("successMsg");
         String title = "All Products";
 
-        out.println(category);
-        out.println(search);
-
-
         request.getSession().setAttribute("errorMsg", "");
         request.getSession().setAttribute("successMsg", "");
         request.getSession().setAttribute("productsCount", "");
@@ -56,7 +52,6 @@
             title = category;
         }
         %>
-        <jsp:include page="/ConnServlet"/> 
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">

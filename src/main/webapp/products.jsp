@@ -17,7 +17,6 @@
 
 </head>
 	<body>
-
         <% 
             
             User user = (User)request.getSession().getAttribute("user");
@@ -34,9 +33,6 @@
             String search = (String)request.getSession().getAttribute("search");
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
-
-            out.println(category);
-            out.println(search);
             
             request.getSession().setAttribute("errorMsg", "");
             request.getSession().setAttribute("productsCount", "");
@@ -51,9 +47,7 @@
 
 
          %>
-
 		<div class="backdrop">
-            <jsp:include page="/ConnServlet"/>
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">

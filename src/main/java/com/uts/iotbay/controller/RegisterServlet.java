@@ -28,11 +28,8 @@ public class RegisterServlet extends HttpServlet {
             int userID = manager.getUserIDFromEmail(email);
             manager.logAccountCreated(userID);
         } catch (SQLException ex) {
-            Logger.getLogger(DeleteUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        
-            
         response.sendRedirect("login.jsp");
         }
     }

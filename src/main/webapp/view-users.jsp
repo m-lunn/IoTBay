@@ -15,7 +15,6 @@
 </head>
 
 <body>
-  <jsp:include page="/ConnServlet"/>   
   <%
     Users users = (Users)request.getSession().getAttribute("users");
     String emailFilter = (String) session.getAttribute("emailFilter");

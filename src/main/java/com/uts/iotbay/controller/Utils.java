@@ -36,6 +36,6 @@ public class Utils {
 
     public static boolean bitToBool(int bit) {
       if(bit == 1){return true;}
-      else return false;
+      else {return false;}
     }
 }

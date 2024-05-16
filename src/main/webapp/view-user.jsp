@@ -13,8 +13,7 @@
 
 </head>
 
-	<body>
-		<jsp:include page="/ConnServlet"/>   
+	<body> 
             
             <%
                 User user = (User)request.getSession().getAttribute("target-user");

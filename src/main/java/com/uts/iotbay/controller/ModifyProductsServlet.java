@@ -107,7 +107,7 @@ public class ModifyProductsServlet extends HttpServlet {
         rd.forward(request, response);
     }
 
-    public String generateStaffProductViewHTMLInsert(ArrayList<Product> products) {
+    private String generateStaffProductViewHTMLInsert(ArrayList<Product> products) {
 
         String htmlInsert = "";
 

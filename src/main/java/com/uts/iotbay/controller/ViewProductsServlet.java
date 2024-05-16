@@ -109,7 +109,7 @@ public class ViewProductsServlet extends HttpServlet {
 
     }
 
-    public String generateProductsViewHTMLInsert(ArrayList<Product> products) {
+    private String generateProductsViewHTMLInsert(ArrayList<Product> products) {
 
         String htmlInsert = "";
 
