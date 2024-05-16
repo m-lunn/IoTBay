@@ -30,7 +30,7 @@ Product product1 = (Product)request.getSession().getAttribute("product");
 				</div>
 				<div>
 					<div class="left-column">
-						<img src="<%= productImagePath %>" alt="Product Image">
+						<img src="<%= "/" + productImagePath %>" alt="Product Image">
 					</div>
 					<div class="right-column">
 						<div class="product-description">
