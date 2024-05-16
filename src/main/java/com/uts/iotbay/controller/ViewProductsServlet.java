@@ -52,9 +52,9 @@ public class ViewProductsServlet extends HttpServlet {
         }
 
         session.setAttribute("products", htmlInsert);
-        response.sendRedirect("products.jsp");
-        // RequestDispatcher rd = request.send("/IoTBay-1.0-SNAPSHOT/products.jsp");
-        // rd.forward(request, response);
+        // response.sendRedirect("products.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
+        rd.forward(request, response);
             
     }
 

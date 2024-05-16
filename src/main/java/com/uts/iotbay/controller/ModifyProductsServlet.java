@@ -51,7 +51,7 @@ public class ModifyProductsServlet extends HttpServlet {
         request.getSession().setAttribute("productsCount", products.size()+"");
         request.getSession().setAttribute("products", htmlInsert);
         
-        RequestDispatcher rd = request.getRequestDispatcher("/IoTBay-1.0-SNAPSHOT/staff/modifyproducts.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("modifyproducts.jsp");
         rd.forward(request, response);
 
     }  
