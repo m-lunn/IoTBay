@@ -1,4 +1,4 @@
-<%@page import="com.uts.iotbay.Product"%>
+<%@page import="com.uts.iotbay.model.Product"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +11,6 @@
 </head>
 <%
 Product product1 = (Product) request.getSession().getAttribute("product");
-
-if(product1 == null){
-	response.sendRedirect("index.jsp");
-}
-else { 
 	String productName = product1.getName();
     String productDescription = product1.getDescription();
     float productPrice = product1.getPrice();
@@ -63,5 +58,4 @@ else {
 		</body>
 	</html>
 	<%
-}
 %>

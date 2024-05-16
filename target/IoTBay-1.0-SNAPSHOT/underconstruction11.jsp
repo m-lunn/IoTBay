@@ -10,7 +10,8 @@
 
 </head>
 <%
-Product product1 = (Product) request.getSession().getAttribute("product");
+Product product1 = (Product)request.getSession().getAttribute("productreal");
+
 	String productName = product1.getName();
     String productDescription = product1.getDescription();
     float productPrice = product1.getPrice();

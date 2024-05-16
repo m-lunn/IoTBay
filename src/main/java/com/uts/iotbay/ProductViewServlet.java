@@ -6,6 +6,8 @@ package com.uts.iotbay;
  */
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import com.uts.iotbay.model.Product;
 
 /**
  *
@@ -76,7 +79,7 @@ public class ProductViewServlet extends HttpServlet {
             if(rs.next()) {
                 String productNameDB = rs.getString("product_name");
                 String productDescriptionDB = rs.getString("product_description");
-                float productPriceDB = rs.getFloat("product_price");
+                float productPriceDB = 3.99f;
                 String productImgPathDB = rs.getString("product_image_path");
                 String productCategoryDB = rs.getString("product_category");
 
@@ -87,6 +90,12 @@ public class ProductViewServlet extends HttpServlet {
                     request.getSession().setAttribute("errorMsg", "");
                     Product product = new Product(productId, productNameDB, productDescriptionDB, productPriceDB, productImgPathDB, productCategoryDB);
                     request.getSession().setAttribute("product", product);
+                    System.out.println("Product ID: " + product.getProductID());
+                    System.out.println("Product Name: " + product.getName());
+                    System.out.println("Product Description: " + product.getDescription());
+                    System.out.println("Product Price: " + product.getPrice());
+                    System.out.println("Product Image Path: " + product.getImagePath());
+                    System.out.println("Product Category: " + product.getProductCategory());
                     RequestDispatcher rd = request.getRequestDispatcher("underconstruction.jsp");
                     rd.forward(request, response);
             }
@@ -98,19 +107,19 @@ public class ProductViewServlet extends HttpServlet {
         }
         
         catch(Exception e){
-//            PrintWriter out = response.getWriter();
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet LoginServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            StringWriter sw = new StringWriter();
-//            PrintWriter pw = new PrintWriter(sw);
-//            e.printStackTrace(pw);
-//            out.println(sw.toString());
-//            out.println("</body>");
-//            out.println("</html>");
+           PrintWriter out = response.getWriter();
+           out.println("<!DOCTYPE html>");
+           out.println("<html>");
+           out.println("<head>");
+           out.println("<title>Servlet LoginServlet</title>");            
+           out.println("</head>");
+           out.println("<body>");
+           StringWriter sw = new StringWriter();
+           PrintWriter pw = new PrintWriter(sw);
+           e.printStackTrace(pw);
+           out.println(sw.toString());
+           out.println("</body>");
+           out.println("</html>");
         }
 //        
     }

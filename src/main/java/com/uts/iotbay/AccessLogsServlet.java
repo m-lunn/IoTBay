@@ -20,6 +20,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import com.uts.iotbay.model.User;
+
 /**
  *
  * @author michaellunn

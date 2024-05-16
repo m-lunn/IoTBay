@@ -16,6 +16,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.uts.iotbay.model.User;
+
 /**
  *
  * @author michaellunn

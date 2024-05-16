@@ -1,8 +1,8 @@
-package com.uts.iotbay;
+package com.uts.iotbay.model;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Produc implements Serializable {
 
     String name;
     String description;
