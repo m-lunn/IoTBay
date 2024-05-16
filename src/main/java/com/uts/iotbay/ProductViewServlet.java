@@ -88,14 +88,14 @@ public class ProductViewServlet extends HttpServlet {
                     logStatement.setInt(1, productId);
                     logStatement.executeUpdate();
                     request.getSession().setAttribute("errorMsg", "");
-                    Product product = new Product(productId, productNameDB, productDescriptionDB, productPriceDB, productImgPathDB, productCategoryDB);
+                    Product product = new Product(productNameDB, productDescriptionDB, productPriceDB, productImgPathDB, productCategoryDB);
                     request.getSession().setAttribute("product", product);
                     System.out.println("Product ID: " + product.getProductID());
                     System.out.println("Product Name: " + product.getName());
                     System.out.println("Product Description: " + product.getDescription());
                     System.out.println("Product Price: " + product.getPrice());
                     System.out.println("Product Image Path: " + product.getImagePath());
-                    System.out.println("Product Category: " + product.getProductCategory());
+                    System.out.println("Product Category: " + product.getCategory());
                     RequestDispatcher rd = request.getRequestDispatcher("underconstruction.jsp");
                     rd.forward(request, response);
             }
