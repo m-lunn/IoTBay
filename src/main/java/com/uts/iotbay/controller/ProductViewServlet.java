@@ -1,4 +1,4 @@
-package com.uts.iotbay;
+package com.uts.iotbay.controller;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
