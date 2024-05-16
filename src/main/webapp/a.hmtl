@@ -1,0 +1,33 @@
+			<% if (user instanceof Customer) { %>
+				<div>
+					<h2 class="subheading-text">You are logged in as: </h2>
+					
+					<h2 class="email-text"><%= email%></h2>
+					<br>
+					<button class="logout-btn"><a href="logout" class="login-text">Logout</a></button>
+					<br><br><br><br>
+				</div>
+				<% } else if (user instanceof Staff) { %>
+				<div>
+					<h2 class="subheading-text">You are logged in as staff: </h2>
+					
+					<h2 class="email-text"><%= email%></h2>
+					<br>
+					<button class="logout-btn"><a href="logout" class="login-text">Logout</a></button>
+					<br><br><br><br>
+				</div>
+				<% } else { %>
+				<div>
+					<div>
+						<h2 class="subheading-text">You are logged in as system admin: </h2>
+						<br><br><br><br>
+					</div>
+			  
+					  <form class="admin-content" action="view-users", method="post">
+						<button type="submit" class="admin-btn">View Users</button>
+					</form>
+					<br><br><br><br>
+					<button class="logout-btn"><a href="logout" class="login-text">Logout</a></button>
+					<br><br><br><br>
+				</div>
+				<% } %>
