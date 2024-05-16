@@ -10,7 +10,6 @@ import jakarta.servlet.RequestDispatcher;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import com.uts.iotbay.model.User;
 import com.uts.iotbay.model.dao.DBManager;
 

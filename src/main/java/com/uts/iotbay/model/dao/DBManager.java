@@ -57,6 +57,13 @@ public class DBManager {
         return (rs.next());
     }
 
+    public boolean checkUser(String email) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Users WHERE email=?");
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        return (rs.next());
+    }
+
     public boolean checkCustomer(int id) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM Customers WHERE customer_id=?");
         ps.setInt(1, id);
@@ -190,6 +197,14 @@ public class DBManager {
         PreparedStatement ps = conn.prepareStatement("DELETE FROM Users WHERE user_id=?");
         ps.setInt(1, id);
         ps.executeUpdate();
+    }
+
+    public int getLastId() throws SQLException {
+        ResultSet rs = conn.prepareStatement("SELECT last_insert_id()").executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        throw new SQLException();
     }
 
     public int getUserIDFromEmail(String email) throws SQLException {

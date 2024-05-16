@@ -7,10 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.logging.Logger;
-
 import com.uts.iotbay.model.User;
 import com.uts.iotbay.model.dao.DBManager;
-
 import java.util.logging.Level;
 
 public class ViewUserServlet extends HttpServlet {

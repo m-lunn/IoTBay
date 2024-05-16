@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import com.uts.iotbay.model.dao.DBManager;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,8 +26,8 @@ public class AddUserServlet extends HttpServlet{
 
         try {
             Boolean valid = true;
-            if (manager.checkUser(email, password)) {
-                session.setAttribute("duplicateErr", "User is already registered with this email and password!");
+            if (manager.checkUser(email)) {
+                session.setAttribute("duplicateErr", "User is already registered with this email!");
                 valid = false;   
             }
             if (!Utils.validateEmail(email)) {

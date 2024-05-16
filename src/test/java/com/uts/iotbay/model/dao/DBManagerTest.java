@@ -43,7 +43,7 @@ public class DBManagerTest {
         }
     }
     
-    @Test //Given that a newly created user is added to the users table, when addCustomer() method is called, then the user id should be in the customers table.
+    @Test //#001 Given that a newly created user is added to the users table, when addCustomer() method is called, then the user id should be in the customers table.
     public void testAddCustomer() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -55,7 +55,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when addCustomer() method is called, then the user should contain all of the details passed in the addCustomer() method.
+    @Test //#002 Given that a newly created user is added to the users table, when addCustomer() method is called, then the user should contain all of the details passed in the addCustomer() method.
     public void testAddCustomerDetails() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test1", "Test2", "0412345678");
@@ -73,7 +73,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when addStaff() method is called, then the user id should be in the staff table.
+    @Test //#003 Given that a newly created user is added to the users table, when addStaff() method is called, then the user id should be in the staff table.
     public void testAddStaff() {
         try {
             manager.addStaff("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -85,7 +85,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when addStaff() method is called, then the user should contain all of the details passed in the addStaff() method.
+    @Test //#004 Given that a newly created user is added to the users table, when addStaff() method is called, then the user should contain all of the details passed in the addStaff() method.
     public void testAddStaffDetails() {
         try {
             manager.addStaff("test@mail.com", "test", "Test1", "Test2", "0412345678");
@@ -103,7 +103,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when checkUser() method is called with the user email and password, then it should return true.
+    @Test //#005 Given that a newly created user is added to the users table, when checkUser() method is called with the user email and password, then it should return true.
     public void testCheckUser() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -114,7 +114,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table via the addCustomer() method, when checkCustomer() method is called with the user id, then it should return true.
+    @Test //#006 Given that a newly created user is added to the users table via the addCustomer() method, when checkCustomer() method is called with the user id, then it should return true.
     public void testCheckCustomerAsCustomer() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -129,7 +129,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table via the addStaff() method, when checkCustomer() method is called with the user id, then it should return false.
+    @Test //#007 Given that a newly created user is added to the users table via the addStaff() method, when checkCustomer() method is called with the user id, then it should return false.
     public void testCheckCustomerAsStaff() {
         try {
             manager.addStaff("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -144,7 +144,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table via the addCustomer() method, when checkStaff() method is called with the user id, then it should return false.
+    @Test //#008 Given that a newly created user is added to the users table via the addCustomer() method, when checkStaff() method is called with the user id, then it should return false.
     public void testCheckStaffAsCustomer() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -159,7 +159,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table via the addStaff() method, when checkStaff() method is called with the user id, then it should return true.
+    @Test //#009 Given that a newly created user is added to the users table via the addStaff() method, when checkStaff() method is called with the user id, then it should return true.
     public void testCheckStaffAsStaff() {
         try {
             manager.addStaff("test@mail.com", "test", "Test", "Test", "0412345678");
@@ -174,7 +174,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when getUser() method is called with the user email and password, then a user object should be returned with details corresponding to the created user.
+    @Test //#010 Given that a newly created user is added to the users table, when getUser() method is called with the user email and password, then a user object should be returned with details corresponding to the created user.
     public void testGetUserByEmailAndPassword() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test1", "Test2", "0412345678");
@@ -190,7 +190,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when getUser() method is called with the user id, then a user object should be returned with details corresponding to the created user.
+    @Test //#011 Given that a newly created user is added to the users table, when getUser() method is called with the user id, then a user object should be returned with details corresponding to the created user.
     public void testGetUserByID() {
         try {
             manager.addCustomer("test@mail.com", "test", "Test1", "Test2", "0412345678");
@@ -210,7 +210,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called, then an arraylist of user objects should be returned with details corresponding to the created users.
+    @Test //#012 Given that newly created users are added to the users table, when getUsers() method is called, then an arraylist of user objects should be returned with details corresponding to the created users.
     public void testGetUsers() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
@@ -238,7 +238,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called with phone filter, then an arraylist of user objects containing phone filter (beginning from the start of string) should be returned with details corresponding to the created users.
+    @Test //#013 Given that newly created users are added to the users table, when getUsers() method is called with phone filter, then an arraylist of user objects containing phone filter (beginning from the start of string) should be returned with details corresponding to the created users.
     public void testGetUsersPhoneFilter() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
@@ -261,7 +261,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called with email filter, then an arraylist of user objects containing email filter (beginning from the start of string) should be returned with details corresponding to the created users.
+    @Test //#014 Given that newly created users are added to the users table, when getUsers() method is called with email filter, then an arraylist of user objects containing email filter (beginning from the start of string) should be returned with details corresponding to the created users.
     public void testGetUsersEmailFilter() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
@@ -284,7 +284,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called with email and phone filter, then an arraylist of user objects containing email and phone filter (beginning from the start of strings) should be returned with details corresponding to the created users.
+    @Test //#015 Given that newly created users are added to the users table, when getUsers() method is called with email and phone filter, then an arraylist of user objects containing email and phone filter (beginning from the start of strings) should be returned with details corresponding to the created users.
     public void testGetUsersEmailAndPhoneFilter() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
@@ -302,7 +302,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called, then an arraylist of ints should be returned with ints corresponding to the created users ids.
+    @Test //#016 Given that newly created users are added to the users table, when getUsers() method is called, then an arraylist of ints should be returned with ints corresponding to the created users ids.
     public void testGetIds() {
         try {
             int id1 = -1;
@@ -333,7 +333,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called by email filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email filter.
+    @Test //#017 Given that newly created users are added to the users table, when getUsers() method is called by email filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email filter.
     public void testGetIdsEmailFilter() {
         try {
             int id1 = -1;
@@ -358,7 +358,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called by phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the phone filter.
+    @Test //#018 Given that newly created users are added to the users table, when getUsers() method is called by phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the phone filter.
     public void testGetIdsPhoneFilter() {
         try {
             int id1 = -1;
@@ -383,7 +383,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that newly created users are added to the users table, when getUsers() method is called by email and phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email and phone filter.
+    @Test //#019 Given that newly created users are added to the users table, when getUsers() method is called by email and phone filter, then an arraylist of ints should be returned with ints corresponding to the created users ids containing the email and phone filter.
     public void testGetIdsEmailAndPhoneFilter() {
         try {
             int id = -1;
@@ -402,7 +402,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test //Given that a newly created user is added to the users table, when updateUser() method is called, then the created user should be modified to contain the parameters input in the method.
+    @Test //#020 Given that a newly created user is added to the users table, when updateUser() method is called, then the created user should be modified to contain the parameters input in the method.
     public void testUpdateUser() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
@@ -423,7 +423,7 @@ public class DBManagerTest {
         }
     }
 
-    @Test
+    @Test //#021 Given a newly created user is added to the users table, when deleteUser() method is called, then the created user should be deleted from the user table.
     public void testDeleteUser() {
         try {
             manager.addCustomer("test1@mail.com", "test1", "Test1", "Test2", "0411111111");
