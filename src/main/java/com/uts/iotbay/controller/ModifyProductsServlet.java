@@ -113,7 +113,7 @@ public class ModifyProductsServlet extends HttpServlet {
 
         for(Product p : products) {
             htmlInsert += "<div class=\"product-staff\">\n";
-            htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><img class=\"product-pic-staff\" src=\"/" + p.getImagePath() + "\"></a>\n";
+            htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><img class=\"product-pic-staff\" src=\"../" + p.getImagePath().substring(2) + "\"></a>\n";
             htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
             htmlInsert += "<div class=\"modify-product-btns\">\n";
             htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
