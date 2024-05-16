@@ -3,13 +3,13 @@ package com.uts.iotbay.model;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-
+    
+    int id;
     String name;
     String description;
     float price;
     String imagePath;
-    int productID;
-    boolean isActive;
+    Boolean isActive;
     String category;
 
     public Product(String name, String description, float price, String imagePath) {
@@ -20,12 +20,20 @@ public class Product implements Serializable {
         this.isActive = true;
     }
 
-    public Product(int productID, String name, String description, float price, String imagePath, String category) {
-        this.productID = productID;
+    public Product(int id, String name, String description, float price, String imagePath) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imagePath = imagePath;
+    }
+    public Product(int id, String name, String description, float price, String imagePath, Boolean isActive, String category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imagePath = imagePath;
+        this.isActive = isActive;
         this.category = category;
     }
     public String getName() {
@@ -53,26 +61,18 @@ public class Product implements Serializable {
         this.imagePath = imagePath;
     }
     public int getProductID() {
-        return productID;
+        return id;
     }
     public void setProductID(int productID) {
-        this.productID = productID;
+        this.id = productID;
     }
 
-    public boolean getIsActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean active) {
+    public void setIsActive(Boolean active) {
         this.isActive = active;
-    }
-
-    public String getProductCategory() {
-        return category;
-    }
-
-    public void setProductCategory(String category) {
-        this.category = category;
     }
 
 }
