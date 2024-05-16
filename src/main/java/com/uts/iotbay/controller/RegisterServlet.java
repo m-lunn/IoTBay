@@ -11,10 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.uts.iotbay.model.dao.DBManager;
 
-/**
- *
- * @author michaellunn
- */
 public class RegisterServlet extends HttpServlet {
 
     @Override
