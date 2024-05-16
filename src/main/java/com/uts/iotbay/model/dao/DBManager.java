@@ -418,4 +418,23 @@ public class DBManager {
         }
         return null;
     }
+
+    public Product getProduct(int id) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_id = ?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if(rs.next()) {
+            String name = rs.getString("product_name");
+            String description = rs.getString("product_description");
+            float price = rs.getFloat("product_price");
+            String imagePath = rs.getString("product_image_path");
+            String category = rs.getString("product_category");
+
+            return new Product(name, description, price, imagePath, category);
+        }
+        return null;
+    }
+
 }

@@ -1,4 +1,7 @@
 <%@page import="com.uts.iotbay.model.Product"%>
+<%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.Staff"%>
+<%@page import="com.uts.iotbay.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -14,9 +17,9 @@
 
 </head>
 	<body>
-
         <% 
             
+            User user = (User)request.getSession().getAttribute("user");
             String products = (String)request.getSession().getAttribute("products");
 
             String s = (String)request.getSession().getAttribute("productsCount");
@@ -30,7 +33,7 @@
             String search = (String)request.getSession().getAttribute("search");
             String errorMsg = (String)request.getSession().getAttribute("errorMsg");
             String title = "All Products";
-
+            
             request.getSession().setAttribute("errorMsg", "");
             request.getSession().setAttribute("productsCount", "");
 
@@ -44,22 +47,26 @@
 
 
          %>
-
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
 				<ul class="menu-bar">
+                    <%  if(user != null){
+                             if(!(user instanceof Customer)){
+                                out.println("<li><a href=\"staff/products\"><button id=\"switch-view-btn\" tabindex=\"-1\"><p class=\"switch-view-text\">Switch to Staff View</p></button></a></li>");
+                            }
+                         } %>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="homedirect.jsp">Home</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Products</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
-					<li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="./assets/account.png" alt="manage account button"></button></a></li>
-                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="./assets/shopping-cart.png" alt="manage account button"></button></a></li>
+					<li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
             <br>
 			<div class="logo">
-				<img src="./assets/logo.png" id="logo-small" alt="logo">
+				<img src="/assets/logo.png" id="logo-small" alt="logo">
 				<!-- Logo created using DreamStudio by stability.ai -->
                 <h1 class="heading-text"><%=title%></h1>
                 <br>
@@ -80,7 +87,7 @@
                     </select>
                     <input class="product-search-form-input" type="text" id="name" name="name" placeholder="Search..." value="<%=search%>">
                     <Button class="product-search-form-input" id="product-search-submit" type="submit">
-                        <img src="./assets/search.png" id="search-pic">
+                        <img src="/assets/search.png" id="search-pic">
                     </Button>
                 </form>
             </div>

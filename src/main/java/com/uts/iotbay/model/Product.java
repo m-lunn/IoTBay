@@ -37,6 +37,9 @@ public class Product implements Serializable {
         this.isActive = isActive;
         this.category = category;
     }
+    public Product() {
+    }
+
     public String getName() {
         return name;
     }
