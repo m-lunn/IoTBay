@@ -91,7 +91,7 @@ body {
     margin: 0;
 }
 
-.logout-btn2:hover, .admin-btn:hover ,#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
+#delete-btn:hover, .logout-btn2:hover, .admin-btn:hover ,#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.03);
 }
 
@@ -346,19 +346,42 @@ a {
     font-size: larger;
 }
 
-.form-container {
+.register-form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     background-image: linear-gradient(to right top, #40404d, #414050, #434153, #454156, #474159, #473f59, #463e59, #463c59, #433957, #403555, #3e3252, #3b2f50);
-    width: 30%;
     border-radius: 30px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
     margin-left: auto;
     margin-right: auto;
-    min-width: 700px;
-    min-height: 100%;
+    width: 80%;
+    max-width: 600px;
 }
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to right top, #40404d, #414050, #434153, #454156, #474159, #473f59, #463e59, #463c59, #433957, #403555, #3e3252, #3b2f50);
+    border-radius: 30px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    max-width: 600px;
+    min-width: 400px;
+}
+
+.edit-details-form {
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to right top, #40404d, #414050, #434153, #454156, #474159, #473f59, #463e59, #463c59, #433957, #403555, #3e3252, #3b2f50);
+    border-radius: 30px;
+    box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
+}
 
 label {
     font-family: "Space Mono";
@@ -366,10 +389,16 @@ label {
 }
 
 .form-group {
-    margin-top: 20%;
-    margin-bottom: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    width: 85%;
     position: relative;
-    left: -30%;
+    padding: 10px;
+  }
+
+  .register-input {
+    width: 95%;
   }
   
 label {
@@ -385,28 +414,30 @@ input[type="text"], input[type="password"] {
     border: 1px solid #566573; 
     border-radius: 4px;
     color: #fff; 
-    width: 150%;
     font-size: 14px;
     position: relative;
     /* font-size: min(20pt, 10vw) */
  }
+
+ .form {
+    width: 100%;
+ }
   
 .submit-btn {
     font-family: "Space Mono";
-    width: 100%;
+    width: 50%;
     height: 10%;
-    padding-top: 30px;
-    padding: 10px;
+    padding: 30px;
     background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
     color: #fff;
     font-size: larger;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 5px;
     position: relative;
-    bottom: 8%;
     transition: .2s; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-row {
@@ -415,25 +446,27 @@ input[type="text"], input[type="password"] {
     text-align: center;
 }
 
-.delete-btn {
-    width: 20%;
-    position: relative;
-    margin: auto;
-    bottom: none;
-    background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
-}
 
 #delete-btn {
-    width: 230px;
+    font-family: "Space Mono";
+    padding: 20px; 
+    color: #fff;
+    font-size: larger;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: .2s; 
+    margin-left: auto;
+    margin-right: auto;
     background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
 
 }
 
 .submit-btn2 {
     font-family: "Space Mono";
-    width: 100%;
-    height: 15%;
-    padding-top: 30px;
+    width: 40%;
+    height: 30%;
     padding: 10px;
     background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
     color: #fff;
@@ -446,6 +479,8 @@ input[type="text"], input[type="password"] {
     position: relative;
     bottom: 8%;
     transition: .2s; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login-redirects {
@@ -456,6 +491,10 @@ input[type="text"], input[type="password"] {
     position: relative;
     bottom: 6%;
     color: #bdc3c7;
+}
+
+.login-redirects:hover {
+    text-decoration: underline;
 }
 
 .error-msg {
@@ -470,21 +509,6 @@ input[type="text"], input[type="password"] {
     text-align: center;
     color: #0db10d;
     font-size: larger;
-}
-
-#login-form-container {
-    width: 450px;
-    min-width: 450px;
-}
-
-#register-form-container {
-    width: 700px;
-    min-width: 700px;
-}
-
-#editdetails-form-container {
-    width: 500px;
-    min-width: 500px;
 }
 
 .access-log {

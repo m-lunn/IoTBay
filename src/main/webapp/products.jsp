@@ -2,6 +2,7 @@
 <%@page import="com.uts.iotbay.model.User"%>
 <%@page import="com.uts.iotbay.model.Staff"%>
 <%@page import="com.uts.iotbay.model.Customer"%>
+<%@page import="com.uts.iotbay.model.dao.DBManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -18,7 +19,11 @@
 </head>
 	<body>
         <% 
-            
+            DBManager manager = (DBManager) request.getSession().getAttribute("manager");
+            if(manager == null){
+                response.sendRedirect("index.jsp");
+            }
+
             User user = (User)request.getSession().getAttribute("user");
             String products = (String)request.getSession().getAttribute("products");
 
