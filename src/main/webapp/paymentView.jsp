@@ -16,31 +16,16 @@
     <title>IoTBay - View Payment Method</title>
 </head>
 <%
-            String cardNumber="";
-            String expiryDate="";
-            String cvv="";
-            String nameOnCard="";
-
-            String errorMsg = (String)request.getSession().getAttribute("errorMsg");
-            request.getSession().setAttribute("errorMsg", "");
-
-            if(errorMsg == null) {
-                errorMsg = "";
-            }
-
-    
+            
             User user = (User)request.getSession().getAttribute("user");
     
             if(user == null){
                 response.sendRedirect("homedirect.jsp");
             }
-            String fname = user.getFname();
-            String email = user.getEmail();
             String htmlInsert = (String)request.getSession().getAttribute("payment");
-            String fromDate = (String)request.getSession().getAttribute("fromdate");
-            String toDate = (String)request.getSession().getAttribute("todate");
-    
-    
+            if(htmlInsert == null){
+                response.sendRedirect("contact.jsp");
+            }
         %>
 <body>
     <div class="backdrop">
