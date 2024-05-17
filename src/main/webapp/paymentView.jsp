@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="com.uts.iotbay.model.Payment"%>
+<%@page import="com.uts.iotbay.model.User"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +15,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>IoTBay - View Payment Method</title>
 </head>
+<%
+            String cardNumber="";
+            String expiryDate="";
+            String cvv="";
+            String nameOnCard="";
 
+            String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+            request.getSession().setAttribute("errorMsg", "");
+
+            if(errorMsg == null) {
+                errorMsg = "";
+            }
+
+    
+            User user = (User)request.getSession().getAttribute("user");
+    
+            if(user == null){
+                response.sendRedirect("homedirect.jsp");
+            }
+            String fname = user.getFname();
+            String email = user.getEmail();
+            String htmlInsert = (String)request.getSession().getAttribute("payment");
+            String fromDate = (String)request.getSession().getAttribute("fromdate");
+            String toDate = (String)request.getSession().getAttribute("todate");
+    
+    
+        %>
 <body>
     <div class="backdrop">
         <div class="button-wrapper"></div>
@@ -39,9 +68,10 @@
             </div>
 
             <br><br><br>
-            <div class="form-container">
-                <p>Card Number: <%= cardNumber %></p>
-                <p>Expiry Date: <%= expiryDate %></p>
+            <div class="access-logs-container">
+                <table class="access-log-table">
+                    <%out.println(htmlInsert);%>
+                </table>
             </div>
             <br><br><br>
         </div>

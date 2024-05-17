@@ -1,3 +1,4 @@
+<%@page import="com.uts.iotbay.model.User"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>IoTBay</title>
 </head>
+<%
+            String email="";
+
+            String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+            request.getSession().setAttribute("errorMsg", "");
+
+            if(errorMsg == null) {
+                errorMsg = "";
+            }
+
+            User user = (User)request.getSession().getAttribute("user");
+            if(user != null) {
+                email = user.getEmail();
+            }
+            else {
+                response.sendRedirect("homedirect.jsp");
+            }
+        %>
 
 	<body>
 		<div class="backdrop">
@@ -31,7 +50,9 @@
                 <div>
                     <h1 class="heading-text">Create Payment</h1>
                 </div>
-        
+                <h2 class="subheading-text">You are logged in as: </h2>
+                
+                <h2 class="email-text"><%= email%></h2>
                 <br><br><br>
                 <div class="form-container">
                     <form action="paymentCreate" method="post">
@@ -51,7 +72,9 @@
                             <label for="nameOnCard">Name on Card:</label>
                             <input type="text" id="nameOnCard" name="nameOnCard" placeholder="Name on Card" required>
                         </div>
-                        <button type="submit" class="submit-btn">Create Payment</button>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="submit" class="submit-btn">Create Payment</button>
+                        </div>
                     </form>
                 </div>
                 <br><br><br>
