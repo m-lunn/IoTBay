@@ -4,7 +4,7 @@
     Author     : michaellunn
 --%>
 
-<%@page import="com.uts.iotbay.User"%>
+<%@page import="com.uts.iotbay.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +54,7 @@
             <p class="error-msg"> <%= errorMsg%> </p>
             <br>
             <div class="form-container" id="login-form-container">
-                <form action="login", method="post">
+                <form action="landing.jsp", method="post">
                     <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="text" id="email" name="email" required>

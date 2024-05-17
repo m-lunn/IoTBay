@@ -56,8 +56,8 @@
     <welcome-file-list>
         <welcome-file>homedirect.jsp</welcome-file>
     </welcome-file-list>
-    
-    <servlet>
+
+<servlet>
         <servlet-name>Products</servlet-name>
         <servlet-class>com.uts.iotbay.ViewProductsServlet</servlet-class>
     </servlet>

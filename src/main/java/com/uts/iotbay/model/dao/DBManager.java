@@ -1,8 +1,8 @@
 package com.uts.iotbay.model.dao;
+import com.uts.iotbay.Utils;
 import com.uts.iotbay.model.Product;
 import java.sql.*;
 import java.util.ArrayList;
-import com.uts.iotbay.model.dao.DBManager;
 
 public class DBManager {
     Connection conn;
@@ -24,8 +24,9 @@ public class DBManager {
             String description = rs.getString("product_description");
             float price = rs.getFloat("product_price");
             String path = rs.getString("product_image_path");
+            Boolean isActive = Utils.bitToBool(rs.getInt("product_active"));
             String category = rs.getString("product_category");
-            products.add(new Product(id, name, description, price, path, category));
+            products.add(new Product(id, name, description, price, path, isActive, category));
         }
 
         return products;
@@ -48,8 +49,7 @@ public class DBManager {
             String productDescription = rs.getString(3);
             float productPrice = rs.getFloat(4);
             String image_path = rs.getString(5);
-            String productCategory = rs.getString(6);
-            products.add(new Product(productID, productName, productDescription, productPrice, image_path, productCategory));
+            products.add(new Product(productID, productName, productDescription, productPrice, image_path));
         }
 
         return products;
@@ -75,6 +75,30 @@ public class DBManager {
         return null;
     }
 
-   
+    public Product getProduct(int id) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_id = ?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
 
+        if(rs.next()) {
+            String name = rs.getString("product_name");
+            String description = rs.getString("product_description");
+            float price = rs.getFloat("product_price");
+            String imagePath = rs.getString("product_image_path");
+            String category = rs.getString("product_category");
+
+            return new Product(name, description, price, imagePath, category);
+        }
+        return null;
+    }
+
+    public void updateProduct(String name, String description, float price, String imagePath) throws SQLException {
+            PreparedStatement ps = conn.prepareStatement("UPDATE Products SET product_name=?, product_description=?, product_price=?, product_image_path=? WHERE product_id=?");
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setFloat(3, price);
+            ps.setString(4, imagePath);
+            ps.executeUpdate();
+        }
 }

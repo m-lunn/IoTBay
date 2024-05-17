@@ -3,31 +3,43 @@ package com.uts.iotbay.model;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-
+    
+    int id;
     String name;
     String description;
     float price;
     String imagePath;
-    int productID;
-    boolean isActive;
+    Boolean isActive;
     String category;
 
-    public Product(String name, String description, float price, String imagePath) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.imagePath = imagePath;
-        this.isActive = true;
-    }
-
-    public Product(int productID, String name, String description, float price, String imagePath, String category) {
-        this.productID = productID;
+    public Product(String name, String description, float price, String imagePath, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.imagePath = imagePath;
         this.category = category;
+        this.isActive = true;
     }
+
+    public Product(int id, String name, String description, float price, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imagePath = imagePath;
+    }
+    public Product(int id, String name, String description, float price, String imagePath, Boolean isActive, String category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imagePath = imagePath;
+        this.isActive = isActive;
+        this.category = category;
+    }
+    public Product() {
+    }
+
     public String getName() {
         return name;
     }
@@ -53,26 +65,28 @@ public class Product implements Serializable {
         this.imagePath = imagePath;
     }
     public int getProductID() {
-        return productID;
-    }
-    public void setProductID(int productID) {
-        this.productID = productID;
+        return id;
     }
 
-    public boolean getIsActive() {
-        return isActive;
+    
+    public int getId() {
+        return id;
     }
 
-    public void setIsActive(boolean active) {
-        this.isActive = active;
-    }
-
-    public String getProductCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setProductCategory(String category) {
-        this.category = category;
+    public void setProductID(int productID) {
+        this.id = productID;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean active) {
+        this.isActive = active;
     }
 
 }

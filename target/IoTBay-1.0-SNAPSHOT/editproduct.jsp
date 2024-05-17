@@ -9,6 +9,33 @@
     <title>IoTBay - Edit Product</title>
 </head>
 
+<%
+String productName="";
+String productDescription="";
+float productPrice="";
+String productImagePath="";
+String productCategory="";
+
+String errorMsg = (String)request.getSession().getAttribute("errorMsg");
+request.getSession().setAttribute("errorMsg", "");
+
+if(errorMsg == null) {
+    errorMsg = "";
+}
+
+Product product = (Product)request.getSession().getAttribute("product");
+if(product != null) {
+    String productName="";
+    String productDescription="";
+    float productPrice="";
+    String productImagePath="";
+    String productCategory="";
+}
+else {
+    response.sendRedirect("products");
+}
+%>
+
 <body>
     <div class="backdrop">
         <div class="button-wrapper"></div>
@@ -21,28 +48,28 @@
             </ul>
         </div>
         <div>
-            <h1 class="subheading-text">Editing Product: TP-LINK TL-MR3420 3G/4G Wireless N300 Router</h1>
+            <h1 class="subheading-text">Editing Product: <%= productName%></h1>
         </div>
         <div class="product-container">
             <div class="left-column">
-                <img src="https://m.media-amazon.com/images/I/51TY0OI74wL._AC_UF894,1000_QL80_.jpg" alt="Product Image">
+                <img src="<%= productImagePath%>" alt="Product Image">
             </div>
             <div class="right-column">
                 <form action="updateProduct" method="post">
                     <!-- Input fields for updating product information -->
                     <div class="product-group">
                         <label for="productName">Product Name:</label>
-                        <input type="name" id="productName" name="productName" value="TP-LINK TL-MR3420 3G/4G Wireless N300 Router" required>
+                        <input value="<%=productName%>" type="name" id="productName" name="productName" value="TP-LINK TL-MR3420 3G/4G Wireless N300 Router" required>
                     </div>
                     <div class="product-group">
-                        <label for="price">Price:</label>
-                        <input type="price" id="price" name="price" value="399.00" required>
+                        <label for="productPrice">Price:</label>
+                        <input value="<%=productPrice%>" type="price" id="productPrice" name="productPrice" value="399.00" required>
                     </div>
                     <div class="product-group">
-                        <label for="description">Description:</label>
-                        <input type="description" id="description" name="description" rows="4" cols="50" value="TP-LINK TL-MR3420 3G/4G N300 Wireless Router. Connect a 3/4G USB dongle to TL-MR3420 and instantly create your own Wi-Fi hotspot. Share a stable internet connection with your friends and family. TL-MR3420 is compatible with the majority of brands, struggling to get a fast connection with more devices? TL-MR3420 delivers up to 300Mbps speeds for up to 32 online devices at the same time. Stay connected with your smartphone, laptop, games console and more. TL-MR3420 also supports a WAN internet connection via an Ethernet cable. Switch between wired WAN and wireless 3/4G connections as required with this cost-effective all-in-one router."</input>
+                        <label for="productDescription">Description:</label>
+                        <input value="<%=productDescription%>" type="description" id="description" name="productDescription" rows="4" cols="50" value="TP-LINK TL-MR3420 3G/4G N300 Wireless Router. Connect a 3/4G USB dongle to TL-MR3420 and instantly create your own Wi-Fi hotspot. Share a stable internet connection with your friends and family. TL-MR3420 is compatible with the majority of brands, struggling to get a fast connection with more devices? TL-MR3420 delivers up to 300Mbps speeds for up to 32 online devices at the same time. Stay connected with your smartphone, laptop, games console and more. TL-MR3420 also supports a WAN internet connection via an Ethernet cable. Switch between wired WAN and wireless 3/4G connections as required with this cost-effective all-in-one router."</input>
                     </div>
-                    <button type="" class="saveproduct-btn">Save Changes</button>
+                    <button type="" form="updateProduct" class="saveproduct-btn">Save Changes</button>
                     <button type="" class="saveproduct-btn">Close</button>
                 </form>
             </div>

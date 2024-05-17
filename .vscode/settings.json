@@ -33,5 +33,37 @@
         "username": "root",
         "password": "iotbay"
     }
+],
+"[python]": {
+    "editor.formatOnType": true
+},
+"redhat.telemetry.enabled": true,
+"maven.executable.path": "c:\\Users\\invic\\Downloads\\apache-maven-3.9.6-bin\\apache-maven-3.9.6\\bin\\mvn.cmd",
+"rsp-ui.enableStartServerOnActivation": [
+    {
+        "id": "redhat.vscode-server-connector",
+        "name": "Red Hat Server Connector",
+        "startOnActivation": true
+    },
+    {
+        "id": "redhat.vscode-community-server-connector",
+        "name": "Community Server Connector",
+        "startOnActivation": true
+    }
+],
+"java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-21",
+"java.configuration.runtimes": [
+    
+
+    {
+        "name": "JavaSE-21",
+        "path": "C:\\Program Files\\Java\\jdk-21",
+        "default": true
+    }
+],
+"rsp-ui.rsp.java.home": "",
+"liveServer.settings.donotShowInfoMsg": true,
+"json.schemas": [
+    
 ]
 }

@@ -98,8 +98,8 @@ public class LoginServlet extends HttpServlet {
                     String fname = rs.getString("user_fname");
                     String surname = rs.getString("user_surname");
                     email = rs.getString("user_email");
-                    User user = new User(fname, surname, email, password);
-                    request.getSession().setAttribute("user", user);
+                    User testUser = new User("Nig", "Doe", "john.doe@example.com", "password123");
+                    request.getSession().setAttribute("user", testUser);
                     RequestDispatcher rd = request.getRequestDispatcher("landing.jsp");
                     rd.forward(request, response);
                 }

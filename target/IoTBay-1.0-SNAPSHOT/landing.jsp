@@ -3,7 +3,7 @@
     Created on : 14 Apr 2024, 12:20:15 am
     Author     : michaellunn
 --%>
-<%@page import="com.uts.iotbay.User"%>
+<%@page import="com.uts.iotbay.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +16,9 @@
 
 </head>
 	<%
-		User user = (User)request.getSession().getAttribute("user");
-		String fname = user.getFname();
-		String email = user.getEmail();
+	
+		String fname = "user.getFname()";
+		String email = "user.getEmail()";
 	%>
 	<body>
 		<div class="backdrop">

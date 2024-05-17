@@ -1,11 +1,13 @@
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\AccessLogsServlet.java
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\User.java
+c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\ViewProductsServlet.java
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\EditDetailsServlet.java
-c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\JakartaRestConfiguration.java
-c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\RegisterServlet.java
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\LogoutServlet.java
-c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\model\Product.java
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\LoginServlet.java
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\model\User.java
-c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\ProductViewServlet.java
 c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\resources\JakartaEE10Resource.java
+c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\model\dao\DBManager.java
+c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\JakartaRestConfiguration.java
+c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\RegisterServlet.java
+c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\model\Product.java
+c:\Users\invic\iotbayy\IoTBay\src\main\java\com\uts\iotbay\ProductViewServlet.java

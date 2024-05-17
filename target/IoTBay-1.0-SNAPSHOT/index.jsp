@@ -25,7 +25,7 @@
 				<ul class="menu-bar">
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Home</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">About</a></button></li>
-					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.jsp">Products</a></button></li>
+					<li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="underconstruction.html">Contact</a></button></li>
 				</ul>
 			</div>
@@ -61,7 +61,7 @@
 			<ul class="footer-menu">
 				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="#"><span class="active-page">Home</span></a></button></li>
 				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">About</a></button></li>
-				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Products</a></button></li>
+				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
 				<li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="underconstruction.html">Contact</a></button></li>
 			</ul>
 			<p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>

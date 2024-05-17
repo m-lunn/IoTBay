@@ -36,7 +36,6 @@ public class User implements Serializable {
         this.phoneNo = phoneNo;
         this.isActive = isActive;
     }
-
     public User(String fname, String surname, String email, String phoneNo) {
         this.fname = fname;
         this.surname = surname;
