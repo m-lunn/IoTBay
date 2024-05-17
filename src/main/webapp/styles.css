@@ -348,17 +348,15 @@ a {
 
 .form-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     background-image: linear-gradient(to right top, #40404d, #414050, #434153, #454156, #474159, #473f59, #463e59, #463c59, #433957, #403555, #3e3252, #3b2f50);
-    width: 30%;
     border-radius: 30px;
     box-shadow: 0 8px 2px -3px rgba(0, 0, 0, 0.20);
     margin-left: auto;
     margin-right: auto;
-    min-width: 700px;
-    min-height: 100%;
+    width: 80%;
+    max-width: 600px;
 }
-
 
 label {
     font-family: "Space Mono";
@@ -366,10 +364,16 @@ label {
 }
 
 .form-group {
-    margin-top: 20%;
-    margin-bottom: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    width: 85%;
     position: relative;
-    left: -30%;
+    padding: 10px;
+  }
+
+  .register-input {
+    width: 100%;
   }
   
 label {
@@ -385,28 +389,30 @@ input[type="text"], input[type="password"] {
     border: 1px solid #566573; 
     border-radius: 4px;
     color: #fff; 
-    width: 150%;
     font-size: 14px;
     position: relative;
     /* font-size: min(20pt, 10vw) */
  }
+
+ .form {
+    width: 100%;
+ }
   
 .submit-btn {
     font-family: "Space Mono";
-    width: 100%;
+    width: 50%;
     height: 10%;
-    padding-top: 30px;
-    padding: 10px;
+    padding: 30px;
     background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
     color: #fff;
     font-size: larger;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 5px;
     position: relative;
-    bottom: 8%;
     transition: .2s; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-row {
@@ -456,6 +462,10 @@ input[type="text"], input[type="password"] {
     position: relative;
     bottom: 6%;
     color: #bdc3c7;
+}
+
+.login-redirects:hover {
+    text-decoration: underline;
 }
 
 .error-msg {

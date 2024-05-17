@@ -32,7 +32,7 @@ public class DeleteProductServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(DeleteProductServlet.class.getName()).log(Level.SEVERE, null, ex);   
         }
-        request.getRequestDispatcher("/staff/products").include(request, response);
+        response.sendRedirect("/staff/products");
     }
 }
 
