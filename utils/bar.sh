@@ -1,25 +1,19 @@
 #!/bin/bash
 
-cd ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/bin
+cd ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/bin # Changes directory into server bin location
 
-./shutdown.sh
+./shutdown.sh # Stops the server, if running.
 
-rm -r ~/IoTBay/target/IoTBay-1.0-SNAPSHOT
+rm -r ~/IoTBay/target # Remove project target folder to prevent Maven caching fuckery.
 
-rm -r ~/IoTBay/target/classes
+/Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml # Package project into .war
 
-/Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml
+rm -r ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT # Remove old deployment on server.
 
-mv ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war
+mv ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war # Overwrites old deployment with new deployment.
 
-cp ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war ~//IoTBay/target/
+./startup.sh # Starts the server.
 
-mv ~/IoTBay/target/ROOT.war ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war
+cd ~/IoTBay/utils # Changes directory into IoTBay/utils
 
-rm -r ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT
-
-./startup.sh
-
-cd ~/IoTBay/utils
-
-./serverlogs.sh
+./serverlogs.sh # Opens and tracks server logs
