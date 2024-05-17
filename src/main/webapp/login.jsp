@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="com.uts.iotbay.model.User"%>
+<%@page import="com.uts.iotbay.model.dao.DBManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +22,19 @@
 
 	<body>
 
-        <%String loginErr = (String)request.getSession().getAttribute("loginErr");
-        request.getSession().setAttribute("loginErr", "");
+        <%
+            DBManager manager = (DBManager) request.getSession().getAttribute("manager");
+            if(manager == null){
+                response.sendRedirect("index.jsp");
+            }
+
+            String loginErr = (String)request.getSession().getAttribute("loginErr");
+            request.getSession().setAttribute("loginErr", "");
     
-        if(loginErr == null) {
-           loginErr ="";
-        }
-        %>      
+            if(loginErr == null) {
+            loginErr ="";
+            }
+        %>  
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -53,27 +60,26 @@
             
 
 			<br><br>
-            <p class="error-msg"> <%= loginErr%> </p>
+            <p class="error-msg"><%= loginErr%></p>
             <br>
-            <div class="form-container" id="login-form-container">
-                <form action="login", method="post">
+            <div>
+                <form class="login-form" action="login", method="post">
+                    <br>
                     <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input class="register-input" type="text" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input class="register-input" type="password" id="password" name="password" required>
                     </div>
-                    <br><br><br>
                     <button type="submit" class="submit-btn2">Login</button>
-                    <br><br>
+                    <br>
                     <a href="register.jsp" class="login-redirects">Don't have an account?</a>
                     <br>
                 </form>
               </div>
-              <br><br><br>
-
+              <br><br><br><br>
 		</div>
 
         <div class="footer">

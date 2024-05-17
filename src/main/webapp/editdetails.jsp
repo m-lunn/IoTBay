@@ -74,40 +74,37 @@
             <p class="error-msg"><%=errorMsg%></p>
 
 			<br><br>
-            <div class="form-container" id="editdetails-form-container">
-                <form action="editdetails" method="post" id="editdetails">
+                <form class="edit-details-form" action="editdetails" method="post" id="editdetails">
                     <div class="form-group">
                         <label for="fname">First Name:</label>
-                        <input value="<%=fname%>" type="text" id="fname" name="fname" required>
+                        <input class="register-input" value="<%=fname%>" type="text" id="fname" name="fname" required>
                     </div>
                     <div class="form-group">
                         <label for="surname">Surname:</label>
-                        <input value="<%=surname%>" type="text" id="surname" name="surname" required>
+                        <input class="register-input" value="<%=surname%>" type="text" id="surname" name="surname" required>
                     </div>
                     <div class="form-group">
                         <label for="surname">Phone Number:</label>
-                        <input value="<%=phone%>" type="text" id="phone" name="phone">
+                        <input class="register-input" value="<%=phone%>" type="text" id="phone" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input value="<%=password%>" type="password" id="password" name="password" required>
+                        <input class="register-input" value="<%=password%>" type="password" id="password" name="password" required>
                     </div>
                     <div class="form-group">
                         <label for="confirm-password">Confirm Password:</label>
-                        <input type="password" id="confirm-password" name="confirm-password" required>
+                        <input class="register-input" type="password" id="confirm-password" name="confirm-password" required>
 
                     </div>
-                    <br><br><br>
                     <button type="submit" form="editdetails" class="submit-btn">Update Details</button>
+                    <br>
 
                 </form>
-
-            </div> 
-            <br><br>
+            <br>
 
             <div class="btn-row">
                 <form action="editdetails" method="get" id="delete">
-                    <button class="submit-btn" id="delete-btn" type="submit">Delete Account</button>
+                    <button id="delete-btn" type="submit">Delete Account</button>
                 </form>
             </div>
             <br><br>

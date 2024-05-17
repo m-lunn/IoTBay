@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.uts.iotbay.model.dao.DBManager"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,12 @@
 
 </head>
     <%
+
+    DBManager manager = (DBManager) request.getSession().getAttribute("manager");
+    if(manager == null){
+        response.sendRedirect("index.jsp");
+    }
+
     String duplicateErr = (String) session.getAttribute("duplicateErr");
     String emailErr = (String) session.getAttribute("emailErr");
     String fnameErr = (String) session.getAttribute("fnameErr");
@@ -57,7 +64,7 @@
 
 			<br><br><br>
             <h3 class="error-msg"><%= (duplicateErr != null ? duplicateErr : "")%></h3>
-                <form class="form-container" action="register" method="post">
+                <form class="register-form" action="register" method="post">
                     <br>
                     <div class="form-group">
                         <label for="first name">First Name:</label>

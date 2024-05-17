@@ -7,25 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay | Sign Up</title>
+	<title>IoTBay | Login</title>
 
 </head>
-    <%
-    String duplicateErr = (String) session.getAttribute("duplicateErr");
-    String emailErr = (String) session.getAttribute("emailErr");
-    String fnameErr = (String) session.getAttribute("fnameErr");
-    String surnameErr = (String) session.getAttribute("surnameErr");
-    String passwordErr = (String) session.getAttribute("passwordErr");
-    String phoneErr = (String) session.getAttribute("phoneErr");
-    session.setAttribute("emailErr", "Enter email");
-    session.setAttribute("passwordErr", "Enter password");
-    session.setAttribute("fnameErr", "Enter first name");
-    session.setAttribute("surnameErr", "Enter surname");
-    session.setAttribute("phoneErr", "Enter phone number");
-    session.setAttribute("duplicateErr", "");
-    %>
+
 	<body>
-        <jsp:include page="/ConnServlet"/>   
+
+        <%String loginErr = (String)request.getSession().getAttribute("loginErr");
+        request.getSession().setAttribute("loginErr", "");
+    
+        if(loginErr == null) {
+           loginErr ="";
+        }
+        %>  
 		<div class="backdrop">
 			<div class="button-wrapper"></div>
 			<div class="buttons">
@@ -45,40 +39,30 @@
 				<br>
 			</div>
 			<div>
-				<h1 class="heading-text">Sign Up</h1>
+				<h1 class="heading-text">Welcome Back!</h1>
 			</div>
 
-			<br><br><br>
-            <h3 class="error-msg"><%= (duplicateErr != null ? duplicateErr : "")%></h3>
-                <form class="form-container" action="register" method="post">
-                    <br>
+            
+
+			<br><br>
+            <p class="error-msg"><%= loginErr%></p>
+            <br>
+            <div>
+                <form class="login-form" action="login", method="post">
                     <div class="form-group">
-                        <label for="first name">First Name:</label>
-                        <input class="register-input" type="text" id="first name" name="fname" placeholder="<%=(fnameErr != null ? fnameErr : "Enter first name")%>" required>
+                    <label for="email">Email:</label>
+                    <input class="register-input" type="text" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="surname">Surname:</label>
-                        <input class="register-input" type="text" id="surname" name="surname" placeholder="<%=(surnameErr != null ? surnameErr : "Enter surname")%>">
+                    <label for="password">Password:</label>
+                    <input class="register-input" type="password" id="password" name="password" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input class="register-input" type="text" id="email" name="email" placeholder="<%=(emailErr != null ? emailErr : "Enter email")%>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number:</label>
-                        <input class="register-input" type="text" id="phone" name="phone" placeholder="<%=(phoneErr != null ? phoneErr : "Enter phone number")%>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input class="register-input" type="password" id="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Enter password")%>" required>
-                    </div>
-                    <br>
-                    <button type="submit" class="submit-btn">Create New Account</button>
-                    <br>
-                    <a href="login.jsp" class="login-redirects">Already have an account?</a>
+                    <button type="submit" class="submit-btn2">Login</button>
+                    <a href="register.jsp" class="login-redirects">Don't have an account?</a>
                     <br>
                 </form>
-              <br><br><br>
+              </div>
+
 		</div>
 
         <div class="footer">
