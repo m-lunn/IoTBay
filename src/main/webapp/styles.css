@@ -91,7 +91,7 @@ body {
     margin: 0;
 }
 
-#delete-btn:hover, .logout-btn2:hover, .admin-btn:hover ,#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.single-product-add:hover, #delete-btn:hover, .logout-btn2:hover, .admin-btn:hover ,#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.03);
 }
 
@@ -949,6 +949,45 @@ button {
     min-width: 200px;
     min-height: 100px;
 }
+
+.product-view-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10vh;
+    margin-bottom: 10%;
+}
+.product-details-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.single-product-image {
+    width: 60%;
+    border-radius: 10PX;
+}
+
+.single-product-add {
+    margin-left: 0;
+    margin-right: 0;
+    width: 40%;
+    font-family: "Space Mono";
+    padding: 10px;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7); 
+    color: #fff;
+    font-size: larger;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: .2s; 
+}
+
 
 
 

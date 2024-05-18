@@ -444,4 +444,22 @@ public class DBManager {
         return null;
     }
 
+    public Product getProduct(String name) throws SQLException{
+
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_name = ?");
+        ps.setString(1, name);
+        ResultSet rs = ps.executeQuery();
+
+        if(rs.next()) {
+            int id = rs.getInt("product_id");
+            String description = rs.getString("product_description");
+            float price = rs.getFloat("product_price");
+            String imagePath = rs.getString("product_image_path");
+            String category = rs.getString("product_category");
+
+            return new Product(id, name, description, price, imagePath, category);
+        }
+        return null;
+    }
+
 }

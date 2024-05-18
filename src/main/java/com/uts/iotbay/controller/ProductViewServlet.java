@@ -21,14 +21,14 @@ public class ProductViewServlet extends HttpServlet {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
 
-        String[] url = request.getRequestURI().split("/");
-        int productId = Integer.parseInt(url[url.length - 1]);
+        String[] url = request.getRequestURI().split("product/");
+        String productName = url[1].replaceAll("%20", " ");
 
         
         try {
-            Product product = manager.getProduct(productId);
+            Product product = manager.getProduct(productName);
             session.setAttribute("product", product);
-            request.getRequestDispatcher("/underconstruction11.jsp").forward(request, response);
+            request.getRequestDispatcher("/product.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
