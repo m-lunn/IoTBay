@@ -462,4 +462,15 @@ public class DBManager {
         return null;
     }
 
+    public void updateProduct(int id, String name, String description, float price, String category) throws SQLException {
+
+        PreparedStatement updateDetails = conn.prepareStatement("UPDATE Products SET product_name=?, product_description = ?, product_price = ?, product_category = ? WHERE product_id = ?");
+            updateDetails.setString(1, name);
+            updateDetails.setString(2, description);
+            updateDetails.setFloat(3, price);
+            updateDetails.setString(4, category);
+            updateDetails.setInt(5, id);
+            updateDetails.executeUpdate();
+    }
+
 }

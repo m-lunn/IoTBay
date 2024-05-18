@@ -116,7 +116,7 @@ public class ModifyProductsServlet extends HttpServlet {
             htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><img class=\"product-pic-staff\" src=\"../" + p.getImagePath().substring(2) + "\"></a>\n";
             htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\"><h3 class=\"product-name-staff\">" + p.getName() + "</h3></a>\n";
             htmlInsert += "<div class=\"modify-product-btns\">\n";
-            htmlInsert += "<a href=\"product/edit/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
+            htmlInsert += "<a href=\"product/" + p.getName() + "\">" + "<Button class=\"modify-product-btn\" id=\"edit-product\">Edit</Button></a>\n";
             htmlInsert += "<a href=\"products/delete/" + p.getProductID() + "\">" + "<Button class=\"modify-product-btn\" id=\"delete-product\">Delete</Button></a>\n";
             htmlInsert += "</div>\n</div>\n";
         }

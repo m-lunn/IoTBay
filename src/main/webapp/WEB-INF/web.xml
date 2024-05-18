@@ -107,6 +107,24 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ModifyProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ModifyProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyProduct</servlet-name>
+        <url-pattern>/staff/product/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.UpdateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProduct</servlet-name>
+        <url-pattern>/staff/product/update/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.uts.iotbay.controller.LogoutServlet</servlet-class>
      </servlet>
