@@ -97,13 +97,13 @@
         <url-pattern>/paymentCreate</url-pattern>
     </servlet-mapping>
 
-<servlet>
+    <servlet>
         <servlet-name>paymentView</servlet-name>
         <servlet-class>com.uts.iotbay.controller.PaymentViewServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>paymentView</servlet-name>
-        <url-pattern>/paymentview</url-pattern>
+        <url-pattern>/paymentView</url-pattern>
     </servlet-mapping>
 
     <servlet>

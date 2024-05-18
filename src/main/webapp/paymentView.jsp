@@ -18,14 +18,13 @@
 <%
             
             User user = (User)request.getSession().getAttribute("user");
-    
+            String email="";
             if(user == null){
                 response.sendRedirect("homedirect.jsp");
             }
+            email = user.getEmail();
             String htmlInsert = (String)request.getSession().getAttribute("payment");
-            if(htmlInsert == null){
-                response.sendRedirect("contact.jsp");
-            }
+           
         %>
 <body>
     <div class="backdrop">
@@ -51,7 +50,9 @@
             <div>
                 <h1 class="heading-text">Payment Method Details</h1>
             </div>
-
+            <h2 class="subheading-text">You are logged in as: </h2>
+                
+            <h2 class="email-text"><%= email%></h2>
             <br><br><br>
             <div class="access-logs-container">
                 <table class="access-log-table">

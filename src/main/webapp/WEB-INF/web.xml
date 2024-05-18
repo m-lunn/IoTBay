@@ -98,6 +98,14 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>paymentView</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.PaymentViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>paymentView</servlet-name>
+        <url-pattern>/paymentView</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ModifyProducts</servlet-name>
         <servlet-class>com.uts.iotbay.controller.ModifyProductsServlet</servlet-class>
     </servlet>

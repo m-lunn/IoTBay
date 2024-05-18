@@ -2,7 +2,7 @@ package com.uts.iotbay.model;
 
 
 
-public class Payment implements  {
+public class Payment   {
     
     String expiryDate;
     String cvv;
