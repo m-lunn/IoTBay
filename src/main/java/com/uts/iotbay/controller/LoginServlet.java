@@ -25,44 +25,44 @@ public class LoginServlet extends HttpServlet {
 
         String dbPassword = "";
 
+        User user;
+        
+     
         try {
-            User user = manager.getUser(email);
-            int userID = user.getID();
-            dbPassword = user.getPassword();
-            if((dbPassword.equals(password))) {
-                manager.logSuccessfulLogin(userID);
-            }
-            else {
-                manager.logFailedLogin(userID);
-            }
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        User user = null;  
-        
-        try {       
-            user = manager.getUser(email, password);
-        } 
-        catch (SQLException ex) {           
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);       
-        } 
 
-        if (email.equals("root") && password.equals("iotbay")) {
-            user = new User("root");
-        }
-        if (user != null && user.isActive()) {              
-            session.setAttribute("user", user);
-            request.getRequestDispatcher("landing.jsp").include(request, response);
+            user = manager.getUser(email);
+            if(user != null) {
+                dbPassword = user.getPassword();
+            }
+
+            if (user == null && email.equals("root") && password.equals("iotbay")) {
+                user = new User("root");
+                session.setAttribute("user", user);
+                request.getRequestDispatcher("landing.jsp").include(request, response);
+
+            }
+            else if (user == null) {
+                session.setAttribute("loginErr", "Email or password is incorrect!");   
+                request.getRequestDispatcher("login.jsp").include(request, response);
+
+            }
+            else if (!dbPassword.equals(password) && user.isActive()) {
+                manager.logFailedLogin(email);
+                session.setAttribute("loginErr", "Email or password is incorrect!");   
+                request.getRequestDispatcher("login.jsp").include(request, response);
+            }
+            else if (user != null && dbPassword.equals(password) && user.isActive()) {              
+                session.setAttribute("user", user);
+                manager.logSuccessfulLogin(email);
+                request.getRequestDispatcher("landing.jsp").include(request, response);
+            }
+            else if (user != null && dbPassword.equals(password) && !user.isActive()) {
+                session.setAttribute("loginErr", "Account is currently inactive! Please contact system admin for further information.");   
+                request.getRequestDispatcher("login.jsp").include(request, response);
+            }
         } 
-        else if (user != null) {
-            session.setAttribute("loginErr", "Account is currently inactive! Please contact system admin for further information.");   
-            request.getRequestDispatcher("login.jsp").include(request, response);
-        }
-        else {                        
-            session.setAttribute("loginErr", "Email or password is incorrect!");   
-            request.getRequestDispatcher("login.jsp").include(request, response);
+        catch (SQLException | ServletException | IOException ex) {
+            Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

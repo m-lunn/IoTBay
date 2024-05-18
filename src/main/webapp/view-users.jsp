@@ -88,7 +88,7 @@
         <form action="view-user", method="post">
           <input type="hidden" name="id" value="<%= id%>">
           <input type="hidden" name="type" value="<%= type%>">
-          <td><button class="submit-btn2" onclick="">View</button></td>
+          <td><button class="submit-btn3" onclick="">View</button></td>
         </form>
       </tr>
       <% i++; }%>

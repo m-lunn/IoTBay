@@ -91,7 +91,7 @@ body {
     margin: 0;
 }
 
-.edit-submit-btn:hover, .single-product-add:hover, #delete-btn:hover, .logout-btn2:hover, .admin-btn:hover ,#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.edit-submit-btn:hover, .single-product-add:hover, #delete-btn:hover, .logout-btn2:hover, .admin-btn:hover ,#switch-view-btn:hover, .modify-product-btn:hover, .login-btn:hover, .submit-btn:hover, .submit-btn2:hover, .submit-btn3:hover, .logout-btn:hover, #mng-acc-btn:hover, #date-range-submit:hover, #cart-btn:hover, #product-search-submit:hover, .product:hover, .view-product-btn:hover, input[type="date"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.03);
 }
 
@@ -478,6 +478,24 @@ input[type="text"], input[type="password"] {
     margin-bottom: 5px;
     position: relative;
     bottom: 8%;
+    transition: .2s; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit-btn3 {
+    font-family: "Space Mono";
+    height: 30%;
+    padding: 10px;
+    background-image: linear-gradient(to bottom right, #8125C9, #741AB7);
+    color: #fff;
+    font-size: larger;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: scale 1.1;
+    margin-bottom: 5px;
+    position: relative;
     transition: .2s; 
     margin-left: auto;
     margin-right: auto;
