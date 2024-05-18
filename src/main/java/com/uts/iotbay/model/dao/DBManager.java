@@ -356,7 +356,12 @@ public class DBManager {
             String phoneNo = rs.getString("phoneno");
             String password = rs.getString("password");
             Boolean isActive = Utils.bitToBool(rs.getInt("isactive"));
-            return new User(id, fname, surname, email, password, phoneNo, isActive);
+            if (checkCustomer(id)) {
+                return new Customer(id, fname, surname, email, password, phoneNo, isActive);
+            }
+            else {
+                return new Staff(id, fname, surname, email, password, phoneNo, isActive);
+            }
         }
 
         return null;
