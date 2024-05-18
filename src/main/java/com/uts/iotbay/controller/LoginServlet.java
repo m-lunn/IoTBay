@@ -27,12 +27,13 @@ public class LoginServlet extends HttpServlet {
 
         try {
             User user = manager.getUser(email);
+            int userID = user.getID();
             dbPassword = user.getPassword();
             if((dbPassword.equals(password))) {
-                manager.logSuccessfulLogin(email);
+                manager.logSuccessfulLogin(userID);
             }
             else {
-                manager.logFailedLogin(email);
+                manager.logFailedLogin(userID);
             }
         }
         catch (SQLException ex) {

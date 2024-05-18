@@ -22,11 +22,11 @@ public class LogoutServlet extends HttpServlet {
         
         User user = (User)request.getSession().getAttribute("user");
 
-        String email = user.getEmail();
+        int userID = user.getID();
         session.invalidate();
         
         try {
-            manager.logLogout(email);
+            manager.logLogout(userID);
         } catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

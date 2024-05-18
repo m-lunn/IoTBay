@@ -91,10 +91,10 @@ public class DBManager {
             String phoneNo = rs.getString("phoneno");
             Boolean isActive = rs.getBoolean("isactive");
             if (checkCustomer(id)) {
-                return new Customer(fname, surname, email, password, phoneNo, isActive);
+                return new Customer(id, fname, surname, email, password, phoneNo, isActive);
             }
             else {
-                return new Staff(fname, surname, email, password, phoneNo, isActive);
+                return new Staff(id, fname, surname, email, password, phoneNo, isActive);
             }
         }
         return null;
@@ -305,18 +305,25 @@ public class DBManager {
     }
 
     public void logLogout(String email) throws SQLException{
-
         int userID = getUserIDFromEmail(email);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Logout\")");
-        ps.setInt(1, userID);
-        ps.executeUpdate();
+        addAccessLog(userID, "Succesful Logout");
     }
 
+    public void logLogout(int userID) throws SQLException{
+        addAccessLog(userID, "Successful Logout");
+    }
+
+    public void logSuccessfulLogin(int userID) throws SQLException {
+        addAccessLog(userID, "Successful Login");
+    }
     public void logSuccessfulLogin(String email) throws SQLException {
         int userID = getUserIDFromEmail(email);
         addAccessLog(userID, "Successful Login");
     }
 
+    public void logFailedLogin(int userID) throws SQLException {
+        addAccessLog(userID, "Failed Login");
+    }
     public void logFailedLogin(String email) throws SQLException {
         int userID = getUserIDFromEmail(email);
         addAccessLog(userID, "Failed Login");
@@ -343,12 +350,13 @@ public class DBManager {
         ResultSet rs = ps.executeQuery();
 
         if(rs.next()) {
+            int id = rs.getInt("user_id");
             String fname = rs.getString("fname");
             String surname = rs.getString("surname");
             String phoneNo = rs.getString("phoneno");
             String password = rs.getString("password");
             Boolean isActive = Utils.bitToBool(rs.getInt("isactive"));
-            return new User(fname, surname, email, password, phoneNo, isActive);
+            return new User(id, fname, surname, email, password, phoneNo, isActive);
         }
 
         return null;

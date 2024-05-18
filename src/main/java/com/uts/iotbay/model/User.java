@@ -3,7 +3,7 @@ package com.uts.iotbay.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    
+    int id;
     String fname;
     String surname;
     String email;
@@ -11,7 +11,8 @@ public class User implements Serializable {
     String phoneNo;
     Boolean isActive;
     
-    public User(String fname, String surname, String email, String password, String phoneNo, Boolean isActive) {
+    public User(int id, String fname, String surname, String email, String password, String phoneNo, Boolean isActive) {
+        this.id = id;
         this.fname = fname;
         this.surname = surname;
         this.email = email;
@@ -42,6 +43,10 @@ public class User implements Serializable {
         this.email = email;
         this.phoneNo = "";
         isActive = true;
+    }
+
+    public int getID() {
+        return this.id;
     }
 
     public String getEmail() {
