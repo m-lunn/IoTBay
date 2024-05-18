@@ -92,10 +92,10 @@
 		<div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="homedirect.jsp">Home</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="about.html">About</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="products">Products</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="contact.html">Contact</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/homedirect.jsp">Home</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/about.html">About</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/products">Products</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/contact.html">Contact</a></button></li>
             </ul>
             <p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
         </div>	
