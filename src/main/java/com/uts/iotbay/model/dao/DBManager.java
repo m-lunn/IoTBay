@@ -91,10 +91,10 @@ public class DBManager {
             String phoneNo = rs.getString("phoneno");
             Boolean isActive = rs.getBoolean("isactive");
             if (checkCustomer(id)) {
-                return new Customer(fname, surname, email, password, phoneNo, isActive);
+                return new Customer(id, fname, surname, email, password, phoneNo, isActive);
             }
             else {
-                return new Staff(fname, surname, email, password, phoneNo, isActive);
+                return new Staff(id, fname, surname, email, password, phoneNo, isActive);
             }
         }
         return null;
@@ -305,18 +305,25 @@ public class DBManager {
     }
 
     public void logLogout(String email) throws SQLException{
-
         int userID = getUserIDFromEmail(email);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, CURRENT_TIMESTAMP(),\"Successful Logout\")");
-        ps.setInt(1, userID);
-        ps.executeUpdate();
+        addAccessLog(userID, "Succesful Logout");
     }
 
+    public void logLogout(int userID) throws SQLException{
+        addAccessLog(userID, "Successful Logout");
+    }
+
+    public void logSuccessfulLogin(int userID) throws SQLException {
+        addAccessLog(userID, "Successful Login");
+    }
     public void logSuccessfulLogin(String email) throws SQLException {
         int userID = getUserIDFromEmail(email);
         addAccessLog(userID, "Successful Login");
     }
 
+    public void logFailedLogin(int userID) throws SQLException {
+        addAccessLog(userID, "Failed Login");
+    }
     public void logFailedLogin(String email) throws SQLException {
         int userID = getUserIDFromEmail(email);
         addAccessLog(userID, "Failed Login");
@@ -343,12 +350,13 @@ public class DBManager {
         ResultSet rs = ps.executeQuery();
 
         if(rs.next()) {
+            int id = rs.getInt("user_id");
             String fname = rs.getString("fname");
             String surname = rs.getString("surname");
             String phoneNo = rs.getString("phoneno");
             String password = rs.getString("password");
             Boolean isActive = Utils.bitToBool(rs.getInt("isactive"));
-            return new User(fname, surname, email, password, phoneNo, isActive);
+            return new User(id, fname, surname, email, password, phoneNo, isActive);
         }
 
         return null;
@@ -368,9 +376,8 @@ public class DBManager {
             String description = rs.getString("product_description");
             float price = rs.getFloat("product_price");
             String path = rs.getString("product_image_path");
-            Boolean isActive = Utils.bitToBool(rs.getInt("product_active"));
             String category = rs.getString("product_category");
-            products.add(new Product(id, name, description, price, path, isActive, category));
+            products.add(new Product(id, name, description, price, path, category));
         }
 
         return products;
@@ -419,6 +426,51 @@ public class DBManager {
         return null;
     }
 
-   
+    public Product getProduct(int id) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_id = ?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if(rs.next()) {
+            String name = rs.getString("product_name");
+            String description = rs.getString("product_description");
+            float price = rs.getFloat("product_price");
+            String imagePath = rs.getString("product_image_path");
+            String category = rs.getString("product_category");
+
+            return new Product(id, name, description, price, imagePath, category);
+        }
+        return null;
+    }
+
+    public Product getProduct(String name) throws SQLException{
+
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Products WHERE product_name = ?");
+        ps.setString(1, name);
+        ResultSet rs = ps.executeQuery();
+
+        if(rs.next()) {
+            int id = rs.getInt("product_id");
+            String description = rs.getString("product_description");
+            float price = rs.getFloat("product_price");
+            String imagePath = rs.getString("product_image_path");
+            String category = rs.getString("product_category");
+
+            return new Product(id, name, description, price, imagePath, category);
+        }
+        return null;
+    }
+
+    public void updateProduct(int id, String name, String description, float price, String category) throws SQLException {
+
+        PreparedStatement updateDetails = conn.prepareStatement("UPDATE Products SET product_name=?, product_description = ?, product_price = ?, product_category = ? WHERE product_id = ?");
+            updateDetails.setString(1, name);
+            updateDetails.setString(2, description);
+            updateDetails.setFloat(3, price);
+            updateDetails.setString(4, category);
+            updateDetails.setInt(5, id);
+            updateDetails.executeUpdate();
+    }
 
 }

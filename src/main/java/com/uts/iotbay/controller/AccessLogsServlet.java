@@ -25,11 +25,10 @@ public class AccessLogsServlet extends HttpServlet {
 
         User user = (User)session.getAttribute("user");
         
-        int userID;
+        int userID = user.getID();
         ArrayList<AccessLog> accessLogs = new ArrayList<>();
 
         try {
-            userID = manager.getUserIDFromEmail(user.getEmail());
             accessLogs = manager.getAllAccessLogs(userID);
         } catch (SQLException ex) {
             Logger.getLogger(AccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,15 +48,13 @@ public class AccessLogsServlet extends HttpServlet {
         DBManager manager = (DBManager) session.getAttribute("manager"); 
 
         User user = (User) session.getAttribute("user");
-        String email = user.getEmail();
         String fromDate = (String)request.getParameter("from");
         String toDate = (String)request.getParameter("to");
 
-        int userID;
+        int userID = user.getID();
         ArrayList<AccessLog> accessLogs = new ArrayList<>();
 
         try {
-            userID = manager.getUserIDFromEmail(email);
             accessLogs = manager.getFilteredAccessLogs(userID, fromDate, toDate);
 
         } catch (SQLException ex) {

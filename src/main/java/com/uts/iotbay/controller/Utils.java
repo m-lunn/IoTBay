@@ -3,6 +3,10 @@ package com.uts.iotbay.controller;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.uts.iotbay.model.dao.DBManager;
+
+import jakarta.servlet.http.HttpSession;
+
 public class Utils {
     private static String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
     private static String namePattern = "[A-Z][a-z]*";       
@@ -37,5 +41,10 @@ public class Utils {
     public static boolean bitToBool(int bit) {
       if(bit == 1){return true;}
       else {return false;}
+    }
+
+    public static boolean checkDBConnection(HttpSession session) {;
+      DBManager manager = (DBManager) session.getAttribute("manager");
+      return (manager != null);
     }
 }

@@ -2,43 +2,32 @@ package com.uts.iotbay.model;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
-    
-    int id;
+public class Produc implements Serializable {
+
     String name;
     String description;
     float price;
     String imagePath;
-    Boolean isActive;
+    int productID;
+    boolean isActive;
     String category;
 
-    public Product(String name, String description, float price, String imagePath, String category) {
+    public Product(String name, String description, float price, String imagePath) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.imagePath = imagePath;
-        this.category = category;
         this.isActive = true;
     }
 
-    public Product(int id, String name, String description, float price, String imagePath) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.imagePath = imagePath;
-    }
-    public Product(int id, String name, String description, float price, String imagePath, String category) {
-        this.id = id;
+    public Product(int productID, String name, String description, float price, String imagePath, String category) {
+        this.productID = productID;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imagePath = imagePath;
         this.category = category;
     }
-    public Product() {
-    }
-
     public String getName() {
         return name;
     }
@@ -64,28 +53,26 @@ public class Product implements Serializable {
         this.imagePath = imagePath;
     }
     public int getProductID() {
-        return id;
+        return productID;
     }
-
-    
-    public int getId() {
-        return id;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
     public void setProductID(int productID) {
-        this.id = productID;
+        this.productID = productID;
     }
 
-    public Boolean getIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(Boolean active) {
+    public void setIsActive(boolean active) {
         this.isActive = active;
+    }
+
+    public String getProductCategory() {
+        return category;
+    }
+
+    public void setProductCategory(String category) {
+        this.category = category;
     }
 
 }

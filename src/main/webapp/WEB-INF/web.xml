@@ -89,12 +89,39 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Product</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ProductViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Product</servlet-name>
+        <url-pattern>/product/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ModifyProducts</servlet-name>
         <servlet-class>com.uts.iotbay.controller.ModifyProductsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ModifyProducts</servlet-name>
         <url-pattern>/staff/products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ModifyProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.ModifyProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyProduct</servlet-name>
+        <url-pattern>/staff/product/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.UpdateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProduct</servlet-name>
+        <url-pattern>/staff/product/update/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -141,10 +168,10 @@
         <url-pattern>/staff/products/delete/*</url-pattern>
     </servlet-mapping>
 
-    <error-page>
+    <!-- <error-page>
         <error-code>404</error-code>
         <location>/404.html</location>
-    </error-page>
+    </error-page> -->
     <welcome-file-list>
         <welcome-file>homedirect.jsp</welcome-file>
     </welcome-file-list>
