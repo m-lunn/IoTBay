@@ -966,6 +966,7 @@ button {
     margin-left: 10%;
     align-items: flex-start;
     justify-content: center;
+    min-width: 60%;
 }
 
 .single-product-image {
