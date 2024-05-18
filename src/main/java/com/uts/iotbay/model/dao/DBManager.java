@@ -376,9 +376,8 @@ public class DBManager {
             String description = rs.getString("product_description");
             float price = rs.getFloat("product_price");
             String path = rs.getString("product_image_path");
-            Boolean isActive = Utils.bitToBool(rs.getInt("product_active"));
             String category = rs.getString("product_category");
-            products.add(new Product(id, name, description, price, path, isActive, category));
+            products.add(new Product(id, name, description, price, path, category));
         }
 
         return products;
@@ -440,7 +439,7 @@ public class DBManager {
             String imagePath = rs.getString("product_image_path");
             String category = rs.getString("product_category");
 
-            return new Product(name, description, price, imagePath, category);
+            return new Product(id, name, description, price, imagePath, category);
         }
         return null;
     }

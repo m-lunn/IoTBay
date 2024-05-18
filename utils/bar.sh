@@ -10,7 +10,7 @@ rm -r ~/IoTBay/target # Remove project target folder to prevent Maven caching fu
 
 rm -r ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT # Remove old deployment on server.
 
-mv ~/IoTBay/target/IoTBay-1.0-SNAPSHOT.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war # Overwrites old deployment with new deployment.
+mv ~/IoTBay/target.war ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT.war # Overwrites old deployment with new deployment.
 
 ./startup.sh # Starts the server.
 

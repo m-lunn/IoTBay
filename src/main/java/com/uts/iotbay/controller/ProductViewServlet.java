@@ -28,7 +28,7 @@ public class ProductViewServlet extends HttpServlet {
         try {
             Product product = manager.getProduct(productId);
             session.setAttribute("product", product);
-            request.getRequestDispatcher("/IoTBay-1.0-SNAPSHOT/underconstruction11.jsp").forward(request, response);
+            request.getRequestDispatcher("/underconstruction11.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
