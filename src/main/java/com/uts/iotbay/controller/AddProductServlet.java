@@ -7,25 +7,19 @@ import java.util.logging.Logger;
 
 import com.uts.iotbay.model.Product;
 import com.uts.iotbay.model.dao.DBManager;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class UpdateProductServlet extends HttpServlet{
-    
+public class AddProductServlet extends HttpServlet{
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
-
-        Product product = (Product)session.getAttribute("product");
-
-        int id = product.getId();
 
         String name = request.getParameter("name");
         String description = request.getParameter("description");
@@ -36,25 +30,26 @@ public class UpdateProductServlet extends HttpServlet{
         } catch(NumberFormatException e) {
             Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, e);
             session.setAttribute("priceError", "Not a valid price.");
-            response.sendRedirect("/staff/product/" + name);
+            response.sendRedirect("/staff/addproduct.jsp");
             return;
         }
 
         if(price <= 0) {
             session.setAttribute("priceError", "Not a valid price.");
-            response.sendRedirect("/staff/product/" + name);
+            response.sendRedirect("/staff/addproduct.jsp");
             return;
         }
 
         try {
-            manager.updateProduct(id, name, description, price, category);
+            manager.addProduct(name, description, price, category);
         } catch (SQLException ex) {
-            Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        session.setAttribute("successMsg", name + " successfully updated.");
+        session.setAttribute("successMsg", name + " successfully added.");
         response.sendRedirect("/staff/products");
 
 
     }
 }
+

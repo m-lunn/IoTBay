@@ -1106,6 +1106,10 @@ textarea {
     background-image: linear-gradient(to bottom right, #c92525, #b71a1a); 
 }
 
+#edit-add {
+    background-image: linear-gradient(to bottom right, #36862b, green); 
+}
+
 .image-input {
     color: white;
     font-family: "Space Mono";

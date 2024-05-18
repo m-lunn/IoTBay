@@ -125,6 +125,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>com.uts.iotbay.controller.AddProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/staff/addproduct</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.uts.iotbay.controller.LogoutServlet</servlet-class>
      </servlet>
