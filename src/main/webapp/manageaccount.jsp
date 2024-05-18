@@ -67,6 +67,7 @@
 							<div class="dropdown-content">
 								<a href="paymentCreate.jsp">Create</a>
 								<a href="paymentEdit.jsp">Edit</a>
+								<form action="payment" method="get">
 								<a href="paymentView.jsp">View Current</a>
 								<a href="paymentHistory.jsp">History</a>
 							</div>

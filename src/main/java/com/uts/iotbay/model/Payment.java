@@ -1,14 +1,13 @@
 package com.uts.iotbay.model;
 
-import java.io.Serializable;
 
 
-public class Payment implements Serializable {
+public class Payment implements  {
     
-    private String expiryDate;
-    private String cvv;
-    private String nameOnCard;
-    private String cardnumber;
+    String expiryDate;
+    String cvv;
+    String nameOnCard;
+    String cardnumber;
     
     public Payment(String cardnumber, String expiryDate, String cvv, String nameOnCard) {
         this.cardnumber = cardnumber;

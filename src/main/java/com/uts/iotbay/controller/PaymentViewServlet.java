@@ -45,15 +45,15 @@ public class PaymentViewServlet extends HttpServlet {
             int userID = getUserID(request, response);
 
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM paymentmethod WHERE userId = ?");
-            ps.setInt(6, userID);
+            ps.setInt(5, userID);
             ResultSet rs = ps.executeQuery();
             ArrayList<Payment> payments = new ArrayList<>();
 
             while(rs.next()) {
-                String cardnumber = rs.getString(2);
-                String cvv = rs.getString(3);
-                String cardholdername = rs.getString(4);
-                String expirydate = rs.getString(5);
+                String cardnumber = rs.getString(1);
+                String cvv = rs.getString(2);
+                String cardholdername = rs.getString(3);
+                String expirydate = rs.getString(4);
 
                 payments.add(new Payment(cardnumber,expirydate,cvv,cardholdername));
             }
