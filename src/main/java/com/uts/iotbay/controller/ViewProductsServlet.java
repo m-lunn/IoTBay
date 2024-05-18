@@ -52,6 +52,7 @@ public class ViewProductsServlet extends HttpServlet {
         }
 
         session.setAttribute("products", htmlInsert);
+        // response.sendRedirect("products.jsp");
         RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
         rd.forward(request, response);
             
@@ -115,7 +116,7 @@ public class ViewProductsServlet extends HttpServlet {
 
         for(Product p : products) {
             htmlInsert += "<div class=\"product\">\n";
-            htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"/" + p.getImagePath() + "\"</a>\n";
+            htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><img class=\"product-img\" src=\"" + p.getImagePath().substring(2) + "\"</a>\n";
             htmlInsert += "<a href=\"product/" + p.getProductID() + "\"><h3 class=\"product-name\">" + p.getName() + "</h3></a>\n";
             htmlInsert += "<div class=\"fill\"></div>";
             htmlInsert += "<div class=\"buy-line\">\n";

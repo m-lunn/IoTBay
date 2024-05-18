@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="/styles.css">
+	<link rel="stylesheet" href="../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -65,13 +65,13 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Products</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="/contact.html">Contact</a></button></li>
-					<li><a href="/manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/assets/account.png" alt="manage account button"></button></a></li>
-                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/assets/shopping-cart.png" alt="manage account button"></button></a></li>
+					<li><a href="/manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/IoTBay-1.0-SNAPSHOT/assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/IoTBay-1.0-SNAPSHOT/assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
             <br>
 			<div class="logo">
-				<img src="/assets/logo.png" id="logo-small" alt="logo">
+				<img src="/IoTBay-1.0-SNAPSHOT/assets/logo.png" id="logo-small" alt="logo">
 				<!-- Logo created using DreamStudio by stability.ai -->
                 <h1 class="heading-text"><%=title%></h1>
                 <br>
@@ -92,7 +92,7 @@
                     </select>
                     <input class="product-search-form-input" type="text" id="name" name="name" placeholder="Search..." value="<%=search%>">
                     <Button class="product-search-form-input" id="product-search-submit" type="submit">
-                        <img src="/assets/search.png" id="search-pic">
+                        <img src="/IoTBay-1.0-SNAPSHOT/assets/search.png" id="search-pic">
                     </Button>
                 </form>
             </div>
