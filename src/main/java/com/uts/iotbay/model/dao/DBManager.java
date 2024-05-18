@@ -469,13 +469,25 @@ public class DBManager {
 
     public void updateProduct(int id, String name, String description, float price, String category) throws SQLException {
 
-        PreparedStatement updateDetails = conn.prepareStatement("UPDATE Products SET product_name=?, product_description = ?, product_price = ?, product_category = ? WHERE product_id = ?");
-            updateDetails.setString(1, name);
-            updateDetails.setString(2, description);
-            updateDetails.setFloat(3, price);
-            updateDetails.setString(4, category);
-            updateDetails.setInt(5, id);
-            updateDetails.executeUpdate();
+        PreparedStatement ps = conn.prepareStatement("UPDATE Products SET product_name=?, product_description = ?, product_price = ?, product_category = ? WHERE product_id = ?");
+        ps.setString(1, name);
+        ps.setString(2, description);
+        ps.setFloat(3, price);
+        ps.setString(4, category);
+        ps.setInt(5, id);
+        ps.executeUpdate();
+    }
+
+    public void addProduct(String name, String description, float price, String category) throws SQLException{
+        
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Products (product_name, product_description, product_price, product_image_path, product_active, product_category) VALUES (?, ?, ?, ? ,?, ?)");
+        ps.setString(1, name);
+        ps.setString(2, description);
+        ps.setFloat(3, price);
+        ps.setString(4, "./product-images/placeholder.jpg");
+        ps.setInt(5, 1);
+        ps.setString(6, category);
+        ps.executeUpdate();
     }
 
 }

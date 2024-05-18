@@ -102,7 +102,7 @@
             <p class="error-msg"><%=errorMsg%></p>
             <p class="success-msg"><%=successMsg%></p>
             <div class="products-view-staff">
-                <a href="addproduct"><Button class="modify-product-btn" id="add-product">Add Product</Button></a>
+                <a href="addproduct.jsp"><Button class="modify-product-btn" id="add-product">Add Product</Button></a>
                 <br><br>
                 <%out.println(products);%>
             </div>
