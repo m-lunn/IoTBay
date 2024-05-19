@@ -28,16 +28,10 @@ public class ProductViewServlet extends HttpServlet {
         try {
             Product product = manager.getProduct(productName);
             session.setAttribute("product", product);
-            request.getRequestDispatcher("/product.jsp").forward(request, response);
+            request.getRequestDispatcher("../product.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
 
     }
 

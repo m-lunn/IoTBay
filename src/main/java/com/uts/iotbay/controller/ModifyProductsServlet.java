@@ -103,7 +103,7 @@ public class ModifyProductsServlet extends HttpServlet {
         request.getSession().setAttribute("search", displaySearch);
         request.getSession().setAttribute("products", htmlInsert);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/staff/modifyproducts.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("modifyproducts.jsp");
         rd.forward(request, response);
     }
 

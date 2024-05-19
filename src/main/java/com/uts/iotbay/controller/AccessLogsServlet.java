@@ -34,7 +34,7 @@ public class AccessLogsServlet extends HttpServlet {
             Logger.getLogger(AccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
       
-        String htmlInsert = generateAccessLogHTMLInsert(accessLogs);
+        String htmlInsert = generateAccessLogHTMLInsert(accessLogs);            
 
         request.getSession().setAttribute("accesslogs", htmlInsert);
         RequestDispatcher rd = request.getRequestDispatcher("accesslogs.jsp");
@@ -61,12 +61,12 @@ public class AccessLogsServlet extends HttpServlet {
             Logger.getLogger(AccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);    
         }
 
-        String htmlInsert = generateAccessLogHTMLInsert(accessLogs);
+        String htmlInsert = generateAccessLogHTMLInsert(accessLogs); // See comment on below method
 
         if(fromDate.equals("2000-01-01")){ fromDate = ""; }
         if(toDate.equals("3000-01-01")){ toDate = ""; }
 
-        request.getSession().setAttribute("accesslogs", htmlInsert);
+        request.getSession().setAttribute("accesslogs", htmlInsert); // Sets the htmlInsert as an attribute to be used in accesslogs.jsp
         request.getSession().setAttribute("fromdate", fromDate);
         request.getSession().setAttribute("todate", toDate);
 
@@ -75,6 +75,8 @@ public class AccessLogsServlet extends HttpServlet {
 
     }
 
+     // Takes the ArrayList of access logs and creates a string of HTML code that 
+     // will generate a table that can be injected into the jsp access log page.
     private String generateAccessLogHTMLInsert(ArrayList<AccessLog> accessLogs) {
 
         String htmlInsert = "<tr>\n" + 

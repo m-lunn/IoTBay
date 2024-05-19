@@ -29,7 +29,7 @@ public class EditDetailsServlet extends HttpServlet {
             Logger.getLogger(AddUserServlet.class.getName()).log(Level.SEVERE, null, ex);   
 
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("homedirect.jsp");
         
     }
 

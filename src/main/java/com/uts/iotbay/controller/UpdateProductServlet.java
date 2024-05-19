@@ -36,13 +36,13 @@ public class UpdateProductServlet extends HttpServlet{
         } catch(NumberFormatException e) {
             Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, e);
             session.setAttribute("priceError", "Not a valid price.");
-            response.sendRedirect("/staff/product/" + name);
+            response.sendRedirect("../product/" + name);
             return;
         }
 
         if(price <= 0) {
             session.setAttribute("priceError", "Not a valid price.");
-            response.sendRedirect("/staff/product/" + name);
+            response.sendRedirect("../product/" + name);
             return;
         }
 
@@ -53,7 +53,7 @@ public class UpdateProductServlet extends HttpServlet{
         }
 
         session.setAttribute("successMsg", name + " successfully updated.");
-        response.sendRedirect("/staff/products");
+        response.sendRedirect("../../products");
 
 
     }

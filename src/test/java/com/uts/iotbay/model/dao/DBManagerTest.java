@@ -463,13 +463,13 @@ public class DBManagerTest {
         assertNotNull(accessLogs.get(1));
         assertNotNull(accessLogs.get(2));
 
-        assertEquals(accessLogs.get(0).getActivity(), "Account Created");
-        assertEquals(accessLogs.get(1).getActivity(), "Failed Login");
-        assertEquals(accessLogs.get(2).getActivity(), "Successful Login");
+        assertEquals("Account Created", accessLogs.get(0).getActivity());
+        assertEquals("Failed Login", accessLogs.get(1).getActivity());
+        assertEquals("Successful Login", accessLogs.get(2).getActivity());
     }
 
     @Test
-    public void testGetFilteredAccessLogs() { // // Given a user has created an account and attempted to login in, calling getFilteredAccessLogs() will return all logs of the user's access filtered by date.
+    public void testGetFilteredAccessLogs() { // Given a user has created an account and attempted to login in, calling getFilteredAccessLogs() will return all logs of the user's access filtered by date.
 
         int id;
         ArrayList<AccessLog> accessLogs = new ArrayList<>();
@@ -487,7 +487,7 @@ public class DBManagerTest {
 
         assertNotNull(accessLogs.get(0));
         assertTrue(accessLogs.size() == 1);      
-        assertEquals(accessLogs.get(0).getDate(), "2024-05-04");
+        assertEquals("2024-05-04", accessLogs.get(0).getDate());
     }
 
     @Test
@@ -503,10 +503,10 @@ public class DBManagerTest {
             Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        assertEquals(test.getFname(), "Fname");
-        assertEquals(test.getSurname(), "Sname");
-        assertEquals(test.getPhoneNo(), "0400000001");
-        assertEquals(test.getPassword(), "password2");
+        assertEquals("Fname", test.getFname());
+        assertEquals("Sname", test.getSurname());
+        assertEquals("0400000001", test.getPhoneNo());
+        assertEquals("password2", test.getPassword());
     }
 
     @Test
@@ -571,7 +571,7 @@ public class DBManagerTest {
         }
 
         assertNotNull(product);
-        assertEquals(product.getName(), "test1");
+        assertEquals("test1", product.getName());
     }
 
     @Test
@@ -589,10 +589,10 @@ public class DBManagerTest {
         }
 
         assertNotNull(product);
-        assertEquals(product.getName(), "Test2");
-        assertEquals(product.getDescription(), "Test2");
-        assertEquals(product.getPrice() + "", "2.0");
-        assertEquals(product.getCategory(), "Test2");
+        assertEquals("Test2", product.getName());
+        assertEquals("Test2", product.getDescription());
+        assertEquals("2.0", product.getPrice() + "");
+        assertEquals("Test2", product.getCategory());
 
     }
 }

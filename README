@@ -1,0 +1,34 @@
+Deployment Notes:
+
+1. Deploy as Root
+
+    The code in this project was written to be deployed directly as the root of a Tomcat server.
+
+    E.g. Instead of http://localhost:8080/IoTBay-1.0/index.jsp, it would be http://localhost:8080/index.jsp
+
+    This is important to keep in mind as otherwise links will not work.
+
+    Testing was completed on Apache Tomcat Version 10.1.4
+
+2. MySQL Database
+
+    This project is supported by a MySQL database running locally on the machine.
+
+    Database dumps are located in src/main/db/. These can imported using MySQL Workbench to create a copy of our database.
+
+    The code is written to connect to the database via JDBC as user: 'root', password: 'iotbay'
+
+    User and pass details can be changed in the DBConnector.java and DBManagerTest.java files.
+
+
+DEPLOYMENT INSTRUCTIONS:
+
+1. Start an instance of Apache Tomcat
+
+2. Navigate to the deployment manager tool http://localhost:8080/manager
+
+3. If there is a ROOT depoyment already on the server (path = "/"), click stop and undeploy.
+
+4. Choose the ROOT.war file from this project and deploy on the server.
+
+5.  Go to http://localhost:8080 to be directed to the IoTBay index page.

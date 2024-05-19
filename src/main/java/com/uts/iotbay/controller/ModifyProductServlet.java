@@ -26,7 +26,7 @@ public class ModifyProductServlet extends HttpServlet {
         try {
             Product product = manager.getProduct(productName);
             session.setAttribute("product", product);
-            request.getRequestDispatcher("/staff/modifyproduct.jsp").forward(request, response);
+            request.getRequestDispatcher("../modifyproduct.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
