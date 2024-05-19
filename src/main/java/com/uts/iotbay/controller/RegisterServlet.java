@@ -24,6 +24,7 @@ public class RegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         DBManager manager = (DBManager) session.getAttribute("manager");
 
+        // Checks for bad input against the regex patterns in Utils.
         Boolean valid = true;
         try {
             if (manager.checkUser(email)) {

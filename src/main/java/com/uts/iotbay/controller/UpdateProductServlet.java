@@ -33,7 +33,7 @@ public class UpdateProductServlet extends HttpServlet{
         float price = -1;
         try {
             price = Float.parseFloat(request.getParameter("price"));
-        } catch(NumberFormatException e) {
+        } catch(NumberFormatException e) {                                 // Catches bad input for price.
             Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, e);
             session.setAttribute("priceError", "Not a valid price.");
             response.sendRedirect("../product/" + name);

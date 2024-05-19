@@ -18,13 +18,14 @@ public class EditDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        // Get method on EditDetailsServlet is used to inactivate user account
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager"); 
         User deleteUser = (User)request.getSession().getAttribute("user");
         String email = deleteUser.getEmail();
         
         try {
-            manager.setUserInactive(email);
+            manager.setUserInactive(email); 
         } catch (SQLException ex) {
             Logger.getLogger(AddUserServlet.class.getName()).log(Level.SEVERE, null, ex);   
 

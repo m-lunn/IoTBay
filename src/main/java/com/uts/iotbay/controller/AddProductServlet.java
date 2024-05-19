@@ -25,10 +25,10 @@ public class AddProductServlet extends HttpServlet{
         String category = request.getParameter("category");
         float price = -1;
         try {
-            price = Float.parseFloat(request.getParameter("price"));
-        } catch(NumberFormatException e) {
+            price = Float.parseFloat(request.getParameter("price")); 
+        } catch(NumberFormatException e) {                                  // Catches bad input in price field
             Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, e);
-            session.setAttribute("priceError", "Not a valid price.");
+            session.setAttribute("priceError", "Not a valid price."); 
             response.sendRedirect("addproduct.jsp");
             return;
         }

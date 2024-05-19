@@ -15,7 +15,8 @@ import com.uts.iotbay.model.dao.DBManager;
 
 public class LogoutServlet extends HttpServlet {
 
-    @Override
+
+    @Override // Invalidates session and redirects to home.
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) request.getSession().getAttribute("manager");
