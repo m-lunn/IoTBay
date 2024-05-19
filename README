@@ -1,0 +1,27 @@
+Deployment Notes:
+
+This project was built with Maven 3.8.1, deployed on Apache Tomcat 10.1.4 and tested on using JUnit 4.
+
+
+MySQL Database
+
+    This project is supported by a MySQL database running locally on the machine.
+
+    Database dumps are located in src/main/db/. These can imported using MySQL Workbench to create a copy of our database.
+
+    The code is written to connect to the database via JDBC as user: 'root', password: 'iotbay'
+
+    User and pass details can be changed in the DBConnector.java and DBManagerTest.java files.
+
+
+DEPLOYMENT INSTRUCTIONS:
+
+1. Import the database on your machine locally using the database dumps.
+
+2. Start an instance of Apache Tomcat
+
+3. Navigate to the deployment manager tool http://localhost:8080/manager
+
+4. Choose the IoTBay-1.0.war file from this project and deploy on the server.
+
+5.  Go to http://localhost:8080/IoTBay-1.0 to be directed to the IoTBay index page.

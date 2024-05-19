@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay | Sign Up</title>
+	<title>IoTBay | Add User</title>
 
 </head>
 
@@ -33,13 +33,13 @@
                 <li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
                 <li><button class="btn" tabindex="-1"> <a class="button-text" href="products">Products</a></button></li>
                 <li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
-                <li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/assets/account.png" alt="manage account button"></button></a></li>
-                <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/assets/shopping-cart.png" alt="manage account button"></button></a></li>
+                <li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="assets/account.png" alt="manage account button"></button></a></li>
+                <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="assets/shopping-cart.png" alt="manage account button"></button></a></li>
             </ul>
         </div>
         <br>
         <div class="logo">
-            <img src="/assets/logo.png" id="logo" alt="logo">
+            <img src="assets/logo.png" id="logo" alt="logo">
             <!-- Logo created using DreamStudio by stability.ai -->
             <br>
         </div>

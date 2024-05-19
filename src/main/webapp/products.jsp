@@ -14,14 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay</title>
+	<title>IoTBay | Products</title>
 
 </head>
 	<body>
         <% 
             DBManager manager = (DBManager) request.getSession().getAttribute("manager");
             if(manager == null){
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("homedirect.jsp");
             }
 
             User user = (User)request.getSession().getAttribute("user");
@@ -65,13 +65,13 @@
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="about.html">About</a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="#"><span class="active-page">Products</span></a></button></li>
 					<li><button class="btn" tabindex="-1"> <a class="button-text" href="contact.html">Contact</a></button></li>
-					<li><a href="/manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/assets/account.png" alt="manage account button"></button></a></li>
-                    <li><a href="/cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/assets/shopping-cart.png" alt="manage account button"></button></a></li>
+					<li><a href="manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="assets/account.png" alt="manage account button"></button></a></li>
+                    <li><a href="cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="assets/shopping-cart.png" alt="manage account button"></button></a></li>
 				</ul>
 			</div>
             <br>
 			<div class="logo">
-				<img src="/assets/logo.png" id="logo-small" alt="logo">
+				<img src="assets/logo.png" id="logo-small" alt="logo">
 				<!-- Logo created using DreamStudio by stability.ai -->
                 <h1 class="heading-text"><%=title%></h1>
                 <br>
@@ -86,13 +86,14 @@
                         <option <%if(category.equals("Cameras")){out.println("selected");}%> value="Cameras">Cameras</option>
                         <option <%if(category.equals("Routers")){out.println("selected");}%> value="Routers">Routers</option>
                         <option <%if(category.equals("Access Points")){out.println("selected");}%> value="Access Points">Access Points</option>
+                        <option <%if(category.equals("Printers")){out.println("selected");}%> value="Printers">Printers</option>
                         <option <%if(category.equals("Dongles")){out.println("selected");}%> value="Dongles">Dongles</option>
                         <option <%if(category.equals("Locks")){out.println("selected");}%> value="Locks">Locks</option>
                         <option <%if(category.equals("Recorders")){out.println("selected");}%> value="Recorders">Recorders</option>
                     </select>
                     <input class="product-search-form-input" type="text" id="name" name="name" placeholder="Search..." value="<%=search%>">
                     <Button class="product-search-form-input" id="product-search-submit" type="submit">
-                        <img src="/assets/search.png" id="search-pic">
+                        <img src="assets/search.png" id="search-pic">
                     </Button>
                 </form>
             </div>

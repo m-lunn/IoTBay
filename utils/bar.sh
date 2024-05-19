@@ -6,7 +6,7 @@ cd ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4
 
 rm -r ~/IoTBay/target # Remove project target folder to prevent Maven caching fuckery.
 
-/Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml # Package project into .war
+/Library/Maven/bin/mvn package -f ~/IoTBay/pom.xml # Package project into .war file
 
 rm -r ~/.rsp/redhat-community-server-connector/runtimes/installations/tomcat-10.1.4/apache-tomcat-10.1.4/webapps/ROOT # Remove old deployment on server.
 

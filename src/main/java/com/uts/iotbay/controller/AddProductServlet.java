@@ -29,13 +29,13 @@ public class AddProductServlet extends HttpServlet{
         } catch(NumberFormatException e) {
             Logger.getLogger(ProductViewServlet.class.getName()).log(Level.SEVERE, null, e);
             session.setAttribute("priceError", "Not a valid price.");
-            response.sendRedirect("/staff/addproduct.jsp");
+            response.sendRedirect("addproduct.jsp");
             return;
         }
 
         if(price <= 0) {
             session.setAttribute("priceError", "Not a valid price.");
-            response.sendRedirect("/staff/addproduct.jsp");
+            response.sendRedirect("addproduct.jsp");
             return;
         }
 
@@ -46,7 +46,7 @@ public class AddProductServlet extends HttpServlet{
         }
 
         session.setAttribute("successMsg", name + " successfully added.");
-        response.sendRedirect("/staff/products");
+        response.sendRedirect("products");
 
 
     }
