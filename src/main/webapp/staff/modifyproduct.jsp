@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay</title>
+	<title>IoTBay | Staff</title>
 
 </head>
 <body>
@@ -18,6 +18,10 @@
 	<%
 	User user = (User) request.getSession().getAttribute("user");
 	Product product = (Product) request.getSession().getAttribute("product");
+
+	if(!(user instanceof Staff)){
+		response.sendRedirect("/products");
+	}
 
 	int productID = product.getProductID();
 	String productName = product.getName();
@@ -28,7 +32,7 @@
 	productCategory = productCategory.substring(0, 1).toUpperCase() + productCategory.substring(1);
 
 	String priceError = (String)request.getSession().getAttribute("priceError");
-	if(priceError == null){
+	if(priceError == null){														 
 		priceError = "";
 	}
 	request.getSession().setAttribute("priceError", "");

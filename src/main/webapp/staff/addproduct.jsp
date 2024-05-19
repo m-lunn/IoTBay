@@ -10,17 +10,17 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay</title>
+	<title>IoTBay | Staff</title>
 
 </head>
 <body>
 
 	<%
-	String priceError = (String)request.getSession().getAttribute("priceError");
-	if(priceError == null){
+	String priceError = (String)request.getSession().getAttribute("priceError"); // Retrieves error message if one is set by the servlet.
+	if(priceError == null){														 // Assigns to empty string if null.
 		priceError = "";
 	}
-	request.getSession().setAttribute("priceError", "");
+	request.getSession().setAttribute("priceError", "");						 
 	%>
 
 	<div class="backdrop">

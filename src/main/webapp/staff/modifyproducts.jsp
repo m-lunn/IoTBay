@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>IoTBay</title>
+	<title>IoTBay | Staff</title>
 
 </head>
 	<body>
@@ -22,7 +22,7 @@
         <% 
         User user = (User)request.getSession().getAttribute("user");
 
-        // if(user == null || !(user instanceof Staff)){response.sendRedirect("/products"); return;}
+        if(user == null || !(user instanceof Staff)){response.sendRedirect("/products"); return;}
 
         String s = (String)request.getSession().getAttribute("productsCount");
         int productsCount = 0;

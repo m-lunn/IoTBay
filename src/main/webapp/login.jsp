@@ -25,7 +25,7 @@
         <%
             DBManager manager = (DBManager) request.getSession().getAttribute("manager");
             if(manager == null){
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("homedirect.jsp");
             }
 
             String loginErr = (String)request.getSession().getAttribute("loginErr");
