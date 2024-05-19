@@ -38,7 +38,7 @@
 		<h1 class="heading-text">Add Product</h1>
 		<div class="product-view-container">
 			<div class="image-row">
-				<img class="edit-product-image" src="product-images/placeholder.jpg">
+				<img class="edit-product-image" src="../product-images/placeholder.jpg">
 				<input type="file" class="image-input" name="filename" accept="image/*">
 			</div>
 			<form id="add-product-form" action="addproduct" method="post">
