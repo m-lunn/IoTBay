@@ -278,6 +278,14 @@ public class DBManager {
         ps.executeUpdate();
     }
 
+    public void addAccessLog(int userID, String date, String time, String Activity) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO AccessLogs (user_id, date_accessed, activity_type) VALUES (?, ?, ?)");
+        ps.setInt(1, userID);
+        ps.setString(2, date + " " + time);
+        ps.setString(3, Activity);
+        ps.executeUpdate();
+    }
+
     public void logAccountCreated(int userID) throws SQLException {
         addAccessLog(userID, "Account Created");
     }
@@ -490,4 +498,8 @@ public class DBManager {
         ps.executeUpdate();
     }
 
+    public void setAllProductsInactive() throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("UPDATE Products SET product_active = 0");
+        ps.executeUpdate();
+    }
 }
