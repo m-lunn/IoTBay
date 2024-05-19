@@ -52,6 +52,7 @@
 						<option value="camera">Camera</option>
 						<option value="router">Router</option>
 						<option value="access point">Access Point</option>
+						<option value="printer">Printer</option>
 						<option value="dongle">Dongle</option>
 						<option value="lock">Lock</option>
 						<option value="recorder">Recorder</option>

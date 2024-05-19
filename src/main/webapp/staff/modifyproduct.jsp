@@ -64,6 +64,7 @@
 						<option <%if( productCategory.equals("Camera")){out.println("selected");}%> value="camera">Camera</option>
 						<option <%if( productCategory.equals("Router")){out.println("selected");}%> value="router">Router</option>
 						<option <%if( productCategory.equals("Access point")){out.println("selected");}%> value="access point">Access Point</option>
+						<option <%if( productCategory.equals("Printer")){out.println("selected");}%> value="printer">Printer</option>
 						<option <%if( productCategory.equals("Dongle")){out.println("selected");}%> value="dongle">Dongle</option>
 						<option <%if( productCategory.equals("Lock")){out.println("selected");}%> value="lock">Lock</option>
 						<option <%if( productCategory.equals("Recorder")){out.println("selected");}%> value="recorder">Recorder</option>

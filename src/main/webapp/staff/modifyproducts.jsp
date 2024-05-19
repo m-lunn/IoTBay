@@ -86,6 +86,7 @@
                         <option <%if(category.equals("Cameras")){out.println("selected");}%> value="Cameras">Cameras</option>
                         <option <%if(category.equals("Routers")){out.println("selected");}%> value="Routers">Routers</option>
                         <option <%if(category.equals("Access Points")){out.println("selected");}%> value="Access Points">Access Points</option>
+                        <option <%if(category.equals("Printers")){out.println("selected");}%> value="Printers">Printers</option>
                         <option <%if(category.equals("Dongles")){out.println("selected");}%> value="Dongles">Dongles</option>
                         <option <%if(category.equals("Locks")){out.println("selected");}%> value="Locks">Locks</option>
                         <option <%if(category.equals("Recorders")){out.println("selected");}%> value="Recorders">Recorders</option>
