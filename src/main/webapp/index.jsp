@@ -33,7 +33,7 @@
 			</div>
 			<br>
 			<div class="logo">
-				<img src="/assets/logo.png" id="logo" alt="logo">
+				<img src="assets/logo.png" id="logo" alt="logo">
 				<!-- Logo created using DreamStudio by stability.ai -->
 				<br>
 			</div>

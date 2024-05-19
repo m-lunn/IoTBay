@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="/styles.css">
+	<link rel="stylesheet" href="../../styles.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -20,7 +20,7 @@
 	Product product = (Product) request.getSession().getAttribute("product");
 
 	if(!(user instanceof Staff)){
-		response.sendRedirect("/products");
+		response.sendRedirect("products");
 	}
 
 	int productID = product.getProductID();
@@ -42,19 +42,19 @@
 		<div class="button-wrapper"></div>
 		<div class="buttons">
 			<ul class="menu-bar">
-				<li><a href="/product/<%=productName%>"><button id="switch-view-btn" tabindex="-1"><p class="switch-view-text">Switch to Customer View</p></button></a></li>
-				<li><button class="btn" tabindex="-1"> <a class="button-text" href="/homedirect.jsp">Home</a></button></li>
-				<li><button class="btn" tabindex="-1"> <a class="button-text" href="/about.html">About</a></button></li>
-				<li><button class="btn" tabindex="-1"> <a class="button-text" href="/products"><span class="active-page">Products</span></a></button></li>
-				<li><button class="btn" tabindex="-1"> <a class="button-text" href="/contact.html">Contact</a></button></li>
-				<li><a href="/manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="/assets/account.png" alt="manage account button"></button></a></li>
-				<li><a href="/cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="/assets/shopping-cart.png" alt="manage account button"></button></a></li>
+				<li><a href="../../product/<%=productName%>"><button id="switch-view-btn" tabindex="-1"><p class="switch-view-text">Switch to Customer View</p></button></a></li>
+				<li><button class="btn" tabindex="-1"> <a class="button-text" href="../homedirect.jsp">Home</a></button></li>
+				<li><button class="btn" tabindex="-1"> <a class="button-text" href="../about.html">About</a></button></li>
+				<li><button class="btn" tabindex="-1"> <a class="button-text" href="../products"><span class="active-page">Products</span></a></button></li>
+				<li><button class="btn" tabindex="-1"> <a class="button-text" href="../contact.html">Contact</a></button></li>
+				<li><a href="../../manageaccount.jsp"><button id="mng-acc-btn" tabindex="-1"><img id="mng-acc-pic" src="../../assets/account.png" alt="manage account button"></button></a></li>
+				<li><a href="../../cart.jsp"><button id="cart-btn" tabindex="-1"><img id="cart-pic" src="../../assets/shopping-cart.png" alt="manage account button"></button></a></li>
 			</ul>
 		</div>
 		<h1 class="heading-text">Edit Product</h1>
 		<div class="product-view-container">
 			<div class="image-row">
-				<img class="edit-product-image" src="/<%=productImagePath%>">
+				<img class="edit-product-image" src="<%= "../../" + productImagePath%>">
 				<input type="file" class="image-input" name="filename" accept="image/*">
 			</div>
 			<form id="edit-product-form" action="update/<%=productID%>" method="post">
@@ -88,8 +88,8 @@
 		</div>
 	</form>
 		<div class="edit-product-btn-row">
-			<a href="/staff/products/delete/<%=productID%>"><Button class="edit-submit-btn" id="edit-delete">Delete</Button></a>
-			<a href="/staff/products"><Button class="edit-submit-btn" id="edit-cancel">Cancel</Button></a>
+			<a href="../products/delete/<%=productID%>"><Button class="edit-submit-btn" id="edit-delete">Delete</Button></a>
+			<a href="../products"><Button class="edit-submit-btn" id="edit-cancel">Cancel</Button></a>
 			<a><Button type="submit" form="edit-product-form" class="edit-submit-btn" id="edit-save">Save</Button></a>
 		</div>
 
@@ -97,10 +97,10 @@
 		<div class="footer">
             <br>
             <ul class="footer-menu">
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/homedirect.jsp">Home</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/about.html">About</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/products">Products</a></button></li>
-                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="/contact.html">Contact</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="../../homedirect.jsp">Home</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="../../about.html">About</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="../../products">Products</a></button></li>
+                <li><button class="footer-button" tabindex="-1"><a class="footer-button-text" href="../../contact.html">Contact</a></button></li>
             </ul>
             <p class="bottom-text">By Groot | University of Technology | Autumn 2024</p>
         </div>	
