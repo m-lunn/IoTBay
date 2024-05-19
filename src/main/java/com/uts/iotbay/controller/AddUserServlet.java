@@ -24,6 +24,7 @@ public class AddUserServlet extends HttpServlet{
         String type = request.getParameter("type");
         DBManager manager = (DBManager) session.getAttribute("manager");
 
+        // Bad input checking user details
         try {
             Boolean valid = true;
             if (manager.checkUser(email)) {

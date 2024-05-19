@@ -29,8 +29,8 @@ public class ViewProductsServlet extends HttpServlet {
         String category = (String) session.getAttribute("category");
         String search = (String) session.getAttribute("search");
         
-        if(category != null || search != null){
-            switchView = true;
+        if(category != null || search != null){                                 // See ModifyProductsServlet for explanation on
+            switchView = true;                                                  // purpose of switchView
             doPost(request, response);
             return;
         }
@@ -110,6 +110,7 @@ public class ViewProductsServlet extends HttpServlet {
 
     }
 
+    // Generates a list of products formatted as an HTML/CSS grid that is injected into the JSP.
     private String generateProductsViewHTMLInsert(ArrayList<Product> products) {
 
         String htmlInsert = "";

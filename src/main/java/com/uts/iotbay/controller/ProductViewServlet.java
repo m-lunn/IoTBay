@@ -21,9 +21,9 @@ public class ProductViewServlet extends HttpServlet {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
 
-        String[] url = request.getRequestURI().split("product/");
-        String productName = url[1].replaceAll("%20", " ");
-
+        String[] url = request.getRequestURI().split("product/");           // Splits the request URL to extract the product name.  
+        String productName = url[1].replaceAll("%20", " ");     // Whitespace in URL's are replaced by '%20' by HTML encoding.
+                                                                                  // This converts back to correct product name for comparison to database.
         
         try {
             Product product = manager.getProduct(productName);

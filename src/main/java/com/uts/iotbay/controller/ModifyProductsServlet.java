@@ -65,21 +65,22 @@ public class ModifyProductsServlet extends HttpServlet {
         request.getSession().setAttribute("errorMsg", "");
 
 
-        String displayCategory = (String)request.getParameter("category");
-        String displaySearch = (String)request.getParameter("name");
+        String displayCategory = (String)request.getParameter("category"); // Display category and display search are used to communicate 
+        String displaySearch = (String)request.getParameter("name");       // what heading should be on the products page when using filters.
         
         if(switchView) {
-            displayCategory = (String) session.getAttribute("category");
-            displaySearch = (String) session.getAttribute("search");
-            switchView = false;
-        }
-
+            displayCategory = (String) session.getAttribute("category"); // The switchView boolean keeps track of whether a staff
+            displaySearch = (String) session.getAttribute("search");     // user is switching between staff and customer view.
+            switchView = false;                                               // In this case the session stores the attributes between these pages 
+        }                                                                     // and they are then reused in the search fields
+                                                                              // This results in smoother user experience. 
+                                                                              // Otherwise, user would have to re-enter search fields everytime they switched view.
         String category = displayCategory;
         String search = displaySearch;
 
-        if(search == null || search.equals("")){search = "%";}
+        if(search == null || search.equals("")){search = "%";}          // Checks if user submitted no search parameter. Sets to '%' for SQL LIKE matching.
 
-        if(category == null || category.equals("Any")){category = "%";}
+        if(category == null || category.equals("Any")){category = "%";} // Same as above but for category.
         else {
             category = category.toLowerCase().substring(0, category.length() - 1);
         }
@@ -107,6 +108,7 @@ public class ModifyProductsServlet extends HttpServlet {
         rd.forward(request, response);
     }
 
+    // This method takes an ArrayList of products and converts them to a HTML formatted list that is injected into the jsp page.
     private String generateStaffProductViewHTMLInsert(ArrayList<Product> products) {
 
         String htmlInsert = "";

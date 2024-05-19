@@ -35,28 +35,28 @@ public class LoginServlet extends HttpServlet {
                 dbPassword = user.getPassword();
             }
 
-            if (user == null && email.equals("root") && password.equals("iotbay")) {
+            if (user == null && email.equals("root") && password.equals("iotbay")) {  // Checks for system admin login.
                 user = new User("root");
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("landing.jsp").include(request, response);
 
             }
             else if (user == null) {
-                session.setAttribute("loginErr", "Email or password is incorrect!");   
+                session.setAttribute("loginErr", "Email or password is incorrect!");        // Checks if user exists in database.
                 request.getRequestDispatcher("login.jsp").include(request, response);
 
             }
             else if (!dbPassword.equals(password) && user.isActive()) {
                 manager.logFailedLogin(email);
-                session.setAttribute("loginErr", "Email or password is incorrect!");   
+                session.setAttribute("loginErr", "Email or password is incorrect!");        // If user exists but user submitted wrong password.
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
-            else if (user != null && dbPassword.equals(password) && user.isActive()) {              
+            else if (user != null && dbPassword.equals(password) && user.isActive()) {                 // If user's password is correct.
                 session.setAttribute("user", user);
                 manager.logSuccessfulLogin(email);
                 request.getRequestDispatcher("landing.jsp").include(request, response);
             }
-            else if (user != null && dbPassword.equals(password) && !user.isActive()) {
+            else if (user != null && dbPassword.equals(password) && !user.isActive()) {                // If user's account is inactive.
                 session.setAttribute("loginErr", "Account is currently inactive! Please contact system admin for further information.");   
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
