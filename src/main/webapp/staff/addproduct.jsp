@@ -73,7 +73,7 @@
 		</div>
 	</form>
 		<div class="edit-product-btn-row">
-			<a href="staff/products"><Button class="edit-submit-btn" id="edit-cancel">Cancel</Button></a>
+			<a href="products"><Button class="edit-submit-btn" id="edit-cancel">Cancel</Button></a>
 			<a><Button type="submit" form="add-product-form" class="edit-submit-btn" id="edit-add">Add</Button></a>
 		</div>
 
