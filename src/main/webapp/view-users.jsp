@@ -99,7 +99,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><a href="add-user.jsp"><button class="submit-btn2">Add</button></a></td>
+        <td><a href="add-user.jsp"><button class="submit-btn3">Add</button></a></td>
       </tr>
     </table>
     <br><br><br><br>
