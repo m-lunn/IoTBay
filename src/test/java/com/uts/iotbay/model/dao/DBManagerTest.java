@@ -1,4 +1,6 @@
 package com.uts.iotbay.model.dao;
+import com.uts.iotbay.model.AccessLog;
+import com.uts.iotbay.model.Product;
 import com.uts.iotbay.model.User;
 import com.uts.iotbay.model.Users;
 
@@ -440,4 +442,157 @@ public class DBManagerTest {
         }
     }
 
+    @Test // Given a user has created an account and attempted to login in, calling getAllAccessLogs() will return all logs of the user's access.
+    public void testGetAllAccessLogs() {
+
+        int id;
+        ArrayList<AccessLog> accessLogs = new ArrayList<>();
+
+        try {
+            manager.addStaff("test@mail.com", "password", "Bob", "Cook", "0400000000");
+            id = manager.getUserIDFromEmail("test@mail.com");
+            manager.addAccessLog(id, "2024-05-01", " 12:00:00", "Account Created");
+            manager.addAccessLog(id, "2024-05-04", " 12:00:00", "Failed Login");
+            manager.addAccessLog(id, "2024-05-07", " 12:00:00", "Successful Login");
+            accessLogs = manager.getAllAccessLogs(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertNotNull(accessLogs.get(0));
+        assertNotNull(accessLogs.get(1));
+        assertNotNull(accessLogs.get(2));
+
+        assertEquals(accessLogs.get(0).getActivity(), "Account Created");
+        assertEquals(accessLogs.get(1).getActivity(), "Failed Login");
+        assertEquals(accessLogs.get(2).getActivity(), "Successful Login");
+    }
+
+    @Test
+    public void testGetFilteredAccessLogs() { // // Given a user has created an account and attempted to login in, calling getFilteredAccessLogs() will return all logs of the user's access filtered by date.
+
+        int id;
+        ArrayList<AccessLog> accessLogs = new ArrayList<>();
+
+        try {
+            manager.addStaff("test@mail.com", "password", "Bob", "Cook", "0400000000");
+            id = manager.getUserIDFromEmail("test@mail.com");
+            manager.addAccessLog(id, "2024-05-01", " 12:00:00", "Successful Login");
+            manager.addAccessLog(id, "2024-05-04", " 12:00:00", "Successful Login");
+            manager.addAccessLog(id, "2024-05-07", " 12:00:00", "Successful Login");
+            accessLogs = manager.getFilteredAccessLogs(id, "2024-05-02", "2024-05-6");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertNotNull(accessLogs.get(0));
+        assertTrue(accessLogs.size() == 1);      
+        assertEquals(accessLogs.get(0).getDate(), "2024-05-04");
+    }
+
+    @Test
+
+    public void testUpdateUserFromUser() { // Given a user has login details, calling updateUserFromUser() will update their information in the IoTBay database.
+
+        User test = null;
+        try {
+            manager.addStaff("test@mail.com", "password", "Bob", "Cook", "0400000000");
+            manager.updateUserFromUser("Fname", "Sname", "0400000001", "password2", "test@mail.com");
+            test = manager.getUser("test@mail.com");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertEquals(test.getFname(), "Fname");
+        assertEquals(test.getSurname(), "Sname");
+        assertEquals(test.getPhoneNo(), "0400000001");
+        assertEquals(test.getPassword(), "password2");
+    }
+
+    @Test
+
+    public void testGetAllProducts() { // Given IoTBay has a list of available products, calling getAllProducts() will return all active products in the database.
+
+        ArrayList<Product> products = null;
+
+        try {
+            manager.setAllProductsInactive();
+            manager.addProduct("test11", "test12", 13, "test14");
+            manager.addProduct("test21", "test22", 23, "test24");
+            manager.addProduct("test11", "test12", 33, "test34");
+            products = manager.getAllProducts();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertNotNull(products);
+        assertTrue(products.size() == 3);
+    }
+
+    @Test
+    public void testGetFilteredProducts() { // // Given IoTBay has a list of available products, calling getAllProducts() will return all active products in the database filtered by name and category.
+
+        ArrayList<Product> searchOnly = null;
+        ArrayList<Product> categoryOnly = null;
+        ArrayList<Product> searchAndCategory = null;
+
+        try {
+            manager.setAllProductsInactive();
+
+            manager.addProduct("test11", "test12", 13, "test14");
+            manager.addProduct("test21", "test22", 23, "test24");
+            manager.addProduct("test21", "test12", 33, "test34");
+            manager.addProduct("test61", "test12", 33, "test34");
+            manager.addProduct("test71", "test12", 33, "test34");
+            
+            searchOnly = manager.getFilteredProducts("%", "test2");
+            categoryOnly = manager.getFilteredProducts("test34", "%");
+            searchAndCategory = manager.getFilteredProducts("test34", "test61");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertTrue(searchOnly.size() == 2);
+        assertTrue(categoryOnly.size() == 3);
+        assertTrue(searchAndCategory.size() == 1);
+    }
+
+    @Test
+    public void testGetProduct() { // Given IoTBay has a product with a specified name, calling getProduct() will find and return that product from the database.
+
+        Product product = null;
+
+        try {
+            manager.addProduct("test1", "test2", 1, "test3");
+            product = manager.getProduct("test1");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertNotNull(product);
+        assertEquals(product.getName(), "test1");
+    }
+
+    @Test
+    public void testUpdateProduct() { // Given a product exists in IoTBay database, calling updateProduct() will update the product's details.
+
+        Product product = null;
+
+        try {
+            manager.addProduct("Test1", "Test1", 1, "Test1");
+            int id = manager.getProduct("Test1").getId();
+            manager.updateProduct(id, "Test2", "Test2", 2, "Test2");
+            product = manager.getProduct("Test2");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        assertNotNull(product);
+        assertEquals(product.getName(), "Test2");
+        assertEquals(product.getDescription(), "Test2");
+        assertEquals(product.getPrice() + "", "2.0");
+        assertEquals(product.getCategory(), "Test2");
+
+    }
 }

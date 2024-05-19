@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.uts.iotbay.model.Product;
 import com.uts.iotbay.model.dao.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
