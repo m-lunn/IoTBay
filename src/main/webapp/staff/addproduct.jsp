@@ -47,7 +47,7 @@
 				<div class="category-line">
 					<p class="category-label">Category:</p>
 					<select class="product-search-form-input" name="category" id="edit-product-category">
-						<option value="other" disabled selected>Select category</option>
+						<option value="Miscellaneous" disabled selected>Select category</option>
 						<option value="processor">Processor</option>
 						<option value="sensor">Sensor</option>
 						<option value="camera">Camera</option>

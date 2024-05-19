@@ -22,7 +22,12 @@
 		String productPrice = product.getPrice() + "0";
 		String productImagePath = product.getImagePath();
 		String productCategory = product.getCategory();
-		productCategory = productCategory.substring(0, 1).toUpperCase() + productCategory.substring(1);
+		if(productCategory == null) {
+			productCategory = "Miscellaneous";
+		}
+		else {
+			productCategory = productCategory.substring(0, 1).toUpperCase() + productCategory.substring(1);
+		}
 	%>
 
 	<div class="backdrop">

@@ -29,6 +29,9 @@
 	String productPrice = product.getPrice() + "0";
 	String productImagePath = product.getImagePath();
 	String productCategory = product.getCategory();
+	if(productCategory == null) {
+		productCategory = "Miscellaneous";
+	}
 	productCategory = productCategory.substring(0, 1).toUpperCase() + productCategory.substring(1);
 
 	String priceError = (String)request.getSession().getAttribute("priceError");
@@ -63,6 +66,7 @@
 				<div class="category-line">
 					<p class="category-label">Category:</p>
 					<select class="product-search-form-input" name="category" id="edit-product-category">
+						<option value="Miscellaneous" disabled>Select category</option>
 						<option <%if( productCategory.equals("Processor")){out.println("selected");}%> value="processor">Processor</option>
 						<option <%if( productCategory.equals("Sensor")){out.println("selected");}%> value="sensor">Sensor</option>
 						<option <%if( productCategory.equals("Camera")){out.println("selected");}%> value="camera">Camera</option>
