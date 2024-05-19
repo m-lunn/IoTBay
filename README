@@ -1,16 +1,9 @@
 Deployment Notes:
 
-1. Deploy as Root
+This project was built with Maven 3.8.1, deployed on Apache Tomcat 10.1.4 and tested on using JUnit 4.
 
-    The code in this project was written to be deployed directly as the root of a Tomcat server.
 
-    E.g. Instead of http://localhost:8080/IoTBay-1.0/index.jsp, it would be http://localhost:8080/index.jsp
-
-    This is important to keep in mind as otherwise links will not work.
-
-    Testing was completed on Apache Tomcat Version 10.1.4
-
-2. MySQL Database
+MySQL Database
 
     This project is supported by a MySQL database running locally on the machine.
 
@@ -23,12 +16,12 @@ Deployment Notes:
 
 DEPLOYMENT INSTRUCTIONS:
 
-1. Start an instance of Apache Tomcat
+1. Import the database on your machine locally using the database dumps.
 
-2. Navigate to the deployment manager tool http://localhost:8080/manager
+2. Start an instance of Apache Tomcat
 
-3. If there is a ROOT depoyment already on the server (path = "/"), click stop and undeploy.
+3. Navigate to the deployment manager tool http://localhost:8080/manager
 
-4. Choose the ROOT.war file from this project and deploy on the server.
+4. Choose the IoTBay-1.0.war file from this project and deploy on the server.
 
-5.  Go to http://localhost:8080 to be directed to the IoTBay index page.
+5.  Go to http://localhost:8080/IoTBay-1.0 to be directed to the IoTBay index page.
