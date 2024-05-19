@@ -469,7 +469,7 @@ public class DBManagerTest {
     }
 
     @Test
-    public void testGetFilteredAccessLogs() { // // Given a user has created an account and attempted to login in, calling getFilteredAccessLogs() will return all logs of the user's access filtered by date.
+    public void testGetFilteredAccessLogs() { // Given a user has created an account and attempted to login in, calling getFilteredAccessLogs() will return all logs of the user's access filtered by date.
 
         int id;
         ArrayList<AccessLog> accessLogs = new ArrayList<>();
